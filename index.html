@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YAP Digital Marketing — Service Catalog</title>
+  <meta name="description" content="YAP Digital Marketing service catalog: SEO, social media, paid ads, web design, branding, content, email and video marketing packages." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="top">
+    <div class="container nav">
+      <a href="#top" class="logo" aria-label="YAP Digital Marketing home">
+        <span class="logo-mark">YAP</span>
+        <span class="logo-text">Digital Marketing</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#catalog">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#process">Process</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="cart-btn" id="cartOpen" aria-label="Open quote basket">
+          🧾 <span>Quote</span> <span class="badge" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="pill">2026 Service Catalog</span>
+        <h1>Grow your brand with <span class="grad">YAP Digital Marketing</span></h1>
+        <p class="lead">SEO, social media, performance ads, websites and creative — pick the services you need, build your own plan and get an instant quote.</p>
+        <div class="hero-cta">
+          <a href="#catalog" class="btn btn-primary">Browse Services</a>
+          <a href="#packages" class="btn btn-ghost">View Packages</a>
+        </div>
+        <ul class="stats">
+          <li><strong>20+</strong><span>Services</span></li>
+          <li><strong>8</strong><span>Categories</span></li>
+          <li><strong>24h</strong><span>Quote turnaround</span></li>
+        </ul>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <div class="hc-row"><span>📈</span><div><b>Organic traffic</b><small>Growth with SEO</small></div><em class="up">▲</em></div>
+        <div class="hc-row"><span>📱</span><div><b>Social engagement</b><small>Reels &amp; content</small></div><em class="up">▲</em></div>
+        <div class="hc-row"><span>🎯</span><div><b>Cost per lead</b><small>Optimised ads</small></div><em class="down">▼</em></div>
+        <div class="hc-bar"><i style="width:82%"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATALOG ================= -->
+  <section class="section" id="catalog">
+    <div class="container">
+      <div class="section-head">
+        <h2>Service Catalog</h2>
+        <p>Filter by category, search, and add services to your quote basket.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="search">
+          <span>🔎</span>
+          <input type="search" id="searchInput" placeholder="Search services, e.g. reels, Google Ads, logo…" aria-label="Search services" />
+        </div>
+        <select id="billingFilter" aria-label="Filter by billing">
+          <option value="all">All billing types</option>
+          <option value="month">Monthly retainers</option>
+          <option value="one-time">One-time projects</option>
+        </select>
+        <select id="sortSelect" aria-label="Sort services">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name: A → Z</option>
+        </select>
+      </div>
+
+      <div class="chips" id="categoryChips" role="tablist" aria-label="Service categories"></div>
+
+      <p class="result-count" id="resultCount"></p>
+      <div class="grid" id="serviceGrid"></div>
+      <div class="empty" id="emptyState" hidden>
+        <p>😕 No services match your search.</p>
+        <button class="btn btn-ghost" id="resetFilters">Reset filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PACKAGES ================= -->
+  <section class="section alt" id="packages">
+    <div class="container">
+      <div class="section-head">
+        <h2>Bundled Packages</h2>
+        <p>Save more with our most popular combinations.</p>
+      </div>
+      <div class="packages" id="packageGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-head">
+        <h2>How We Work</h2>
+        <p>A simple, transparent process from first call to results.</p>
+      </div>
+      <ol class="process">
+        <li><span>01</span><h3>Discovery Call</h3><p>We learn about your business, goals, audience and competitors.</p></li>
+        <li><span>02</span><h3>Strategy &amp; Proposal</h3><p>You get a custom plan with clear deliverables, timelines and pricing.</p></li>
+        <li><span>03</span><h3>Execution</h3><p>Our team launches campaigns, creates content and builds assets.</p></li>
+        <li><span>04</span><h3>Report &amp; Scale</h3><p>Regular reports, optimisation, and scaling what works.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="section alt" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <h2>What Clients Say</h2>
+      </div>
+      <div class="testimonials" id="testimonialGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section" id="faq">
+    <div class="container narrow">
+      <div class="section-head"><h2>FAQs</h2></div>
+      <details><summary>Is ad spend included in the Ads packages?</summary><p>No. Our fee covers strategy, setup and management. Ad spend is paid directly to the platform (Google, Meta, LinkedIn) from your own account.</p></details>
+      <details><summary>Is there a lock-in period for monthly plans?</summary><p>Monthly retainers have a 3-month minimum so strategies have time to deliver results. After that, cancel anytime with 30 days notice.</p></details>
+      <details><summary>Are prices inclusive of GST?</summary><p>Prices shown exclude 18% GST, which is added on the final invoice. The quote basket shows an estimate including GST.</p></details>
+      <details><summary>Can I customise a package?</summary><p>Absolutely. Add any combination of services to your quote basket and send it to us — we'll tailor the plan to your budget.</p></details>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section alt" id="contact">
+    <div class="container contact-grid">
+      <div>
+        <h2>Let's grow together</h2>
+        <p>Tell us about your project and we'll get back within 24 hours.</p>
+        <ul class="contact-list" id="contactList"></ul>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <div class="row">
+          <label>Name<input name="name" required placeholder="Your name" /></label>
+          <label>Phone<input name="phone" type="tel" required placeholder="+91…" /></label>
+        </div>
+        <label>Email<input name="email" type="email" required placeholder="you@company.com" /></label>
+        <label>Interested in
+          <select name="interest" id="interestSelect"></select>
+        </label>
+        <label>Message<textarea name="message" rows="4" placeholder="Tell us about your goals…"></textarea></label>
+        <button class="btn btn-primary" type="submit">Send Enquiry</button>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> YAP Digital Marketing. All rights reserved.</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- ================= SERVICE DETAIL MODAL ================= -->
+  <div class="overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="modalClose" aria-label="Close">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ================= QUOTE BASKET DRAWER ================= -->
+  <div class="overlay" id="cartOverlay" hidden></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Quote basket" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Your Quote</h3>
+      <button class="close" id="cartClose" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot">
+      <div class="totals" id="cartTotals"></div>
+      <button class="btn btn-primary block" id="sendWhatsApp">Send quote on WhatsApp</button>
+      <button class="btn btn-ghost block" id="sendEmail">Send quote by email</button>
+      <button class="btn btn-ghost block" id="printQuote">Print / Save PDF</button>
+      <button class="link-btn" id="clearCart">Clear basket</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
