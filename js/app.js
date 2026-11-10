@@ -235,7 +235,11 @@
       <div><span>GST (18%)</span><span>${money(t.gst)}</span></div>
       <div class="grand"><span>First invoice (est.)</span><span>${money(t.total)}</span></div>` : "";
 
-    ["#sendWhatsApp", "#sendEmail", "#printQuote", "#clearCart"].forEach((sel) => ($(sel).disabled = !t.items.length));
+    ["#copyQuote", "#clearCart"].forEach((sel) => ($(sel).disabled = !t.items.length));
+    const wa = $("#sendWhatsApp");
+    wa.href = t.items.length ? `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(quoteText())}` : "#";
+    wa.classList.toggle("is-disabled", !t.items.length);
+    wa.setAttribute("aria-disabled", String(!t.items.length));
   }
 
   function quoteText() {
@@ -265,10 +269,27 @@
     document.body.classList.remove("no-scroll");
   }
 
+  /* ---------- Copy to clipboard (with fallback) ---------- */
+  function copyText(text) {
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand("copy"); } catch { ok = false; }
+      ta.remove();
+      toast(ok ? "Quote copied" : "Copy failed. Select the text manually.");
+    };
+    try {
+      navigator.clipboard.writeText(text).then(() => toast("Quote copied"), fallback);
+    } catch { fallback(); }
+  }
+
   /* ---------- Theme ---------- */
+  const systemDark = () => !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const currentTheme = () => document.documentElement.dataset.theme || (systemDark() ? "dark" : "light");
   function applyTheme(theme) {
-    document.documentElement.dataset.theme = theme;
-    $("#themeToggle").textContent = theme === "dark" ? "☀️" : "🌙";
+    if (theme) document.documentElement.dataset.theme = theme;
+    $("#themeToggle").textContent = currentTheme() === "dark" ? "☀️" : "🌙";
   }
 
   /* ---------- Contact form ---------- */
@@ -288,11 +309,10 @@
       return;
     }
     const data = Object.fromEntries(new FormData(form));
-    const body = `Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nInterested in: ${data.interest || "-"}\n\n${data.message || ""}`;
-    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent("New enquiry from " + data.name)}&body=${encodeURIComponent(body)}`;
+    const body = `Hi YAP Digital Marketing! New enquiry:\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nInterested in: ${data.interest || "-"}\n\n${data.message || ""}`;
+    const link = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(body)}`;
     msg.className = "form-msg ok";
-    msg.textContent = "Thanks! Your email app should open — hit send and we'll reply within 24 hours.";
-    form.reset();
+    msg.innerHTML = `Your enquiry is ready. <a href="${link}" target="_blank" rel="noopener">Tap here to send it on WhatsApp</a>, or email us at ${esc(CONTACT.email)}.`;
   }
 
   /* ---------- Events ---------- */
@@ -337,13 +357,8 @@
     $("#clearCart").addEventListener("click", () => {
       state.cart = []; saveCart(); refreshAddButtons(); renderCart(); toast("Quote basket cleared");
     });
-    $("#sendWhatsApp").addEventListener("click", () => {
-      window.open(`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(quoteText())}`, "_blank", "noopener");
-    });
-    $("#sendEmail").addEventListener("click", () => {
-      window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent("Quote request")}&body=${encodeURIComponent(quoteText())}`;
-    });
-    $("#printQuote").addEventListener("click", () => window.print());
+    $("#sendWhatsApp").addEventListener("click", (e) => { if (!state.cart.length) e.preventDefault(); });
+    $("#copyQuote").addEventListener("click", () => copyText(quoteText()));
 
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
@@ -352,7 +367,7 @@
     });
 
     $("#themeToggle").addEventListener("click", () => {
-      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      const next = currentTheme() === "dark" ? "light" : "dark";
       applyTheme(next);
       safeStorage(() => localStorage.setItem(THEME_KEY, next));
     });
@@ -366,8 +381,7 @@
   /* ---------- Init ---------- */
   function init() {
     const savedTheme = safeStorage(() => localStorage.getItem(THEME_KEY), null);
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+    applyTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : null);
 
     $("#year").textContent = new Date().getFullYear();
     renderChips();

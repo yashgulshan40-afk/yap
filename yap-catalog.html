@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YAP Digital Marketing Catalog</title>
+  <meta name="description" content="YAP Digital Marketing service catalog: SEO, social media, paid ads, web design, branding, content, email and video marketing packages." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+/* ==========================================================
+   YAP Digital Marketing — Catalog Styles
+   ========================================================== */
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f6fb;
+  --card: #ffffff;
+  --text: #16172b;
+  --muted: #5d6079;
+  --border: #e4e6f0;
+  --primary: #5b3df5;
+  --primary-2: #ff3d7f;
+  --accent: #12b886;
+  --danger: #e03131;
+  --shadow: 0 10px 30px rgba(22, 23, 43, .08);
+  --radius: 16px;
+  --star: #e8590c;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1020; --bg-alt: #15172b; --card: #1b1d35; --text: #eef0ff;
+    --muted: #a3a7c6; --border: #2b2e4d; --star: #fcc419;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1020; --bg-alt: #15172b; --card: #1b1d35; --text: #eef0ff;
+  --muted: #a3a7c6; --border: #2b2e4d; --star: #fcc419;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background .3s, color .3s;
+}
+body.no-scroll { overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+
+.container {
+  width: 100%; max-width: 1212px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.narrow { max-width: 812px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 22px; border-radius: 999px; border: 1px solid transparent;
+  font-weight: 600; transition: transform .15s, box-shadow .2s, background .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #fff; box-shadow: 0 8px 20px rgba(91, 61, 245, .3);
+}
+.btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+.btn.block { width: 100%; margin-top: 10px; }
+.btn.is-disabled, .btn:disabled { opacity: .45; pointer-events: none; }
+.btn:focus-visible, .chip:focus-visible, .icon-btn:focus-visible, .cart-btn:focus-visible { outline: 3px solid var(--primary-2); outline-offset: 2px; }
+.btn.added { background: var(--accent); box-shadow: none; }
+.link-btn { background: none; border: none; color: var(--muted); margin-top: 12px; width: 100%; text-decoration: underline; }
+.icon-btn { background: var(--bg-alt); border: 1px solid var(--border); width: 42px; height: 42px; border-radius: 50%; color: var(--text); }
+
+/* ---------- Header ---------- */
+.header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 70px; gap: 16px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.logo-mark {
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #fff; padding: 6px 10px; border-radius: 10px; font-weight: 800; letter-spacing: 1px;
+}
+.logo-text { font-size: 1rem; }
+.nav-links { display: flex; gap: 28px; font-weight: 500; color: var(--muted); }
+.nav-links a:hover { color: var(--primary); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.cart-btn {
+  display: flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 999px;
+  background: var(--text); color: var(--bg); border: none; font-weight: 600;
+}
+.badge {
+  background: var(--primary-2); color: #fff; border-radius: 999px;
+  min-width: 22px; height: 22px; display: inline-grid; place-items: center; font-size: .75rem;
+}
+.badge.bump { animation: bump .4s; }
+@keyframes bump { 50% { transform: scale(1.4); } }
+.menu-btn { display: none; }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 80px 0 70px;
+  background:
+    radial-gradient(600px 300px at 10% 0%, rgba(91, 61, 245, .15), transparent 70%),
+    radial-gradient(600px 300px at 90% 20%, rgba(255, 61, 127, .12), transparent 70%);
+}
+.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; }
+.pill {
+  display: inline-block; padding: 6px 14px; border-radius: 999px; font-size: .85rem; font-weight: 600;
+  background: rgba(91, 61, 245, .1); color: var(--primary); margin-bottom: 18px;
+}
+h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); line-height: 1.15; font-weight: 800; }
+.grad { background: linear-gradient(135deg, var(--primary), var(--primary-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { color: var(--muted); font-size: 1.1rem; margin: 18px 0 28px; max-width: 560px; }
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.stats { list-style: none; display: flex; gap: 36px; margin-top: 40px; flex-wrap: wrap; }
+.stats strong { display: block; font-size: 1.7rem; font-weight: 800; }
+.stats span { color: var(--muted); font-size: .9rem; }
+
+.hero-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 24px;
+  padding: 26px; box-shadow: var(--shadow); display: grid; gap: 14px;
+}
+.hc-row { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 14px; background: var(--bg-alt); }
+.hc-row > span { font-size: 1.6rem; }
+.hc-row div { flex: 1; }
+.hc-row b { display: block; }
+.hc-row small { color: var(--muted); }
+.hc-row em { font-style: normal; font-weight: 700; }
+.up { color: var(--accent); }
+.down { color: var(--primary-2); }
+.hc-bar { height: 10px; background: var(--bg-alt); border-radius: 99px; overflow: hidden; }
+.hc-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-2)); border-radius: 99px; }
+
+/* ---------- Sections ---------- */
+.section { padding: 80px 0; }
+.section.alt { background: var(--bg-alt); }
+.section-head { text-align: center; margin-bottom: 40px; }
+.section-head h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; }
+.section-head p { color: var(--muted); margin-top: 8px; }
+
+/* ---------- Toolbar ---------- */
+.toolbar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.search {
+  flex: 1 1 320px; display: flex; align-items: center; gap: 10px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0 18px;
+}
+.search input { border: none; outline: none; background: transparent; width: 100%; padding: 12px 0; }
+.toolbar select {
+  padding: 12px 16px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--card); outline: none; flex: 0 1 220px;
+}
+.search:focus-within, .toolbar select:focus { border-color: var(--primary); }
+
+.chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.chip {
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text); font-weight: 500; font-size: .92rem; transition: .2s;
+}
+.chip:hover { border-color: var(--primary); }
+.chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.chip small { opacity: .7; margin-left: 4px; }
+.result-count { color: var(--muted); font-size: .9rem; margin-bottom: 18px; }
+
+/* ---------- Service cards ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+.card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 24px; box-shadow: var(--shadow); transition: transform .2s, border-color .2s;
+  animation: fadeUp .35s ease both;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--primary); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.ribbon {
+  position: absolute; top: 18px; right: 18px; font-size: .72rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff;
+  padding: 4px 10px; border-radius: 999px;
+}
+.card .cat { font-size: .8rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: .5px; }
+.card h3 { font-size: 1.2rem; margin: 6px 0 4px; padding-right: 70px; }
+.card .tagline { color: var(--muted); font-size: .93rem; }
+.price { margin: 16px 0 12px; font-size: 1.7rem; font-weight: 800; }
+.price small { font-size: .85rem; color: var(--muted); font-weight: 500; }
+.features { list-style: none; display: grid; gap: 7px; margin-bottom: 18px; font-size: .92rem; }
+.features li { display: flex; gap: 8px; }
+.features li::before { content: "✓"; color: var(--accent); font-weight: 700; }
+.features .more { color: var(--muted); }
+.features .more::before { content: "+"; color: var(--muted); }
+.meta { font-size: .82rem; color: var(--muted); margin-bottom: 16px; }
+.card-actions { margin-top: auto; display: flex; gap: 10px; }
+.card-actions .btn { flex: 1; padding: 10px 14px; font-size: .92rem; }
+
+.empty { text-align: center; padding: 50px 0; color: var(--muted); }
+.empty .btn { margin-top: 14px; }
+
+/* ---------- Packages ---------- */
+.packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: stretch; }
+.package {
+  position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 22px;
+  padding: 32px 28px; display: flex; flex-direction: column; box-shadow: var(--shadow);
+}
+.package.featured { border: 2px solid var(--primary); transform: scale(1.03); }
+.package .save { position: absolute; top: -13px; left: 28px; background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+.package h3 { font-size: 1.4rem; }
+.package p { color: var(--muted); }
+.package .old { text-decoration: line-through; color: var(--muted); font-size: .95rem; font-weight: 500; margin-left: 8px; }
+.package ul { list-style: none; display: grid; gap: 8px; margin: 10px 0 24px; }
+.package li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+.package .btn { margin-top: auto; }
+
+/* ---------- Process ---------- */
+.process { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+.process li { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+.process span { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--primary-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.process h3 { margin: 8px 0; }
+.process p { color: var(--muted); font-size: .94rem; }
+
+/* ---------- Testimonials ---------- */
+.testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.quote { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+.quote .stars { color: var(--star); letter-spacing: 2px; }
+.quote p { margin: 12px 0 18px; }
+.quote .who { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; background: linear-gradient(135deg, var(--primary), var(--primary-2)); }
+.who small { display: block; color: var(--muted); }
+
+/* ---------- FAQ ---------- */
+details { border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; margin-bottom: 12px; background: var(--card); }
+summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::after { content: "+"; font-size: 1.3rem; line-height: 1; color: var(--primary); }
+details[open] summary::after { content: "–"; }
+details p { color: var(--muted); margin-top: 10px; }
+
+/* ---------- Contact ---------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: start; }
+.contact-grid h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; }
+.contact-grid > div > p { color: var(--muted); margin: 10px 0 24px; }
+.contact-list { list-style: none; display: grid; gap: 14px; }
+.contact-list a, .contact-list span { display: flex; gap: 12px; align-items: center; }
+.contact-list i { font-style: normal; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: var(--card); border: 1px solid var(--border); }
+.form { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 30px; display: grid; gap: 16px; box-shadow: var(--shadow); }
+.form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form label { display: grid; gap: 6px; font-size: .9rem; font-weight: 500; }
+.form input, .form select, .form textarea {
+  padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); outline: none; resize: vertical;
+}
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--primary); }
+.form input.invalid { border-color: var(--danger); }
+.form-msg { font-size: .9rem; min-height: 1.2em; }
+.form-msg.ok { color: var(--accent); }
+.form-msg.err { color: var(--danger); }
+.form-msg a { color: var(--primary); font-weight: 600; text-decoration: underline; }
+.sample-tag { display: inline-block; margin-top: 8px; font-size: .8rem; color: var(--muted); border: 1px dashed var(--border); padding: 3px 10px; border-radius: 999px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+
+/* ---------- Footer ---------- */
+.footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted); font-size: .9rem; }
+.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- Overlay / Modal ---------- */
+.overlay { position: fixed; inset: 0; background: rgba(10, 10, 25, .55); z-index: 90; display: grid; place-items: center; padding: 16px; animation: fade .2s; }
+.overlay[hidden] { display: none; }
+@keyframes fade { from { opacity: 0; } }
+.modal { position: relative; background: var(--card); border-radius: 22px; width: min(620px, 100%); max-height: 90vh; overflow: auto; padding: 32px; box-shadow: var(--shadow); }
+.modal h3 { font-size: 1.6rem; padding-right: 30px; }
+.modal .tagline { color: var(--muted); }
+.modal .note { background: var(--bg-alt); padding: 10px 14px; border-radius: 10px; font-size: .88rem; margin-bottom: 16px; }
+.modal .card-actions { margin-top: 10px; }
+.close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-alt); color: var(--text); }
+
+/* ---------- Drawer ---------- */
+.drawer {
+  position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 100%); z-index: 100;
+  background: var(--card); box-shadow: -10px 0 40px rgba(0, 0, 0, .2);
+  display: flex; flex-direction: column; transform: translateX(100%); transition: transform .3s ease;
+}
+.drawer.open { transform: none; }
+.drawer-head { position: relative; padding: 22px 24px; border-bottom: 1px solid var(--border); }
+.drawer-head .close { top: 16px; }
+.drawer-body { flex: 1; overflow: auto; padding: 16px 24px; }
+.drawer-foot { padding: 18px 24px calc(24px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--border); }
+.drawer-head { padding-top: calc(22px + env(safe-area-inset-top, 0px)); }
+.cart-item { display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px dashed var(--border); }
+.cart-item b { display: block; font-size: .95rem; }
+.cart-item small { color: var(--muted); }
+.cart-item .right { text-align: right; white-space: nowrap; }
+.cart-item .remove { background: none; border: none; color: var(--danger); font-size: .8rem; }
+.cart-empty { text-align: center; color: var(--muted); padding: 50px 0; }
+.totals { display: grid; gap: 4px; font-size: .92rem; margin-bottom: 6px; }
+.totals div { display: flex; justify-content: space-between; }
+.totals .grand { font-size: 1.15rem; font-weight: 800; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translate(-50%, 120px);
+  background: var(--text); color: var(--bg); padding: 12px 22px; border-radius: 999px;
+  font-weight: 500; z-index: 200; transition: transform .3s; pointer-events: none;
+}
+.toast.show { transform: translate(-50%, 0); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .package.featured { transform: none; }
+}
+@media (max-width: 760px) {
+  .menu-btn { display: inline-block; }
+  .nav-links {
+    position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--border); display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 14px 20px; border-top: 1px solid var(--border); }
+  .cart-btn span:not(.badge) { display: none; }
+  .logo-text { display: none; }
+  .form .row { grid-template-columns: 1fr; }
+  .section { padding: 60px 0; }
+  .toolbar select { flex: 1 1 45%; }
+}
+
+
+</style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="top">
+    <div class="container nav">
+      <a href="#top" class="logo" aria-label="YAP Digital Marketing home">
+        <span class="logo-mark">YAP</span>
+        <span class="logo-text">Digital Marketing</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#catalog">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#process">Process</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="cart-btn" id="cartOpen" aria-label="Open quote basket">
+          🧾 <span>Quote</span> <span class="badge" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="pill">2026 Service Catalog</span>
+        <h1>Grow your brand with <span class="grad">YAP Digital Marketing</span></h1>
+        <p class="lead">SEO, social media, performance ads, websites and creative — pick the services you need, build your own plan and get an instant quote.</p>
+        <div class="hero-cta">
+          <a href="#catalog" class="btn btn-primary">Browse Services</a>
+          <a href="#packages" class="btn btn-ghost">View Packages</a>
+        </div>
+        <ul class="stats">
+          <li><strong>20+</strong><span>Services</span></li>
+          <li><strong>8</strong><span>Categories</span></li>
+          <li><strong>24h</strong><span>Quote turnaround</span></li>
+        </ul>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <div class="hc-row"><span>📈</span><div><b>Organic traffic</b><small>Growth with SEO</small></div><em class="up">▲</em></div>
+        <div class="hc-row"><span>📱</span><div><b>Social engagement</b><small>Reels &amp; content</small></div><em class="up">▲</em></div>
+        <div class="hc-row"><span>🎯</span><div><b>Cost per lead</b><small>Optimised ads</small></div><em class="down">▼</em></div>
+        <div class="hc-bar"><i style="width:82%"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATALOG ================= -->
+  <section class="section" id="catalog">
+    <div class="container">
+      <div class="section-head">
+        <h2>Service Catalog</h2>
+        <p>Filter by category, search, and add services to your quote basket.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="search">
+          <span>🔎</span>
+          <input type="search" id="searchInput" placeholder="Search services, e.g. reels, Google Ads, logo…" aria-label="Search services" />
+        </div>
+        <select id="billingFilter" aria-label="Filter by billing">
+          <option value="all">All billing types</option>
+          <option value="month">Monthly retainers</option>
+          <option value="one-time">One-time projects</option>
+        </select>
+        <select id="sortSelect" aria-label="Sort services">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name: A → Z</option>
+        </select>
+      </div>
+
+      <div class="chips" id="categoryChips" role="tablist" aria-label="Service categories"></div>
+
+      <p class="result-count" id="resultCount"></p>
+      <div class="grid" id="serviceGrid"></div>
+      <div class="empty" id="emptyState" hidden>
+        <p>😕 No services match your search.</p>
+        <button class="btn btn-ghost" id="resetFilters">Reset filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PACKAGES ================= -->
+  <section class="section alt" id="packages">
+    <div class="container">
+      <div class="section-head">
+        <h2>Bundled Packages</h2>
+        <p>Save more with our most popular combinations.</p>
+      </div>
+      <div class="packages" id="packageGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-head">
+        <h2>How We Work</h2>
+        <p>A simple, transparent process from first call to results.</p>
+      </div>
+      <ol class="process">
+        <li><span>01</span><h3>Discovery Call</h3><p>We learn about your business, goals, audience and competitors.</p></li>
+        <li><span>02</span><h3>Strategy &amp; Proposal</h3><p>You get a custom plan with clear deliverables, timelines and pricing.</p></li>
+        <li><span>03</span><h3>Execution</h3><p>Our team launches campaigns, creates content and builds assets.</p></li>
+        <li><span>04</span><h3>Report &amp; Scale</h3><p>Regular reports, optimisation, and scaling what works.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="section alt" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <h2>What Clients Say</h2>
+        <span class="sample-tag">Sample reviews, to be replaced with real client feedback</span>
+      </div>
+      <div class="testimonials" id="testimonialGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section" id="faq">
+    <div class="container narrow">
+      <div class="section-head"><h2>FAQs</h2></div>
+      <details><summary>Is ad spend included in the Ads packages?</summary><p>No. Our fee covers strategy, setup and management. Ad spend is paid directly to the platform (Google, Meta, LinkedIn) from your own account.</p></details>
+      <details><summary>Is there a lock-in period for monthly plans?</summary><p>Monthly retainers have a 3-month minimum so strategies have time to deliver results. After that, cancel anytime with 30 days notice.</p></details>
+      <details><summary>Are prices inclusive of GST?</summary><p>Prices shown exclude 18% GST, which is added on the final invoice. The quote basket shows an estimate including GST.</p></details>
+      <details><summary>Can I customise a package?</summary><p>Absolutely. Add any combination of services to your quote basket and send it to us — we'll tailor the plan to your budget.</p></details>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section alt" id="contact">
+    <div class="container contact-grid">
+      <div>
+        <h2>Let's grow together</h2>
+        <p>Tell us about your project and we'll get back within 24 hours.</p>
+        <ul class="contact-list" id="contactList"></ul>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <div class="row">
+          <label>Name<input id="fName" name="name" required placeholder="Your name" /></label>
+          <label>Phone<input id="fPhone" name="phone" type="tel" required placeholder="+91…" /></label>
+        </div>
+        <label>Email<input id="fEmail" name="email" type="email" required placeholder="you@company.com" /></label>
+        <label>Interested in
+          <select name="interest" id="interestSelect"></select>
+        </label>
+        <label>Message<textarea id="fMessage" name="message" rows="4" placeholder="Tell us about your goals…"></textarea></label>
+        <button class="btn btn-primary" type="submit">Send Enquiry on WhatsApp</button>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> YAP Digital Marketing. All rights reserved.</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- ================= SERVICE DETAIL MODAL ================= -->
+  <div class="overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="modalClose" aria-label="Close">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ================= QUOTE BASKET DRAWER ================= -->
+  <div class="overlay" id="cartOverlay" hidden></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Quote basket" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Your Quote</h3>
+      <button class="close" id="cartClose" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot">
+      <div class="totals" id="cartTotals"></div>
+      <a class="btn btn-primary block" id="sendWhatsApp" href="#" target="_blank" rel="noopener">Send quote on WhatsApp</a>
+      <button class="btn btn-ghost block" id="copyQuote">Copy quote text</button>
+      <button class="link-btn" id="clearCart">Clear basket</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+/* ==========================================================
+   YAP Digital Marketing — Service Catalog Data
+   Edit this file to add, remove or re-price services.
+   ========================================================== */
+
+const CURRENCY = "₹";
+
+const CATEGORIES = [
+  { id: "all",     name: "All Services",          icon: "✦" },
+  { id: "seo",     name: "SEO",                   icon: "🔍" },
+  { id: "social",  name: "Social Media",          icon: "📱" },
+  { id: "ads",     name: "Paid Ads (PPC)",        icon: "🎯" },
+  { id: "content", name: "Content Marketing",     icon: "✍️" },
+  { id: "web",     name: "Web Design & Dev",      icon: "💻" },
+  { id: "brand",   name: "Branding & Design",     icon: "🎨" },
+  { id: "email",   name: "Email & Automation",    icon: "✉️" },
+  { id: "video",   name: "Video & Reels",         icon: "🎬" },
+];
+
+const SERVICES = [
+  /* ---------------- SEO ---------------- */
+  {
+    id: "seo-starter",
+    category: "seo",
+    name: "Local SEO Starter",
+    tagline: "Get found on Google Maps & local search.",
+    price: 7999, billing: "month",
+    popular: false,
+    delivery: "Results in 60–90 days",
+    features: [
+      "Google Business Profile optimisation",
+      "Up to 10 target keywords",
+      "On-page SEO for 5 pages",
+      "20 local citations / directory listings",
+      "Monthly ranking report",
+    ],
+  },
+  {
+    id: "seo-growth",
+    category: "seo",
+    name: "SEO Growth",
+    tagline: "Full-funnel SEO for growing businesses.",
+    price: 17999, billing: "month",
+    popular: true,
+    delivery: "Results in 90–120 days",
+    features: [
+      "Up to 30 target keywords",
+      "Technical SEO audit & fixes",
+      "On-page SEO for 15 pages",
+      "4 SEO blog articles / month",
+      "Quality backlink building",
+      "Competitor analysis",
+      "Bi-weekly reporting + strategy call",
+    ],
+  },
+  {
+    id: "seo-audit",
+    category: "seo",
+    name: "Technical SEO Audit",
+    tagline: "A deep, one-time health check of your website.",
+    price: 9999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 7 days",
+    features: [
+      "Crawl & indexation analysis",
+      "Core Web Vitals & speed review",
+      "Schema / structured data review",
+      "Broken links & redirect map",
+      "Prioritised action plan (PDF)",
+    ],
+  },
+
+  /* ---------------- SOCIAL ---------------- */
+  {
+    id: "smm-basic",
+    category: "social",
+    name: "Social Media Basic",
+    tagline: "Consistent presence on 2 platforms.",
+    price: 9999, billing: "month",
+    popular: false,
+    delivery: "Starts in 5 days",
+    features: [
+      "2 platforms (Instagram + Facebook)",
+      "12 branded posts / month",
+      "Caption writing & hashtag research",
+      "Content calendar",
+      "Monthly insights report",
+    ],
+  },
+  {
+    id: "smm-pro",
+    category: "social",
+    name: "Social Media Pro",
+    tagline: "Grow your audience and engagement fast.",
+    price: 19999, billing: "month",
+    popular: true,
+    delivery: "Starts in 5 days",
+    features: [
+      "3 platforms (IG, FB, LinkedIn)",
+      "20 posts + 8 reels / month",
+      "Stories & highlight covers",
+      "Community management (DMs & comments)",
+      "Influencer outreach (2 / month)",
+      "Monthly strategy call",
+    ],
+  },
+  {
+    id: "smm-setup",
+    category: "social",
+    name: "Profile Setup & Makeover",
+    tagline: "Professional profiles ready to convert.",
+    price: 4999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 3 days",
+    features: [
+      "Setup / revamp of up to 4 profiles",
+      "Bio, links & CTA optimisation",
+      "Profile & cover graphics",
+      "Highlight cover set",
+    ],
+  },
+
+  /* ---------------- ADS ---------------- */
+  {
+    id: "ads-google",
+    category: "ads",
+    name: "Google Ads Management",
+    tagline: "Search, Display & Performance Max campaigns.",
+    price: 12999, billing: "month",
+    popular: true,
+    delivery: "Live in 3 days",
+    features: [
+      "Keyword research & campaign setup",
+      "Ad copy + extensions",
+      "Conversion tracking (GA4 / GTM)",
+      "Weekly bid & budget optimisation",
+      "Ad spend up to ₹1,00,000 managed",
+      "Monthly ROI report",
+    ],
+    note: "Ad spend paid separately to Google.",
+  },
+  {
+    id: "ads-meta",
+    category: "ads",
+    name: "Meta Ads (FB + Instagram)",
+    tagline: "Lead-gen & sales campaigns that scale.",
+    price: 11999, billing: "month",
+    popular: false,
+    delivery: "Live in 3 days",
+    features: [
+      "Audience research & pixel setup",
+      "6 ad creatives / month",
+      "A/B testing of creatives & audiences",
+      "Retargeting funnels",
+      "Weekly optimisation",
+    ],
+    note: "Ad spend paid separately to Meta.",
+  },
+  {
+    id: "ads-linkedin",
+    category: "ads",
+    name: "LinkedIn B2B Ads",
+    tagline: "Reach decision-makers by job title & industry.",
+    price: 14999, billing: "month",
+    popular: false,
+    delivery: "Live in 5 days",
+    features: [
+      "Account & Insight Tag setup",
+      "Lead Gen Form campaigns",
+      "4 sponsored creatives / month",
+      "Audience & ABM list targeting",
+      "Monthly lead quality report",
+    ],
+    note: "Ad spend paid separately to LinkedIn.",
+  },
+
+  /* ---------------- CONTENT ---------------- */
+  {
+    id: "content-blog",
+    category: "content",
+    name: "Blog Writing Pack",
+    tagline: "SEO-optimised articles that rank and convert.",
+    price: 5999, billing: "month",
+    popular: false,
+    delivery: "Weekly delivery",
+    features: [
+      "4 articles × 1,000 words",
+      "Keyword research per article",
+      "Meta title & description",
+      "Royalty-free images",
+      "2 revisions per article",
+    ],
+  },
+  {
+    id: "content-copy",
+    category: "content",
+    name: "Website Copywriting",
+    tagline: "Persuasive copy for your key pages.",
+    price: 8999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 10 days",
+    features: [
+      "Up to 5 pages of copy",
+      "Brand voice guide",
+      "SEO-friendly headings",
+      "CTA & conversion copy",
+    ],
+  },
+
+  /* ---------------- WEB ---------------- */
+  {
+    id: "web-landing",
+    category: "web",
+    name: "Landing Page",
+    tagline: "A high-converting page for your campaign.",
+    price: 9999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 5 days",
+    features: [
+      "1 responsive landing page",
+      "Lead form + WhatsApp integration",
+      "Speed-optimised (90+ PageSpeed)",
+      "Analytics & pixel setup",
+    ],
+  },
+  {
+    id: "web-business",
+    category: "web",
+    name: "Business Website",
+    tagline: "A professional site that builds trust.",
+    price: 24999, billing: "one-time",
+    popular: true,
+    delivery: "Delivered in 14 days",
+    features: [
+      "Up to 8 pages",
+      "Mobile-first responsive design",
+      "Basic on-page SEO",
+      "Contact forms & Google Maps",
+      "1 year hosting + domain",
+      "30 days free support",
+    ],
+  },
+  {
+    id: "web-ecom",
+    category: "web",
+    name: "E-commerce Store",
+    tagline: "Sell online with Shopify or WooCommerce.",
+    price: 49999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 21–30 days",
+    features: [
+      "Up to 50 products uploaded",
+      "Payment gateway integration",
+      "Shipping & tax setup",
+      "Abandoned cart recovery",
+      "Training session for your team",
+    ],
+  },
+
+  /* ---------------- BRAND ---------------- */
+  {
+    id: "brand-logo",
+    category: "brand",
+    name: "Logo Design",
+    tagline: "A memorable mark for your business.",
+    price: 3999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 4 days",
+    features: [
+      "3 initial concepts",
+      "3 rounds of revisions",
+      "All source files (AI, SVG, PNG)",
+      "Social media versions",
+    ],
+  },
+  {
+    id: "brand-identity",
+    category: "brand",
+    name: "Complete Brand Identity",
+    tagline: "Everything your brand needs to look consistent.",
+    price: 19999, billing: "one-time",
+    popular: true,
+    delivery: "Delivered in 12 days",
+    features: [
+      "Logo + variations",
+      "Colour palette & typography",
+      "Brand guidelines book (PDF)",
+      "Business card & letterhead",
+      "Social media templates (10)",
+    ],
+  },
+
+  /* ---------------- EMAIL ---------------- */
+  {
+    id: "email-campaign",
+    category: "email",
+    name: "Email Marketing",
+    tagline: "Newsletters and campaigns that get opened.",
+    price: 6999, billing: "month",
+    popular: false,
+    delivery: "Starts in 5 days",
+    features: [
+      "4 campaigns / month",
+      "Custom HTML templates",
+      "List segmentation",
+      "A/B subject line testing",
+      "Open & click reporting",
+    ],
+  },
+  {
+    id: "email-automation",
+    category: "email",
+    name: "Marketing Automation",
+    tagline: "Nurture leads on autopilot.",
+    price: 14999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 10 days",
+    features: [
+      "Welcome & nurture sequences",
+      "WhatsApp + email workflows",
+      "CRM integration (HubSpot / Zoho)",
+      "Lead scoring setup",
+    ],
+  },
+
+  /* ---------------- VIDEO ---------------- */
+  {
+    id: "video-reels",
+    category: "video",
+    name: "Reels & Shorts Pack",
+    tagline: "Scroll-stopping short videos.",
+    price: 7999, billing: "month",
+    popular: true,
+    delivery: "Weekly delivery",
+    features: [
+      "8 edited reels / shorts",
+      "Trending audio & captions",
+      "Hook-first scripting",
+      "Thumbnail / cover design",
+    ],
+  },
+  {
+    id: "video-explainer",
+    category: "video",
+    name: "Animated Explainer Video",
+    tagline: "Explain your product in 60 seconds.",
+    price: 14999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 10 days",
+    features: [
+      "Script & storyboard",
+      "Professional voice-over",
+      "2D motion graphics (up to 60s)",
+      "2 rounds of revisions",
+    ],
+  },
+];
+
+/* Bundled packages shown in the "Packages" section.
+   The "Save X%" badge is calculated automatically from the included services. */
+const PACKAGES = [
+  {
+    id: "pkg-startup",
+    name: "Startup Launch",
+    price: 19999, billing: "month",
+    description: "Perfect for new businesses getting online.",
+    includes: ["smm-basic", "seo-starter", "content-blog"],
+  },
+  {
+    id: "pkg-growth",
+    name: "Growth Engine",
+    price: 39999, billing: "month",
+    description: "For businesses ready to scale leads & sales.",
+    includes: ["smm-pro", "seo-growth", "ads-meta"],
+    featured: true,
+  },
+  {
+    id: "pkg-dominate",
+    name: "Market Leader",
+    price: 59999, billing: "month",
+    description: "Full-service marketing team on demand.",
+    includes: ["smm-pro", "seo-growth", "ads-google", "ads-meta", "video-reels", "content-blog"],
+  },
+];
+
+/* SAMPLE testimonials (placeholders) — replace with real client reviews before going live */
+const TESTIMONIALS = [
+  { name: "Riya Sharma", role: "Founder, Bloom Café", text: "YAP took our Instagram from 800 to 12k followers in five months. Weekend footfall has nearly doubled." },
+  { name: "Arjun Mehta", role: "Director, Mehta Realty", text: "Their Google Ads setup cut our cost per lead by 42%. Transparent reports every week." },
+  { name: "Neha Kapoor", role: "Owner, Kapoor Fashions", text: "Our new Shopify store and Meta campaigns paid for themselves in the first month." },
+];
+
+/* Contact details — update these */
+const CONTACT = {
+  phone: "+91 90000 00000",
+  whatsapp: "919000000000",            // digits only, with country code
+  email: "hello@yapdigital.example",
+  address: "India",
+};
+
+</script>
+  <script>
+/* ==========================================================
+   YAP Digital Marketing — Catalog App Logic
+   ========================================================== */
+(() => {
+  "use strict";
+
+  const GST_RATE = 0.18;
+  const STORAGE_KEY = "yap-quote-basket";
+  const THEME_KEY = "yap-theme";
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+  const state = {
+    category: "all",
+    search: "",
+    billing: "all",
+    sort: "featured",
+    cart: loadCart(),
+  };
+
+  /* ---------- Helpers ---------- */
+  const money = (n) => CURRENCY + Math.round(n).toLocaleString("en-IN");
+  const billingLabel = (b) => (b === "month" ? "/month" : "one-time");
+  const categoryName = (id) => (CATEGORIES.find((c) => c.id === id) || {}).name || id;
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const findItem = (id) => SERVICES.find((s) => s.id === id) || PACKAGES.find((p) => p.id === id);
+
+  function safeStorage(fn, fallback) {
+    try { return fn(); } catch { return fallback; }
+  }
+  function loadCart() {
+    const ids = safeStorage(() => JSON.parse(localStorage.getItem(STORAGE_KEY)) || [], []);
+    return Array.isArray(ids) ? ids.filter((id) => findItem(id)) : [];
+  }
+  function saveCart() {
+    safeStorage(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(state.cart)));
+  }
+
+  let toastTimer;
+  function toast(msg) {
+    const el = $("#toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
+  }
+
+  /* ---------- Category chips ---------- */
+  function renderChips() {
+    $("#categoryChips").innerHTML = CATEGORIES.map((c) => {
+      const count = c.id === "all" ? SERVICES.length : SERVICES.filter((s) => s.category === c.id).length;
+      return `<button class="chip ${state.category === c.id ? "active" : ""}" data-cat="${c.id}" role="tab"
+                aria-selected="${state.category === c.id}">${c.icon} ${esc(c.name)} <small>${count}</small></button>`;
+    }).join("");
+  }
+
+  /* ---------- Filtering ---------- */
+  function filteredServices() {
+    const q = state.search.trim().toLowerCase();
+    let list = SERVICES.filter((s) => {
+      if (state.category !== "all" && s.category !== state.category) return false;
+      if (state.billing !== "all" && s.billing !== state.billing) return false;
+      if (!q) return true;
+      const hay = [s.name, s.tagline, categoryName(s.category), ...s.features].join(" ").toLowerCase();
+      return q.split(/\s+/).every((word) => hay.includes(word));
+    });
+
+    const sorters = {
+      "price-asc": (a, b) => a.price - b.price,
+      "price-desc": (a, b) => b.price - a.price,
+      name: (a, b) => a.name.localeCompare(b.name),
+      featured: (a, b) => Number(b.popular) - Number(a.popular),
+    };
+    return [...list].sort(sorters[state.sort]);
+  }
+
+  /* ---------- Service cards ---------- */
+  function addButton(id, extraClass = "") {
+    const inCart = state.cart.includes(id);
+    return `<button class="btn btn-primary ${extraClass} ${inCart ? "added" : ""}" data-add="${id}">
+              ${inCart ? "✓ Added" : "+ Add to quote"}</button>`;
+  }
+
+  function serviceCard(s, i) {
+    const shown = s.features.slice(0, 4);
+    const extra = s.features.length - shown.length;
+    return `
+      <article class="card" style="animation-delay:${i * 40}ms">
+        ${s.popular ? '<span class="ribbon">★ Popular</span>' : ""}
+        <span class="cat">${esc(categoryName(s.category))}</span>
+        <h3>${esc(s.name)}</h3>
+        <p class="tagline">${esc(s.tagline)}</p>
+        <div class="price">${money(s.price)} <small>${billingLabel(s.billing)}</small></div>
+        <ul class="features">
+          ${shown.map((f) => `<li>${esc(f)}</li>`).join("")}
+          ${extra > 0 ? `<li class="more">${extra} more included</li>` : ""}
+        </ul>
+        <p class="meta">⏱ ${esc(s.delivery)}</p>
+        <div class="card-actions">
+          <button class="btn btn-ghost" data-details="${s.id}">Details</button>
+          ${addButton(s.id)}
+        </div>
+      </article>`;
+  }
+
+  function renderServices() {
+    const list = filteredServices();
+    $("#serviceGrid").innerHTML = list.map(serviceCard).join("");
+    $("#emptyState").hidden = list.length > 0;
+    $("#resultCount").textContent = `Showing ${list.length} of ${SERVICES.length} services`;
+  }
+
+  /* ---------- Packages ---------- */
+  function renderPackages() {
+    $("#packageGrid").innerHTML = PACKAGES.map((p) => {
+      const items = p.includes.map(findItem).filter(Boolean);
+      const original = items.reduce((sum, s) => sum + s.price, 0);
+      return `
+        <article class="package ${p.featured ? "featured" : ""}">
+          ${original > p.price ? `<span class="save">Save ${Math.round((1 - p.price / original) * 100)}%</span>` : ""}
+          <h3>${esc(p.name)}</h3>
+          <p>${esc(p.description)}</p>
+          <div class="price">${money(p.price)} <small>${billingLabel(p.billing)}</small>
+            ${original > p.price ? `<span class="old">${money(original)}</span>` : ""}</div>
+          <ul>${items.map((s) => `<li>${esc(s.name)}</li>`).join("")}</ul>
+          ${addButton(p.id, "block")}
+        </article>`;
+    }).join("");
+  }
+
+  /* ---------- Testimonials & contact ---------- */
+  function renderTestimonials() {
+    $("#testimonialGrid").innerHTML = TESTIMONIALS.map((t) => `
+      <figure class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“${esc(t.text)}”</p>
+        <figcaption class="who">
+          <span class="avatar">${esc(t.name.charAt(0))}</span>
+          <span><b>${esc(t.name)}</b><small>${esc(t.role)}</small></span>
+        </figcaption>
+      </figure>`).join("");
+  }
+
+  function renderContact() {
+    $("#contactList").innerHTML = `
+      <li><a href="tel:${CONTACT.phone.replace(/\s/g, "")}"><i>📞</i>${esc(CONTACT.phone)}</a></li>
+      <li><a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener"><i>💬</i>Chat on WhatsApp</a></li>
+      <li><a href="mailto:${CONTACT.email}"><i>✉️</i>${esc(CONTACT.email)}</a></li>
+      <li><span><i>📍</i>${esc(CONTACT.address)}</span></li>`;
+
+    $("#interestSelect").innerHTML =
+      `<option value="">Select a service…</option>` +
+      CATEGORIES.filter((c) => c.id !== "all").map((c) =>
+        `<optgroup label="${esc(c.name)}">${SERVICES.filter((s) => s.category === c.id)
+          .map((s) => `<option>${esc(s.name)}</option>`).join("")}</optgroup>`).join("") +
+      `<optgroup label="Packages">${PACKAGES.map((p) => `<option>${esc(p.name)} Package</option>`).join("")}</optgroup>`;
+  }
+
+  /* ---------- Modal ---------- */
+  function openModal(id) {
+    const s = SERVICES.find((x) => x.id === id);
+    if (!s) return;
+    $("#modalBody").innerHTML = `
+      <span class="cat" style="color:var(--primary);font-weight:600;font-size:.8rem;text-transform:uppercase">${esc(categoryName(s.category))}</span>
+      <h3 id="modalTitle">${esc(s.name)}</h3>
+      <p class="tagline">${esc(s.tagline)}</p>
+      <div class="price">${money(s.price)} <small>${billingLabel(s.billing)} + GST</small></div>
+      <ul class="features">${s.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
+      <p class="meta">⏱ ${esc(s.delivery)}</p>
+      ${s.note ? `<p class="note">ℹ️ ${esc(s.note)}</p>` : ""}
+      <div class="card-actions">${addButton(s.id)}</div>`;
+    $("#modalOverlay").hidden = false;
+    document.body.classList.add("no-scroll");
+    $("#modalClose").focus();
+  }
+  function closeModal() {
+    $("#modalOverlay").hidden = true;
+    document.body.classList.remove("no-scroll");
+  }
+
+  /* ---------- Cart / quote basket ---------- */
+  function toggleCart(id) {
+    const item = findItem(id);
+    if (!item) return;
+    if (state.cart.includes(id)) {
+      state.cart = state.cart.filter((x) => x !== id);
+      toast(`Removed “${item.name}”`);
+    } else {
+      state.cart.push(id);
+      toast(`Added “${item.name}” to your quote`);
+      const badge = $("#cartCount");
+      badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump");
+    }
+    saveCart();
+    refreshAddButtons();
+    renderCart();
+  }
+
+  function refreshAddButtons() {
+    $$("[data-add]").forEach((btn) => {
+      const inCart = state.cart.includes(btn.dataset.add);
+      btn.classList.toggle("added", inCart);
+      btn.textContent = inCart ? "✓ Added" : "+ Add to quote";
+    });
+  }
+
+  function totals() {
+    const items = state.cart.map(findItem).filter(Boolean);
+    const monthly = items.filter((i) => i.billing === "month").reduce((s, i) => s + i.price, 0);
+    const oneTime = items.filter((i) => i.billing !== "month").reduce((s, i) => s + i.price, 0);
+    const subtotal = monthly + oneTime;
+    const gst = subtotal * GST_RATE;
+    return { items, monthly, oneTime, subtotal, gst, total: subtotal + gst };
+  }
+
+  function renderCart() {
+    const t = totals();
+    $("#cartCount").textContent = t.items.length;
+
+    $("#cartItems").innerHTML = t.items.length
+      ? t.items.map((i) => `
+          <div class="cart-item">
+            <div><b>${esc(i.name)}</b><small>${i.category ? esc(categoryName(i.category)) : "Package"}</small></div>
+            <div class="right">
+              <b>${money(i.price)}</b><small>${billingLabel(i.billing)}</small><br />
+              <button class="remove" data-remove="${i.id}">Remove</button>
+            </div>
+          </div>`).join("")
+      : `<div class="cart-empty"><p>🧾 Your quote basket is empty.</p><p><small>Add services from the catalog to build a custom plan.</small></p></div>`;
+
+    $("#cartTotals").innerHTML = t.items.length ? `
+      ${t.monthly ? `<div><span>Monthly retainers</span><span>${money(t.monthly)}/mo</span></div>` : ""}
+      ${t.oneTime ? `<div><span>One-time projects</span><span>${money(t.oneTime)}</span></div>` : ""}
+      <div><span>GST (18%)</span><span>${money(t.gst)}</span></div>
+      <div class="grand"><span>First invoice (est.)</span><span>${money(t.total)}</span></div>` : "";
+
+    ["#copyQuote", "#clearCart"].forEach((sel) => ($(sel).disabled = !t.items.length));
+    const wa = $("#sendWhatsApp");
+    wa.href = t.items.length ? `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(quoteText())}` : "#";
+    wa.classList.toggle("is-disabled", !t.items.length);
+    wa.setAttribute("aria-disabled", String(!t.items.length));
+  }
+
+  function quoteText() {
+    const t = totals();
+    const lines = t.items.map((i) => `• ${i.name} — ${money(i.price)} ${billingLabel(i.billing)}`);
+    return [
+      "Hi YAP Digital Marketing! I'd like a quote for:",
+      "",
+      ...lines,
+      "",
+      t.monthly ? `Monthly: ${money(t.monthly)}/mo` : "",
+      t.oneTime ? `One-time: ${money(t.oneTime)}` : "",
+      `Estimated first invoice incl. GST: ${money(t.total)}`,
+    ].filter((l, idx, arr) => l !== "" || arr[idx - 1] !== "").join("\n");
+  }
+
+  function openCart() {
+    $("#cartDrawer").classList.add("open");
+    $("#cartDrawer").setAttribute("aria-hidden", "false");
+    $("#cartOverlay").hidden = false;
+    document.body.classList.add("no-scroll");
+  }
+  function closeCart() {
+    $("#cartDrawer").classList.remove("open");
+    $("#cartDrawer").setAttribute("aria-hidden", "true");
+    $("#cartOverlay").hidden = true;
+    document.body.classList.remove("no-scroll");
+  }
+
+  /* ---------- Copy to clipboard (with fallback) ---------- */
+  function copyText(text) {
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand("copy"); } catch { ok = false; }
+      ta.remove();
+      toast(ok ? "Quote copied" : "Copy failed. Select the text manually.");
+    };
+    try {
+      navigator.clipboard.writeText(text).then(() => toast("Quote copied"), fallback);
+    } catch { fallback(); }
+  }
+
+  /* ---------- Theme ---------- */
+  const systemDark = () => !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const currentTheme = () => document.documentElement.dataset.theme || (systemDark() ? "dark" : "light");
+  function applyTheme(theme) {
+    if (theme) document.documentElement.dataset.theme = theme;
+    $("#themeToggle").textContent = currentTheme() === "dark" ? "☀️" : "🌙";
+  }
+
+  /* ---------- Contact form ---------- */
+  function handleForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const msg = $("#formMsg");
+    let valid = true;
+    $$("input[required]", form).forEach((input) => {
+      const ok = input.value.trim() && input.checkValidity();
+      input.classList.toggle("invalid", !ok);
+      if (!ok) valid = false;
+    });
+    if (!valid) {
+      msg.className = "form-msg err";
+      msg.textContent = "Please fill in your name, a valid phone number and email.";
+      return;
+    }
+    const data = Object.fromEntries(new FormData(form));
+    const body = `Hi YAP Digital Marketing! New enquiry:\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nInterested in: ${data.interest || "-"}\n\n${data.message || ""}`;
+    const link = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(body)}`;
+    msg.className = "form-msg ok";
+    msg.innerHTML = `Your enquiry is ready. <a href="${link}" target="_blank" rel="noopener">Tap here to send it on WhatsApp</a>, or email us at ${esc(CONTACT.email)}.`;
+  }
+
+  /* ---------- Events ---------- */
+  function bindEvents() {
+    $("#categoryChips").addEventListener("click", (e) => {
+      const chip = e.target.closest("[data-cat]");
+      if (!chip) return;
+      state.category = chip.dataset.cat;
+      renderChips();
+      renderServices();
+    });
+
+    let searchTimer;
+    $("#searchInput").addEventListener("input", (e) => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { state.search = e.target.value; renderServices(); }, 150);
+    });
+    $("#billingFilter").addEventListener("change", (e) => { state.billing = e.target.value; renderServices(); });
+    $("#sortSelect").addEventListener("change", (e) => { state.sort = e.target.value; renderServices(); });
+    $("#resetFilters").addEventListener("click", () => {
+      Object.assign(state, { category: "all", search: "", billing: "all", sort: "featured" });
+      $("#searchInput").value = ""; $("#billingFilter").value = "all"; $("#sortSelect").value = "featured";
+      renderChips(); renderServices();
+    });
+
+    // Delegated clicks for add / details / remove
+    document.addEventListener("click", (e) => {
+      const add = e.target.closest("[data-add]");
+      if (add) return toggleCart(add.dataset.add);
+      const det = e.target.closest("[data-details]");
+      if (det) return openModal(det.dataset.details);
+      const rem = e.target.closest("[data-remove]");
+      if (rem) return toggleCart(rem.dataset.remove);
+    });
+
+    $("#modalClose").addEventListener("click", closeModal);
+    $("#modalOverlay").addEventListener("click", (e) => { if (e.target.id === "modalOverlay") closeModal(); });
+
+    $("#cartOpen").addEventListener("click", openCart);
+    $("#cartClose").addEventListener("click", closeCart);
+    $("#cartOverlay").addEventListener("click", closeCart);
+    $("#clearCart").addEventListener("click", () => {
+      state.cart = []; saveCart(); refreshAddButtons(); renderCart(); toast("Quote basket cleared");
+    });
+    $("#sendWhatsApp").addEventListener("click", (e) => { if (!state.cart.length) e.preventDefault(); });
+    $("#copyQuote").addEventListener("click", () => copyText(quoteText()));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (!$("#modalOverlay").hidden) closeModal();
+      else if ($("#cartDrawer").classList.contains("open")) closeCart();
+    });
+
+    $("#themeToggle").addEventListener("click", () => {
+      const next = currentTheme() === "dark" ? "light" : "dark";
+      applyTheme(next);
+      safeStorage(() => localStorage.setItem(THEME_KEY, next));
+    });
+
+    $("#menuToggle").addEventListener("click", () => $("#navLinks").classList.toggle("open"));
+    $$("#navLinks a").forEach((a) => a.addEventListener("click", () => $("#navLinks").classList.remove("open")));
+
+    $("#contactForm").addEventListener("submit", handleForm);
+  }
+
+  /* ---------- Init ---------- */
+  function init() {
+    const savedTheme = safeStorage(() => localStorage.getItem(THEME_KEY), null);
+    applyTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : null);
+
+    $("#year").textContent = new Date().getFullYear();
+    renderChips();
+    renderServices();
+    renderPackages();
+    renderTestimonials();
+    renderContact();
+    renderCart();
+    bindEvents();
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+
+</script>
+</body>
+</html>

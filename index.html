@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YAP Digital Marketing — Service Catalog</title>
+  <title>YAP Digital Marketing Catalog</title>
   <meta name="description" content="YAP Digital Marketing service catalog: SEO, social media, paid ads, web design, branding, content, email and video marketing packages." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -133,6 +133,7 @@
     <div class="container">
       <div class="section-head">
         <h2>What Clients Say</h2>
+        <span class="sample-tag">Sample reviews, to be replaced with real client feedback</span>
       </div>
       <div class="testimonials" id="testimonialGrid"></div>
     </div>
@@ -159,15 +160,15 @@
       </div>
       <form class="form" id="contactForm" novalidate>
         <div class="row">
-          <label>Name<input name="name" required placeholder="Your name" /></label>
-          <label>Phone<input name="phone" type="tel" required placeholder="+91…" /></label>
+          <label>Name<input id="fName" name="name" required placeholder="Your name" /></label>
+          <label>Phone<input id="fPhone" name="phone" type="tel" required placeholder="+91…" /></label>
         </div>
-        <label>Email<input name="email" type="email" required placeholder="you@company.com" /></label>
+        <label>Email<input id="fEmail" name="email" type="email" required placeholder="you@company.com" /></label>
         <label>Interested in
           <select name="interest" id="interestSelect"></select>
         </label>
-        <label>Message<textarea name="message" rows="4" placeholder="Tell us about your goals…"></textarea></label>
-        <button class="btn btn-primary" type="submit">Send Enquiry</button>
+        <label>Message<textarea id="fMessage" name="message" rows="4" placeholder="Tell us about your goals…"></textarea></label>
+        <button class="btn btn-primary" type="submit">Send Enquiry on WhatsApp</button>
         <p class="form-msg" id="formMsg" role="status"></p>
       </form>
     </div>
@@ -198,9 +199,8 @@
     <div class="drawer-body" id="cartItems"></div>
     <div class="drawer-foot">
       <div class="totals" id="cartTotals"></div>
-      <button class="btn btn-primary block" id="sendWhatsApp">Send quote on WhatsApp</button>
-      <button class="btn btn-ghost block" id="sendEmail">Send quote by email</button>
-      <button class="btn btn-ghost block" id="printQuote">Print / Save PDF</button>
+      <a class="btn btn-primary block" id="sendWhatsApp" href="#" target="_blank" rel="noopener">Send quote on WhatsApp</a>
+      <button class="btn btn-ghost block" id="copyQuote">Copy quote text</button>
       <button class="link-btn" id="clearCart">Clear basket</button>
     </div>
   </aside>

@@ -9,12 +9,22 @@ Pure HTML, CSS and JavaScript: no build step and no dependencies.
 - Service detail popup
 - **Bundled packages** with the savings worked out automatically
 - **Quote basket:** add services or packages and see monthly and one-time totals plus 18% GST
-- Send a quote on **WhatsApp** or **email**, or **print / save it as a PDF**
-- Contact form (opens the visitor's email app with the details filled in)
+- Send the quote on **WhatsApp** or copy the quote text
+- Contact form that prepares the enquiry as a WhatsApp message
 - Dark / light mode, mobile menu, FAQs, process and testimonials sections
 - The basket and theme are saved in the browser (localStorage)
 
-## Run it
+## Run it on a phone (easiest)
+Use **`yap-catalog.html`**: it is one self-contained file with all the CSS and JS inside.
+1. Download `yap-catalog.html` to your phone (GitHub → file → "Download raw file").
+2. Open it with an HTML viewer app, or upload it to https://app.netlify.com/drop to get a free live link.
+
+After changing `index.html`, `css/` or `js/`, rebuild the single file:
+```bash
+python3 tools/build_single.py
+```
+
+## Run it on a computer
 Open `index.html` in a browser, or serve the folder:
 ```bash
 python3 -m http.server 8000   # then visit http://localhost:8000
@@ -36,4 +46,6 @@ index.html        Page markup
 css/styles.css    Styles (light/dark, responsive, print)
 js/data.js        Catalog data (edit this)
 js/app.js         Filtering, quote basket, modal, theme, form
+yap-catalog.html  Single-file build of all the above (for phones)
+tools/build_single.py  Rebuilds yap-catalog.html
 ```
