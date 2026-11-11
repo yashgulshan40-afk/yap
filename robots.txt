@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /campaigns/
+Disallow: /tools/
+
+Sitemap: https://yapdigitalmarketingagency.com/sitemap.xml

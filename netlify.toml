@@ -1,0 +1,41 @@
+# Netlify settings for yapdigitalmarketingagency.com (static site, no build step)
+[build]
+  publish = "."
+  command = ""
+
+# Keep internal files off the public site
+[[redirects]]
+  from = "/campaigns/*"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/tools/*"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/portfolio/tailwind/*"
+  to = "/404.html"
+  status = 404
+  force = true
+[[redirects]]
+  from = "/README.md"
+  to = "/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/yap-catalog.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/portfolio/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
