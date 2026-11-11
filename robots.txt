@@ -3,4 +3,4 @@ Allow: /
 Disallow: /campaigns/
 Disallow: /tools/
 
-Sitemap: https://yapdigitalmarketingagency.com/sitemap.xml
+Sitemap: https://yapdigitalmarketingagency.digital/sitemap.xml
