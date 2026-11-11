@@ -2,341 +2,302 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YAP Digital Marketing Catalog</title>
-  <meta name="description" content="YAP Digital Marketing service catalog: SEO, social media, paid ads, web design, branding, content, email and video marketing packages." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>YAP Digital Marketing Agency</title>
+  <meta name="claude:viewport-fit-sides" content="cover" />
+  <meta name="description" content="YAP Digital Marketing Agency: social media, reels, cinematic content, ads, SEO and websites for brands in Agra and Delhi NCR." />
+  <meta name="theme-color" content="#0b0b0d" />
+  <meta property="og:title" content="YAP Digital Marketing Agency" />
+  <meta property="og:description" content="Social media, reels, cinematic content, ads and websites for brands in Agra & Delhi NCR." />
+  <meta property="og:image" content="assets/yap-logo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/yap-icon-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
 /* ==========================================================
-   YAP Digital Marketing — Catalog Styles
+   YAP Digital Marketing Agency
+   Brand: near-black ground, white Poppins wordmark, one gold dot.
+   Layout: the gold dot is the signature. It ends every heading,
+   marks the active filter, and is the only warm colour on the page.
    ========================================================== */
 :root {
-  --bg: #ffffff;
-  --bg-alt: #f5f6fb;
-  --card: #ffffff;
-  --text: #16172b;
-  --muted: #5d6079;
-  --border: #e4e6f0;
-  --primary: #5b3df5;
-  --primary-2: #ff3d7f;
-  --accent: #12b886;
-  --danger: #e03131;
-  --shadow: 0 10px 30px rgba(22, 23, 43, .08);
-  --radius: 16px;
-  --star: #e8590c;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1020; --bg-alt: #15172b; --card: #1b1d35; --text: #eef0ff;
-    --muted: #a3a7c6; --border: #2b2e4d; --star: #fcc419;
-    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0f1020; --bg-alt: #15172b; --card: #1b1d35; --text: #eef0ff;
-  --muted: #a3a7c6; --border: #2b2e4d; --star: #fcc419;
-  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --ink: #0b0b0d;          /* logo background */
+  --ink-2: #121215;        /* alternate bands */
+  --card: #17171b;         /* raised surfaces */
+  --line: #26262c;
+  --text: #ffffff;
+  --muted: #a3a3ad;
+  --gold: #e0a82e;         /* logo dot */
+  --gold-soft: rgba(224, 168, 46, .14);
+  --on-gold: #0b0b0d;
+  --danger: #ff6b6b;
+  --ok: #6fd39b;
+  --f-brand: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 18px;
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  transition: background .3s, color .3s;
-}
+html { scroll-behavior: smooth; background: var(--ink); }
+body { font-family: var(--f-body); background: var(--ink); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 body.no-scroll { overflow: hidden; }
+img, video { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
+button { font: inherit; color: inherit; cursor: pointer; }
 input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+[hidden] { display: none !important; }
 
 .container {
-  width: 100%; max-width: 1212px; margin-inline: auto;
+  width: 100%; max-width: 1232px; margin-inline: auto;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.narrow { max-width: 812px; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
+.narrow { max-width: 832px; }
+h1, h2, h3 { font-family: var(--f-brand); font-weight: 700; line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.dot { display: inline-block; width: .2em; height: .2em; border-radius: 50%; background: var(--gold); margin-left: .06em; vertical-align: baseline; font-style: normal; }
+.kicker { font-family: var(--f-brand); font-size: .78rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
 
 /* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 12px 22px; border-radius: 999px; border: 1px solid transparent;
-  font-weight: 600; transition: transform .15s, box-shadow .2s, background .2s;
-}
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 24px; border-radius: 999px; border: 1px solid transparent; font-family: var(--f-brand); font-weight: 600; font-size: .95rem; transition: transform .15s, background .2s, border-color .2s, color .2s; }
 .btn:hover { transform: translateY(-2px); }
-.btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  color: #fff; box-shadow: 0 8px 20px rgba(91, 61, 245, .3);
-}
-.btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
-.btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+.btn-gold { background: var(--gold); color: var(--on-gold); }
+.btn-gold:hover { background: #ebb640; }
+.btn-ghost { background: transparent; border-color: var(--line); color: var(--text); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 .btn.block { width: 100%; margin-top: 10px; }
-.btn.is-disabled, .btn:disabled { opacity: .45; pointer-events: none; }
-.btn:focus-visible, .chip:focus-visible, .icon-btn:focus-visible, .cart-btn:focus-visible { outline: 3px solid var(--primary-2); outline-offset: 2px; }
-.btn.added { background: var(--accent); box-shadow: none; }
+.btn.added { background: transparent; border-color: var(--gold); color: var(--gold); }
+.btn.is-disabled, .btn:disabled { opacity: .4; pointer-events: none; }
 .link-btn { background: none; border: none; color: var(--muted); margin-top: 12px; width: 100%; text-decoration: underline; }
-.icon-btn { background: var(--bg-alt); border: 1px solid var(--border); width: 42px; height: 42px; border-radius: 50%; color: var(--text); }
+.icon-btn { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); color: var(--text); }
+.icon-btn:hover { border-color: var(--gold); color: var(--gold); }
 
 /* ---------- Header ---------- */
-.header {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav { display: flex; align-items: center; justify-content: space-between; height: 70px; gap: 16px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-.logo-mark {
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  color: #fff; padding: 6px 10px; border-radius: 10px; font-weight: 800; letter-spacing: 1px;
-}
-.logo-text { font-size: 1rem; }
-.nav-links { display: flex; gap: 28px; font-weight: 500; color: var(--muted); }
-.nav-links a:hover { color: var(--primary); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--ink); }
+.header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(11, 11, 13, .86); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.wordmark { font-family: var(--f-brand); font-weight: 800; font-size: 2rem; line-height: 1; letter-spacing: -.04em; color: var(--text); }
+.wordmark .dot { width: .22em; height: .22em; margin-left: .04em; }
+.logo-sub { font-family: var(--f-brand); font-size: .58rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); line-height: 1.5; border-left: 1px solid var(--line); padding-left: 12px; }
+.nav-links { display: flex; gap: 30px; font-family: var(--f-brand); font-weight: 500; font-size: .92rem; color: var(--muted); }
+.nav-links a { position: relative; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); transform: translateX(-50%); }
 .nav-actions { display: flex; align-items: center; gap: 10px; }
-.cart-btn {
-  display: flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 999px;
-  background: var(--text); color: var(--bg); border: none; font-weight: 600;
-}
-.badge {
-  background: var(--primary-2); color: #fff; border-radius: 999px;
-  min-width: 22px; height: 22px; display: inline-grid; place-items: center; font-size: .75rem;
-}
+.cart-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: var(--text); color: var(--ink); border: 0; font-family: var(--f-brand); font-weight: 600; }
+.badge { background: var(--gold); color: var(--on-gold); border-radius: 999px; min-width: 22px; height: 22px; padding: 0 6px; display: inline-grid; place-items: center; font-size: .75rem; font-weight: 700; }
 .badge.bump { animation: bump .4s; }
-@keyframes bump { 50% { transform: scale(1.4); } }
+@keyframes bump { 50% { transform: scale(1.35); } }
 .menu-btn { display: none; }
 
 /* ---------- Hero ---------- */
-.hero {
-  padding: 80px 0 70px;
-  background:
-    radial-gradient(600px 300px at 10% 0%, rgba(91, 61, 245, .15), transparent 70%),
-    radial-gradient(600px 300px at 90% 20%, rgba(255, 61, 127, .12), transparent 70%);
-}
-.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; }
-.pill {
-  display: inline-block; padding: 6px 14px; border-radius: 999px; font-size: .85rem; font-weight: 600;
-  background: rgba(91, 61, 245, .1); color: var(--primary); margin-bottom: 18px;
-}
-h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); line-height: 1.15; font-weight: 800; }
-.grad { background: linear-gradient(135deg, var(--primary), var(--primary-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.lead { color: var(--muted); font-size: 1.1rem; margin: 18px 0 28px; max-width: 560px; }
+.hero { padding-block: 72px 64px; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 520px; height: 520px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(224, 168, 46, .16), transparent 65%); pointer-events: none; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 56px; align-items: center; position: relative; }
+.hero h1 { font-size: clamp(2.6rem, 6.4vw, 5.2rem); font-weight: 800; margin-top: 18px; }
+.lead { color: var(--muted); font-size: 1.12rem; margin: 22px 0 30px; max-width: 58ch; }
 .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-.stats { list-style: none; display: flex; gap: 36px; margin-top: 40px; flex-wrap: wrap; }
-.stats strong { display: block; font-size: 1.7rem; font-weight: 800; }
-.stats span { color: var(--muted); font-size: .9rem; }
+.stats { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 44px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.stats li { background: var(--ink); padding: 16px 18px; }
+.stats strong { display: block; font-family: var(--f-brand); font-size: 1.7rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stats span { color: var(--muted); font-size: .82rem; }
 
-.hero-card {
-  background: var(--card); border: 1px solid var(--border); border-radius: 24px;
-  padding: 26px; box-shadow: var(--shadow); display: grid; gap: 14px;
-}
-.hc-row { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 14px; background: var(--bg-alt); }
-.hc-row > span { font-size: 1.6rem; }
-.hc-row div { flex: 1; }
-.hc-row b { display: block; }
-.hc-row small { color: var(--muted); }
-.hc-row em { font-style: normal; font-weight: 700; }
-.up { color: var(--accent); }
-.down { color: var(--primary-2); }
-.hc-bar { height: 10px; background: var(--bg-alt); border-radius: 99px; overflow: hidden; }
-.hc-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-2)); border-radius: 99px; }
+.hero-phone { display: flex; justify-content: center; }
+.phone { position: relative; width: min(300px, 100%); aspect-ratio: 9 / 18.5; border-radius: 40px; border: 10px solid #1d1d22; background: #000; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 0 1px var(--line); transform: rotate(2deg); }
+.phone-media, .phone-media video, .phone-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.phone-media { background: var(--card); display: grid; place-items: center; }
+.phone-media .wordmark { position: static; font-size: 3.4rem; }
+.ig-handle { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.phone-ui { position: absolute; inset: auto 0 0; padding: 60px 14px 18px; font-size: .72rem; background: linear-gradient(transparent, rgba(0, 0, 0, .8)); display: flex; justify-content: space-between; align-items: center; gap: 8px; font-weight: 600; }
+.reel-tag { border: 1px solid rgba(255, 255, 255, .5); border-radius: 6px; padding: 2px 8px; }
+
+/* ---------- Marquee ---------- */
+.marquee { border-block: 1px solid var(--line); overflow: hidden; padding-block: 18px; background: var(--ink-2); }
+.marquee-track { display: flex; gap: 48px; width: max-content; animation: scroll 40s linear infinite; font-family: var(--f-brand); font-weight: 600; font-size: 1.1rem; color: var(--muted); white-space: nowrap; }
+.marquee-track span { display: inline-flex; align-items: center; gap: 48px; }
+.marquee-track span::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes scroll { to { transform: translateX(-50%); } }
 
 /* ---------- Sections ---------- */
-.section { padding: 80px 0; }
-.section.alt { background: var(--bg-alt); }
-.section-head { text-align: center; margin-bottom: 40px; }
-.section-head h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; }
-.section-head p { color: var(--muted); margin-top: 8px; }
+.section { padding-block: 88px; }
+.section.alt { background: var(--ink-2); border-block: 1px solid var(--line); }
+.section-head { margin-bottom: 36px; max-width: 760px; }
+.section-head h2 { font-size: clamp(2rem, 4.2vw, 3.2rem); margin-top: 10px; }
+.section-head p:not(.kicker) { color: var(--muted); margin-top: 12px; }
 
-/* ---------- Toolbar ---------- */
+/* ---------- Toolbar & chips ---------- */
 .toolbar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
-.search {
-  flex: 1 1 320px; display: flex; align-items: center; gap: 10px;
-  background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0 18px;
-}
-.search input { border: none; outline: none; background: transparent; width: 100%; padding: 12px 0; }
-.toolbar select {
-  padding: 12px 16px; border-radius: 999px; border: 1px solid var(--border);
-  background: var(--card); outline: none; flex: 0 1 220px;
-}
-.search:focus-within, .toolbar select:focus { border-color: var(--primary); }
-
+.search { flex: 1 1 320px; display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 0 18px; color: var(--muted); }
+.search input { border: none; outline: none; background: transparent; width: 100%; padding: 13px 0; color: var(--text); }
+.toolbar select { padding: 13px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); outline: none; flex: 0 1 220px; }
+.search:focus-within, .toolbar select:focus { border-color: var(--gold); }
 .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
-.chip {
-  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border);
-  background: var(--card); color: var(--text); font-weight: 500; font-size: .92rem; transition: .2s;
-}
-.chip:hover { border-color: var(--primary); }
-.chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-.chip small { opacity: .7; margin-left: 4px; }
-.result-count { color: var(--muted); font-size: .9rem; margin-bottom: 18px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; font-family: var(--f-brand); font-weight: 500; font-size: .88rem; color: var(--muted); transition: .2s; }
+.chip:hover { color: var(--text); border-color: #3a3a42; }
+.chip.active { color: var(--text); border-color: var(--gold); background: var(--gold-soft); }
+.chip.active::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.chip small { opacity: .6; }
+.result-count { color: var(--muted); font-size: .88rem; margin-bottom: 18px; }
 
 /* ---------- Service cards ---------- */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
-.card {
-  position: relative; display: flex; flex-direction: column;
-  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 24px; box-shadow: var(--shadow); transition: transform .2s, border-color .2s;
-  animation: fadeUp .35s ease both;
-}
-.card:hover { transform: translateY(-4px); border-color: var(--primary); }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-.ribbon {
-  position: absolute; top: 18px; right: 18px; font-size: .72rem; font-weight: 700;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff;
-  padding: 4px 10px; border-radius: 999px;
-}
-.card .cat { font-size: .8rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: .5px; }
-.card h3 { font-size: 1.2rem; margin: 6px 0 4px; padding-right: 70px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
+.card { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; transition: transform .2s, border-color .2s; }
+.card:hover { transform: translateY(-4px); border-color: #3a3a42; }
+.ribbon { position: absolute; top: 22px; right: 22px; font-family: var(--f-brand); font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; }
+.ribbon::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.card .cat { font-family: var(--f-brand); font-size: .72rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.card h3 { font-size: 1.25rem; margin: 8px 0 6px; padding-right: 80px; }
 .card .tagline { color: var(--muted); font-size: .93rem; }
-.price { margin: 16px 0 12px; font-size: 1.7rem; font-weight: 800; }
+.price { margin: 18px 0 14px; font-family: var(--f-brand); font-size: 1.8rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .price small { font-size: .85rem; color: var(--muted); font-weight: 500; }
-.features { list-style: none; display: grid; gap: 7px; margin-bottom: 18px; font-size: .92rem; }
-.features li { display: flex; gap: 8px; }
-.features li::before { content: "✓"; color: var(--accent); font-weight: 700; }
+.features { list-style: none; display: grid; gap: 8px; margin-bottom: 18px; font-size: .92rem; }
+.features li { display: flex; gap: 10px; align-items: baseline; }
+.features li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); transform: translateY(-2px); }
 .features .more { color: var(--muted); }
-.features .more::before { content: "+"; color: var(--muted); }
-.meta { font-size: .82rem; color: var(--muted); margin-bottom: 16px; }
+.features .more::before { background: var(--line); }
+.meta { font-size: .82rem; color: var(--muted); margin-bottom: 18px; }
 .card-actions { margin-top: auto; display: flex; gap: 10px; }
-.card-actions .btn { flex: 1; padding: 10px 14px; font-size: .92rem; }
-
+.card-actions .btn { flex: 1; padding: 11px 14px; font-size: .9rem; }
 .empty { text-align: center; padding: 50px 0; color: var(--muted); }
 .empty .btn { margin-top: 14px; }
 
+/* ---------- Work ---------- */
+.work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.work { position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 14px; overflow: hidden; background: var(--card); border: 1px solid var(--line); padding: 0; text-align: left; }
+.work img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.work:hover img { transform: scale(1.05); }
+.work .shade { position: absolute; inset: auto 0 0; padding: 36px 12px 12px; background: linear-gradient(transparent, rgba(0, 0, 0, .85)); display: grid; gap: 2px; }
+.work .shade b { font-size: .88rem; font-weight: 600; line-height: 1.3; }
+.work .shade small { font-size: .72rem; color: var(--gold); font-weight: 600; letter-spacing: .04em; }
+.work .play { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; background: rgba(0, 0, 0, .6); display: grid; place-items: center; font-size: .7rem; }
+.work-more { margin-top: 26px; }
+
 /* ---------- Packages ---------- */
-.packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: stretch; }
-.package {
-  position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 22px;
-  padding: 32px 28px; display: flex; flex-direction: column; box-shadow: var(--shadow);
-}
-.package.featured { border: 2px solid var(--primary); transform: scale(1.03); }
-.package .save { position: absolute; top: -13px; left: 28px; background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 999px; font-size: .78rem; font-weight: 700; }
-.package h3 { font-size: 1.4rem; }
+.packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; align-items: stretch; }
+.package { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 32px 28px; display: flex; flex-direction: column; }
+.package.featured { border-color: var(--gold); background: linear-gradient(180deg, var(--gold-soft), var(--card) 40%); }
+.package .save { align-self: flex-start; background: var(--gold); color: var(--on-gold); padding: 4px 12px; border-radius: 999px; font-family: var(--f-brand); font-size: .74rem; font-weight: 700; margin-bottom: 16px; }
+.package h3 { font-size: 1.5rem; }
 .package p { color: var(--muted); }
 .package .old { text-decoration: line-through; color: var(--muted); font-size: .95rem; font-weight: 500; margin-left: 8px; }
-.package ul { list-style: none; display: grid; gap: 8px; margin: 10px 0 24px; }
-.package li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+.package ul { list-style: none; display: grid; gap: 9px; margin: 6px 0 26px; }
+.package li { display: flex; gap: 10px; align-items: baseline; }
+.package li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); transform: translateY(-2px); }
 .package .btn { margin-top: auto; }
 
 /* ---------- Process ---------- */
-.process { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
-.process li { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
-.process span { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--primary-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.process h3 { margin: 8px 0; }
+.process { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; counter-reset: s; }
+.process li { border-top: 1px solid var(--line); padding-top: 22px; position: relative; }
+.process li::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.process span { font-family: var(--f-brand); font-size: .8rem; letter-spacing: .2em; color: var(--muted); }
+.process h3 { margin: 8px 0; font-size: 1.2rem; }
 .process p { color: var(--muted); font-size: .94rem; }
 
-/* ---------- Testimonials ---------- */
-.testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
-.quote { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
-.quote .stars { color: var(--star); letter-spacing: 2px; }
-.quote p { margin: 12px 0 18px; }
-.quote .who { display: flex; align-items: center; gap: 12px; }
-.avatar { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; background: linear-gradient(135deg, var(--primary), var(--primary-2)); }
-.who small { display: block; color: var(--muted); }
+/* ---------- Instagram ---------- */
+.ig-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.ig-card h2 { font-size: clamp(1.25rem, 2.7vw, 2.1rem); margin: 10px 0 12px; overflow-wrap: anywhere; }
+.ig-card p:not(.kicker) { color: var(--muted); margin-bottom: 24px; max-width: 46ch; }
+.ig-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; border-radius: 18px; overflow: hidden; }
+.ig-tiles img, .ig-tiles .ph { aspect-ratio: 1; width: 100%; max-width: 100%; object-fit: cover; background: var(--card); }
 
 /* ---------- FAQ ---------- */
-details { border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; margin-bottom: 12px; background: var(--card); }
-summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
-summary::after { content: "+"; font-size: 1.3rem; line-height: 1; color: var(--primary); }
+details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+summary { font-family: var(--f-brand); font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 1.3rem; line-height: 1; color: var(--gold); }
 details[open] summary::after { content: "–"; }
 details p { color: var(--muted); margin-top: 10px; }
 
 /* ---------- Contact ---------- */
-.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: start; }
-.contact-grid h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; }
-.contact-grid > div > p { color: var(--muted); margin: 10px 0 24px; }
-.contact-list { list-style: none; display: grid; gap: 14px; }
-.contact-list a, .contact-list span { display: flex; gap: 12px; align-items: center; }
-.contact-list i { font-style: normal; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: var(--card); border: 1px solid var(--border); }
-.form { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 30px; display: grid; gap: 16px; box-shadow: var(--shadow); }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 56px; align-items: start; }
+.contact-grid h2 { font-size: clamp(2rem, 4.2vw, 3.2rem); margin-top: 10px; }
+.contact-lead { color: var(--muted); margin: 12px 0 26px; }
+.contact-list { list-style: none; display: grid; gap: 10px; }
+.contact-list li { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.contact-list .k { font-family: var(--f-brand); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.contact-list .v { font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.contact-list .act { font-size: .8rem; font-weight: 600; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; }
+.contact-list a.act { border-color: var(--gold); color: var(--gold); }
+.form { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: grid; gap: 16px; }
 .form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form label { display: grid; gap: 6px; font-size: .9rem; font-weight: 500; }
-.form input, .form select, .form textarea {
-  padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); outline: none; resize: vertical;
-}
-.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--primary); }
+.form label { display: grid; gap: 6px; font-size: .88rem; font-weight: 500; color: var(--muted); }
+.form input, .form select, .form textarea { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--ink); color: var(--text); outline: none; resize: vertical; }
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--gold); }
 .form input.invalid { border-color: var(--danger); }
 .form-msg { font-size: .9rem; min-height: 1.2em; }
-.form-msg.ok { color: var(--accent); }
+.form-msg.ok { color: var(--ok); }
 .form-msg.err { color: var(--danger); }
-.form-msg a { color: var(--primary); font-weight: 600; text-decoration: underline; }
-.sample-tag { display: inline-block; margin-top: 8px; font-size: .8rem; color: var(--muted); border: 1px dashed var(--border); padding: 3px 10px; border-radius: 999px; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+.form-msg a { color: var(--gold); font-weight: 600; text-decoration: underline; }
 
 /* ---------- Footer ---------- */
-.footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted); font-size: .9rem; }
-.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.footer { border-top: 1px solid var(--line); padding-block: 26px calc(26px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: .88rem; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.logo.small .wordmark { font-size: 1.5rem; }
 
 /* ---------- Overlay / Modal ---------- */
-.overlay { position: fixed; inset: 0; background: rgba(10, 10, 25, .55); z-index: 90; display: grid; place-items: center; padding: 16px; animation: fade .2s; }
-.overlay[hidden] { display: none; }
+.overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, .7); z-index: 90; display: grid; place-items: center; padding: 16px; animation: fade .2s; }
 @keyframes fade { from { opacity: 0; } }
-.modal { position: relative; background: var(--card); border-radius: 22px; width: min(620px, 100%); max-height: 90vh; overflow: auto; padding: 32px; box-shadow: var(--shadow); }
-.modal h3 { font-size: 1.6rem; padding-right: 30px; }
+.modal { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 22px; width: min(620px, 100%); max-height: 90vh; overflow: auto; padding: 32px; }
+.modal h3 { font-size: 1.6rem; padding-right: 30px; margin-top: 6px; }
 .modal .tagline { color: var(--muted); }
-.modal .note { background: var(--bg-alt); padding: 10px 14px; border-radius: 10px; font-size: .88rem; margin-bottom: 16px; }
-.modal .card-actions { margin-top: 10px; }
-.close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-alt); color: var(--text); }
+.modal .note { background: var(--ink); border: 1px solid var(--line); padding: 10px 14px; border-radius: 10px; font-size: .88rem; margin-bottom: 16px; color: var(--muted); }
+.close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--ink); color: var(--text); }
 
 /* ---------- Drawer ---------- */
-.drawer {
-  position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 100%); z-index: 100;
-  background: var(--card); box-shadow: -10px 0 40px rgba(0, 0, 0, .2);
-  display: flex; flex-direction: column; transform: translateX(100%); transition: transform .3s ease;
-}
+.drawer { position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 100%); z-index: 100; background: var(--card); border-left: 1px solid var(--line); display: flex; flex-direction: column; transform: translateX(100%); transition: transform .3s ease; }
 .drawer.open { transform: none; }
-.drawer-head { position: relative; padding: 22px 24px; border-bottom: 1px solid var(--border); }
-.drawer-head .close { top: 16px; }
+.drawer-head { position: relative; padding: calc(22px + env(safe-area-inset-top, 0px)) 24px 22px; border-bottom: 1px solid var(--line); }
+.drawer-head h3 { font-size: 1.3rem; }
+.drawer-head .close { top: calc(16px + env(safe-area-inset-top, 0px)); }
 .drawer-body { flex: 1; overflow: auto; padding: 16px 24px; }
-.drawer-foot { padding: 18px 24px calc(24px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--border); }
-.drawer-head { padding-top: calc(22px + env(safe-area-inset-top, 0px)); }
-.cart-item { display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px dashed var(--border); }
+.drawer-foot { padding: 18px 24px calc(24px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
+.cart-item { display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
 .cart-item b { display: block; font-size: .95rem; }
 .cart-item small { color: var(--muted); }
 .cart-item .right { text-align: right; white-space: nowrap; }
 .cart-item .remove { background: none; border: none; color: var(--danger); font-size: .8rem; }
 .cart-empty { text-align: center; color: var(--muted); padding: 50px 0; }
-.totals { display: grid; gap: 4px; font-size: .92rem; margin-bottom: 6px; }
+.totals { display: grid; gap: 4px; font-size: .92rem; margin-bottom: 6px; font-variant-numeric: tabular-nums; }
 .totals div { display: flex; justify-content: space-between; }
-.totals .grand { font-size: 1.15rem; font-weight: 800; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
+.totals .grand { font-family: var(--f-brand); font-size: 1.15rem; font-weight: 700; border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
 
 /* ---------- Toast ---------- */
-.toast {
-  position: fixed; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translate(-50%, 120px);
-  background: var(--text); color: var(--bg); padding: 12px 22px; border-radius: 999px;
-  font-weight: 500; z-index: 200; transition: transform .3s; pointer-events: none;
-}
-.toast.show { transform: translate(-50%, 0); }
+.toast { position: fixed; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translate(-50%, 20px); opacity: 0; visibility: hidden; background: var(--gold); color: var(--on-gold); padding: 12px 22px; border-radius: 999px; font-family: var(--f-brand); font-weight: 600; z-index: 200; transition: transform .25s, opacity .25s, visibility .25s; pointer-events: none; }
+.toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
-  .hero-grid, .contact-grid { grid-template-columns: 1fr; }
-  .hero-card { display: none; }
-  .package.featured { transform: none; }
+@media (max-width: 960px) {
+  .hero-grid, .contact-grid, .ig-card { grid-template-columns: minmax(0, 1fr); }
+  .phone { width: min(230px, 64%); transform: none; }
+  .process { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
-  .menu-btn { display: inline-block; }
-  .nav-links {
-    position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0;
-    background: var(--bg); border-bottom: 1px solid var(--border); display: none;
-  }
+  .menu-btn { display: inline-grid; }
+  .nav-links { position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--ink); border-bottom: 1px solid var(--line); display: none; }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 14px 20px; border-top: 1px solid var(--border); }
-  .cart-btn span:not(.badge) { display: none; }
-  .logo-text { display: none; }
+  .nav-links a { padding: 16px max(16px, env(safe-area-inset-left, 0px)); border-top: 1px solid var(--line); }
+  .nav-links a:hover::after { display: none; }
+  .logo-sub { display: none; }
+  .cart-btn .label { display: none; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .form .row { grid-template-columns: 1fr; }
-  .section { padding: 60px 0; }
+  .section { padding-block: 64px; }
+  .hero { padding-block: 40px 48px; }
   .toolbar select { flex: 1 1 45%; }
+  .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .process { grid-template-columns: minmax(0, 1fr); }
+  .contact-list li { grid-template-columns: minmax(0, 1fr) auto; }
+  .contact-list .k { grid-column: 1 / -1; }
 }
-
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
 
 </style>
 </head>
@@ -345,168 +306,198 @@ details p { color: var(--muted); margin-top: 10px; }
   <!-- ================= HEADER ================= -->
   <header class="header" id="top">
     <div class="container nav">
-      <a href="#top" class="logo" aria-label="YAP Digital Marketing home">
-        <span class="logo-mark">YAP</span>
-        <span class="logo-text">Digital Marketing</span>
+      <a href="#top" class="logo" aria-label="YAP Digital Marketing Agency, home">
+        <span class="wordmark">yap<i class="dot"></i></span>
+        <span class="logo-sub">Digital Marketing<br />Agency</span>
       </a>
 
-      <nav class="nav-links" id="navLinks">
-        <a href="#catalog">Services</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
         <a href="#packages">Packages</a>
         <a href="#process">Process</a>
-        <a href="#testimonials">Reviews</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="nav-actions">
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <a class="icon-btn" id="igTop" href="#" target="_blank" rel="noopener" aria-label="YAP on Instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>
+        </a>
         <button class="cart-btn" id="cartOpen" aria-label="Open quote basket">
-          🧾 <span>Quote</span> <span class="badge" id="cartCount">0</span>
+          <span class="label">Quote</span> <span class="badge" id="cartCount">0</span>
         </button>
-        <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu">☰</button>
+        <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="pill">2026 Service Catalog</span>
-        <h1>Grow your brand with <span class="grad">YAP Digital Marketing</span></h1>
-        <p class="lead">SEO, social media, performance ads, websites and creative — pick the services you need, build your own plan and get an instant quote.</p>
-        <div class="hero-cta">
-          <a href="#catalog" class="btn btn-primary">Browse Services</a>
-          <a href="#packages" class="btn btn-ghost">View Packages</a>
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Digital marketing agency · Agra &amp; Delhi NCR</p>
+          <h1>We make brands impossible to scroll past<i class="dot"></i></h1>
+          <p class="lead">Social media, reels, cinematic content, ads and websites. Planned, shot, edited and posted by one team, so your page keeps bringing in customers.</p>
+          <div class="hero-cta">
+            <a href="#services" class="btn btn-gold">Build your plan</a>
+            <a href="#work" class="btn btn-ghost">See our work</a>
+          </div>
+          <ul class="stats" id="heroStats"></ul>
         </div>
-        <ul class="stats">
-          <li><strong>21</strong><span>Services</span></li>
-          <li><strong>8</strong><span>Categories</span></li>
-          <li><strong>24h</strong><span>Quote turnaround</span></li>
-        </ul>
-      </div>
-      <div class="hero-card" aria-hidden="true">
-        <div class="hc-row"><span>📈</span><div><b>Organic traffic</b><small>Growth with SEO</small></div><em class="up">▲</em></div>
-        <div class="hc-row"><span>📱</span><div><b>Social engagement</b><small>Reels &amp; content</small></div><em class="up">▲</em></div>
-        <div class="hc-row"><span>🎯</span><div><b>Cost per lead</b><small>Optimised ads</small></div><em class="down">▼</em></div>
-        <div class="hc-bar"><i style="width:82%"></i></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CATALOG ================= -->
-  <section class="section" id="catalog">
-    <div class="container">
-      <div class="section-head">
-        <h2>Service Catalog</h2>
-        <p>Filter by category, search, and add services to your quote basket.</p>
-      </div>
-
-      <div class="toolbar">
-        <div class="search">
-          <span>🔎</span>
-          <input type="search" id="searchInput" placeholder="Search services, e.g. reels, Google Ads, logo…" aria-label="Search services" />
+        <div class="hero-phone" id="heroPhone" aria-hidden="true">
+          <div class="phone">
+            <div class="phone-media" id="heroMedia"></div>
+            <div class="phone-ui">
+              <span class="ig-handle" id="heroHandle"></span>
+              <span class="reel-tag">Reel</span>
+            </div>
+          </div>
         </div>
-        <select id="billingFilter" aria-label="Filter by billing">
-          <option value="all">All billing types</option>
-          <option value="month">Monthly retainers</option>
-          <option value="one-time">One-time projects</option>
-        </select>
-        <select id="sortSelect" aria-label="Sort services">
-          <option value="featured">Sort: Featured</option>
-          <option value="price-asc">Price: Low → High</option>
-          <option value="price-desc">Price: High → Low</option>
-          <option value="name">Name: A → Z</option>
-        </select>
       </div>
+    </section>
 
-      <div class="chips" id="categoryChips" role="tablist" aria-label="Service categories"></div>
+    <!-- ================= CLIENT MARQUEE ================= -->
+    <section class="marquee" aria-label="Brands we have worked with" id="marqueeWrap" hidden>
+      <div class="marquee-track" id="marquee"></div>
+    </section>
 
-      <p class="result-count" id="resultCount"></p>
-      <div class="grid" id="serviceGrid"></div>
-      <div class="empty" id="emptyState" hidden>
-        <p>😕 No services match your search.</p>
-        <button class="btn btn-ghost" id="resetFilters">Reset filters</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PACKAGES ================= -->
-  <section class="section alt" id="packages">
-    <div class="container">
-      <div class="section-head">
-        <h2>Bundled Packages</h2>
-        <p>Save more with our most popular combinations.</p>
-      </div>
-      <div class="packages" id="packageGrid"></div>
-    </div>
-  </section>
-
-  <!-- ================= PROCESS ================= -->
-  <section class="section" id="process">
-    <div class="container">
-      <div class="section-head">
-        <h2>How We Work</h2>
-        <p>A simple, transparent process from first call to results.</p>
-      </div>
-      <ol class="process">
-        <li><span>01</span><h3>Discovery Call</h3><p>We learn about your business, goals, audience and competitors.</p></li>
-        <li><span>02</span><h3>Strategy &amp; Proposal</h3><p>You get a custom plan with clear deliverables, timelines and pricing.</p></li>
-        <li><span>03</span><h3>Execution</h3><p>Our team launches campaigns, creates content and builds assets.</p></li>
-        <li><span>04</span><h3>Report &amp; Scale</h3><p>Regular reports, optimisation, and scaling what works.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ================= TESTIMONIALS ================= -->
-  <section class="section alt" id="testimonials">
-    <div class="container">
-      <div class="section-head">
-        <h2>What Clients Say</h2>
-        <span class="sample-tag">Sample reviews, to be replaced with real client feedback</span>
-      </div>
-      <div class="testimonials" id="testimonialGrid"></div>
-    </div>
-  </section>
-
-  <!-- ================= FAQ ================= -->
-  <section class="section" id="faq">
-    <div class="container narrow">
-      <div class="section-head"><h2>FAQs</h2></div>
-      <details><summary>Is ad spend included in the Ads packages?</summary><p>No. Our fee covers strategy, setup and management. Ad spend is paid directly to the platform (Google, Meta, LinkedIn) from your own account.</p></details>
-      <details><summary>Is there a lock-in period for monthly plans?</summary><p>Monthly retainers have a 3-month minimum so strategies have time to deliver results. After that, cancel anytime with 30 days notice.</p></details>
-      <details><summary>Are prices inclusive of GST?</summary><p>Prices shown exclude 18% GST, which is added on the final invoice. The quote basket shows an estimate including GST.</p></details>
-      <details><summary>Can I customise a package?</summary><p>Absolutely. Add any combination of services to your quote basket and send it to us — we'll tailor the plan to your budget.</p></details>
-    </div>
-  </section>
-
-  <!-- ================= CONTACT ================= -->
-  <section class="section alt" id="contact">
-    <div class="container contact-grid">
-      <div>
-        <h2>Let's grow together</h2>
-        <p>Tell us about your project and we'll get back within 24 hours.</p>
-        <ul class="contact-list" id="contactList"></ul>
-      </div>
-      <form class="form" id="contactForm" novalidate>
-        <div class="row">
-          <label>Name<input id="fName" name="name" required placeholder="Your name" /></label>
-          <label>Phone<input id="fPhone" name="phone" type="tel" required placeholder="+91…" /></label>
+    <!-- ================= SERVICES ================= -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Services</p>
+          <h2>Pick what your brand needs<i class="dot"></i></h2>
+          <p>Filter, search and add services to your quote. Monthly plans and one-time projects.</p>
         </div>
-        <label>Email<input id="fEmail" name="email" type="email" required placeholder="you@company.com" /></label>
-        <label>Interested in
-          <select name="interest" id="interestSelect"></select>
-        </label>
-        <label>Message<textarea id="fMessage" name="message" rows="4" placeholder="Tell us about your goals…"></textarea></label>
-        <button class="btn btn-primary" type="submit">Send Enquiry on WhatsApp</button>
-        <p class="form-msg" id="formMsg" role="status"></p>
-      </form>
-    </div>
-  </section>
+
+        <div class="toolbar">
+          <label class="search">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" id="searchInput" placeholder="Search: reels, Google Ads, logo, website…" aria-label="Search services" />
+          </label>
+          <select id="billingFilter" aria-label="Filter by billing">
+            <option value="all">All billing types</option>
+            <option value="month">Monthly plans</option>
+            <option value="one-time">One-time projects</option>
+          </select>
+          <select id="sortSelect" aria-label="Sort services">
+            <option value="featured">Sort: Popular first</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="name">Name: A → Z</option>
+          </select>
+        </div>
+
+        <div class="chips" id="categoryChips" role="tablist" aria-label="Service categories"></div>
+        <p class="result-count" id="resultCount"></p>
+        <div class="grid" id="serviceGrid"></div>
+        <div class="empty" id="emptyState" hidden>
+          <p>No services match your search.</p>
+          <button class="btn btn-ghost" id="resetFilters">Reset filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section class="section alt" id="work" hidden>
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Our work</p>
+          <h2>Real content for real brands<i class="dot"></i></h2>
+          <p id="workIntro"></p>
+        </div>
+        <div class="chips" id="workChips" aria-label="Filter work by industry"></div>
+        <div class="work-grid" id="workGrid"></div>
+        <div class="work-more">
+          <a class="btn btn-ghost" href="portfolio/index.html">Open the full portfolio →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PACKAGES ================= -->
+    <section class="section" id="packages">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Packages</p>
+          <h2>Save with a bundle<i class="dot"></i></h2>
+          <p>Our most popular combinations, billed monthly.</p>
+        </div>
+        <div class="packages" id="packageGrid"></div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section class="section alt" id="process">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Process</p>
+          <h2>From first call to results<i class="dot"></i></h2>
+        </div>
+        <ol class="process">
+          <li><span>01</span><h3>Discovery call</h3><p>We learn your business, audience, offers and competitors.</p></li>
+          <li><span>02</span><h3>Plan &amp; proposal</h3><p>A content calendar and ad plan with clear deliverables and pricing.</p></li>
+          <li><span>03</span><h3>Shoot, edit, launch</h3><p>On-location shoots, editing, design, posting and campaigns.</p></li>
+          <li><span>04</span><h3>Report &amp; scale</h3><p>Monthly reports. We keep what works and scale it.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= INSTAGRAM ================= -->
+    <section class="section ig" id="instagram">
+      <div class="container ig-card">
+        <div>
+          <p class="kicker">Instagram</p>
+          <h2 id="igTitle"></h2>
+          <p>Follow us for new reels, client launches and behind-the-scenes from our shoots.</p>
+          <a class="btn btn-gold" id="igFollow" href="#" target="_blank" rel="noopener">Follow on Instagram</a>
+        </div>
+        <div class="ig-tiles" id="igTiles" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section" id="faq">
+      <div class="container narrow">
+        <div class="section-head"><p class="kicker">FAQ</p><h2>Questions<i class="dot"></i></h2></div>
+        <details><summary>Is ad spend included in the ads packages?</summary><p>No. Our fee covers strategy, setup and management. Ad spend is paid directly to Google, Meta or LinkedIn from your own account.</p></details>
+        <details><summary>Do you shoot on location?</summary><p>Yes. We shoot in Agra and Delhi NCR. Travel outside these areas is quoted separately.</p></details>
+        <details><summary>Is there a lock-in period for monthly plans?</summary><p>Monthly plans have a 3-month minimum so the content and ads have time to work. After that, cancel with 30 days' notice.</p></details>
+        <details><summary>Are prices inclusive of GST?</summary><p>Prices exclude 18% GST, which is added on the invoice. The quote basket shows an estimate including GST.</p></details>
+        <details><summary>Can I customise a package?</summary><p>Yes. Add any services to your quote and send it on WhatsApp. We will tailor the plan to your budget.</p></details>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section alt" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="kicker">Contact</p>
+          <h2>Let's grow your brand<i class="dot"></i></h2>
+          <p class="contact-lead">Tell us about your business. We reply within 24 hours.</p>
+          <ul class="contact-list" id="contactList"></ul>
+        </div>
+        <form class="form" id="contactForm" novalidate>
+          <div class="row">
+            <label>Name<input id="fName" name="name" required placeholder="Your name" autocomplete="name" /></label>
+            <label>Phone<input id="fPhone" name="phone" type="tel" required placeholder="+91…" autocomplete="tel" /></label>
+          </div>
+          <label>Business name<input id="fBiz" name="business" placeholder="e.g. your café, gym or brand" /></label>
+          <label>Interested in
+            <select name="interest" id="interestSelect"></select>
+          </label>
+          <label>Message<textarea id="fMessage" name="message" rows="4" placeholder="Your goals, budget, timeline…"></textarea></label>
+          <button class="btn btn-gold" type="submit">Send enquiry on WhatsApp</button>
+          <p class="form-msg" id="formMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> YAP Digital Marketing. All rights reserved.</p>
+      <a href="#top" class="logo small" aria-label="Back to top"><span class="wordmark">yap<i class="dot"></i></span></a>
+      <p>© <span id="year"></span> YAP Digital Marketing Agency</p>
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
@@ -523,13 +514,13 @@ details p { color: var(--muted); margin-top: 10px; }
   <div class="overlay" id="cartOverlay" hidden></div>
   <aside class="drawer" id="cartDrawer" aria-label="Quote basket" aria-hidden="true">
     <div class="drawer-head">
-      <h3>Your Quote</h3>
+      <h3>Your quote<i class="dot"></i></h3>
       <button class="close" id="cartClose" aria-label="Close">✕</button>
     </div>
     <div class="drawer-body" id="cartItems"></div>
     <div class="drawer-foot">
       <div class="totals" id="cartTotals"></div>
-      <a class="btn btn-primary block" id="sendWhatsApp" href="#" target="_blank" rel="noopener">Send quote on WhatsApp</a>
+      <a class="btn btn-gold block" id="sendWhatsApp" href="#" target="_blank" rel="noopener">Send quote on WhatsApp</a>
       <button class="btn btn-ghost block" id="copyQuote">Copy quote text</button>
       <button class="link-btn" id="clearCart">Clear basket</button>
     </div>
@@ -941,43 +932,37 @@ const PACKAGES = [
   },
 ];
 
-/* SAMPLE testimonials (placeholders) — replace with real client reviews before going live */
-const TESTIMONIALS = [
-  { name: "Riya Sharma", role: "Founder, Bloom Café", text: "YAP took our Instagram from 800 to 12k followers in five months. Weekend footfall has nearly doubled." },
-  { name: "Arjun Mehta", role: "Director, Mehta Realty", text: "Their Google Ads setup cut our cost per lead by 42%. Transparent reports every week." },
-  { name: "Neha Kapoor", role: "Owner, Kapoor Fashions", text: "Our new Shopify store and Meta campaigns paid for themselves in the first month." },
-];
-
-/* Contact details — update these */
+/* Contact details: change these if the agency uses a different number or email */
 const CONTACT = {
-  phone: "+91 90000 00000",
-  whatsapp: "919000000000",            // digits only, with country code
-  email: "hello@yapdigital.example",
-  address: "India",
+  brand: "YAP Digital Marketing Agency",
+  phone: "+91 82181 16706",
+  whatsapp: "918218116706",            // digits only, with country code
+  email: "yashaagri172@gmail.com",
+  instagram: "yapdigitalmarketingagency",
+  address: "Agra & Delhi NCR, India",
 };
 
 </script>
+  <!-- Work samples come from the portfolio folder. If it is missing, the Work section stays hidden. -->
+  <script>window.YA_BASE = "portfolio/";</script>
+  <script src="portfolio/data.js"></script>
+  <script src="portfolio/core.js"></script>
   <script>
 /* ==========================================================
-   YAP Digital Marketing — Catalog App Logic
+   YAP Digital Marketing Agency: site logic
+   Services catalog, work samples, quote basket, contact form.
    ========================================================== */
 (() => {
   "use strict";
 
   const GST_RATE = 0.18;
   const STORAGE_KEY = "yap-quote-basket";
-  const THEME_KEY = "yap-theme";
+  const YA = window.YA || null;            // portfolio data (optional)
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
-  const state = {
-    category: "all",
-    search: "",
-    billing: "all",
-    sort: "featured",
-    cart: loadCart(),
-  };
+  const state = { category: "all", search: "", billing: "all", sort: "featured", work: "all", cart: loadCart() };
 
   /* ---------- Helpers ---------- */
   const money = (n) => CURRENCY + Math.round(n).toLocaleString("en-IN");
@@ -985,17 +970,15 @@ const CONTACT = {
   const categoryName = (id) => (CATEGORIES.find((c) => c.id === id) || {}).name || id;
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const findItem = (id) => SERVICES.find((s) => s.id === id) || PACKAGES.find((p) => p.id === id);
+  const igUrl = "https://instagram.com/" + CONTACT.instagram;
+  const waLink = (text) => `https://wa.me/${CONTACT.whatsapp}${text ? "?text=" + encodeURIComponent(text) : ""}`;
 
-  function safeStorage(fn, fallback) {
-    try { return fn(); } catch { return fallback; }
-  }
+  function safeStorage(fn, fallback) { try { return fn(); } catch { return fallback; } }
   function loadCart() {
     const ids = safeStorage(() => JSON.parse(localStorage.getItem(STORAGE_KEY)) || [], []);
     return Array.isArray(ids) ? ids.filter((id) => findItem(id)) : [];
   }
-  function saveCart() {
-    safeStorage(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(state.cart)));
-  }
+  function saveCart() { safeStorage(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(state.cart))); }
 
   let toastTimer;
   function toast(msg) {
@@ -1006,26 +989,73 @@ const CONTACT = {
     toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
   }
 
+  function copyText(text, okMsg = "Copied") {
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand("copy"); } catch { ok = false; }
+      ta.remove();
+      toast(ok ? okMsg : "Copy failed. Select the text manually.");
+    };
+    try { navigator.clipboard.writeText(text).then(() => toast(okMsg), fallback); } catch { fallback(); }
+  }
+
+  // Client projects only (the personal portfolio is not a client)
+  const brands = () => (YA ? YA.projects.filter((p) => p.id !== "personal-portfolio") : []);
+
+  /* ---------- Hero ---------- */
+  function renderHero() {
+    const stats = [{ v: SERVICES.length, l: "Services" }];
+    if (YA) {
+      stats.push({ v: brands().length, l: "Brands served" });
+      stats.push({ v: YA.totals.video + YA.totals.reel, l: "Reels & videos" });
+      stats.push({ v: YA.items.length, l: "Pieces created" });
+    } else {
+      stats.push({ v: "2", l: "Cities" }, { v: "24h", l: "Quote turnaround" }, { v: "1", l: "Team for everything" });
+    }
+    $("#heroStats").innerHTML = stats.map((s) => `<li><strong>${esc(s.v)}</strong><span>${esc(s.l)}</span></li>`).join("");
+    $("#heroHandle").textContent = "@" + CONTACT.instagram;
+
+    const media = $("#heroMedia");
+    const reel = YA && (YA.items.find((i) => i.type === "video" && /Holi 2k25/.test(i.caption)) || (YA.project("fakira") || {}).heroVideo);
+    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reel) {
+      media.innerHTML = `<video muted loop playsinline ${reduce ? "" : "autoplay"} preload="metadata"
+        poster="${esc(YA.src(reel.img))}" src="${esc(YA.src(reel.video))}"></video>`;
+    } else {
+      media.innerHTML = `<span class="wordmark">yap<i class="dot"></i></span>`;
+    }
+  }
+
+  /* ---------- Client marquee ---------- */
+  function renderMarquee() {
+    if (!YA) return;
+    const names = brands().map((p) => p.title);
+    const row = names.map((n) => `<span>${esc(n)}</span>`).join("");
+    $("#marquee").innerHTML = row + row;     // doubled for a seamless loop
+    $("#marqueeWrap").hidden = false;
+  }
+
   /* ---------- Category chips ---------- */
   function renderChips() {
     $("#categoryChips").innerHTML = CATEGORIES.map((c) => {
       const count = c.id === "all" ? SERVICES.length : SERVICES.filter((s) => s.category === c.id).length;
-      return `<button class="chip ${state.category === c.id ? "active" : ""}" data-cat="${c.id}" role="tab"
-                aria-selected="${state.category === c.id}">${c.icon} ${esc(c.name)} <small>${count}</small></button>`;
+      const on = state.category === c.id;
+      return `<button class="chip ${on ? "active" : ""}" data-cat="${c.id}" role="tab" aria-selected="${on}">${esc(c.name)} <small>${count}</small></button>`;
     }).join("");
   }
 
   /* ---------- Filtering ---------- */
   function filteredServices() {
     const q = state.search.trim().toLowerCase();
-    let list = SERVICES.filter((s) => {
+    const list = SERVICES.filter((s) => {
       if (state.category !== "all" && s.category !== state.category) return false;
       if (state.billing !== "all" && s.billing !== state.billing) return false;
       if (!q) return true;
       const hay = [s.name, s.tagline, categoryName(s.category), ...s.features].join(" ").toLowerCase();
       return q.split(/\s+/).every((word) => hay.includes(word));
     });
-
     const sorters = {
       "price-asc": (a, b) => a.price - b.price,
       "price-desc": (a, b) => b.price - a.price,
@@ -1038,16 +1068,15 @@ const CONTACT = {
   /* ---------- Service cards ---------- */
   function addButton(id, extraClass = "") {
     const inCart = state.cart.includes(id);
-    return `<button class="btn btn-primary ${extraClass} ${inCart ? "added" : ""}" data-add="${id}">
-              ${inCart ? "✓ Added" : "+ Add to quote"}</button>`;
+    return `<button class="btn ${inCart ? "added" : "btn-gold"} ${extraClass}" data-add="${id}">${inCart ? "✓ Added" : "+ Add to quote"}</button>`;
   }
 
-  function serviceCard(s, i) {
+  function serviceCard(s) {
     const shown = s.features.slice(0, 4);
     const extra = s.features.length - shown.length;
     return `
-      <article class="card" style="animation-delay:${i * 40}ms">
-        ${s.popular ? '<span class="ribbon">★ Popular</span>' : ""}
+      <article class="card">
+        ${s.popular ? '<span class="ribbon">Popular</span>' : ""}
         <span class="cat">${esc(categoryName(s.category))}</span>
         <h3>${esc(s.name)}</h3>
         <p class="tagline">${esc(s.tagline)}</p>
@@ -1056,7 +1085,7 @@ const CONTACT = {
           ${shown.map((f) => `<li>${esc(f)}</li>`).join("")}
           ${extra > 0 ? `<li class="more">${extra} more included</li>` : ""}
         </ul>
-        <p class="meta">⏱ ${esc(s.delivery)}</p>
+        <p class="meta">${esc(s.delivery)}</p>
         <div class="card-actions">
           <button class="btn btn-ghost" data-details="${s.id}">Details</button>
           ${addButton(s.id)}
@@ -1069,6 +1098,45 @@ const CONTACT = {
     $("#serviceGrid").innerHTML = list.map(serviceCard).join("");
     $("#emptyState").hidden = list.length > 0;
     $("#resultCount").textContent = `Showing ${list.length} of ${SERVICES.length} services`;
+  }
+
+  /* ---------- Work (from the portfolio) ---------- */
+  const WORK_LIMIT = 12;
+  let workList = [];
+  function pickWork() {
+    // A mix per brand: videos first, then graphics, a few from each client
+    const pool = state.work === "all" ? YA.projects : YA.projects.filter((p) => p.category === state.work);
+    const out = [];
+    for (let round = 0; out.length < WORK_LIMIT && round < 6; round++) {
+      pool.forEach((p) => {
+        const ordered = p.items.filter((i) => i.type === "video").concat(p.items.filter((i) => i.type !== "video"));
+        if (ordered[round] && out.length < WORK_LIMIT) out.push(ordered[round]);
+      });
+    }
+    return out;
+  }
+  function renderWorkChips() {
+    const cats = ["all", ...YA.categories.map((c) => c.name)];
+    $("#workChips").innerHTML = cats.map((c) => {
+      const on = state.work === c;
+      return `<button class="chip ${on ? "active" : ""}" data-work="${esc(c)}">${c === "all" ? "All work" : esc(c)}</button>`;
+    }).join("");
+  }
+  function renderWork() {
+    workList = pickWork();
+    $("#workGrid").innerHTML = workList.map((it, i) => `
+      <button class="work" data-w="${i}" aria-label="Open ${esc(it.caption)}">
+        <img loading="lazy" alt="" src="${esc(YA.src(it.img))}" />
+        ${it.type === "video" ? '<span class="play">▶</span>' : ""}
+        <span class="shade"><small>${esc(it.projectTitle)}</small><b>${esc(it.caption)}</b></span>
+      </button>`).join("");
+  }
+  function initWork() {
+    if (!YA) return;
+    $("#work").hidden = false;
+    $("#workIntro").textContent = `${brands().length} brands across restaurants, cafes, hotels, gyms and retail. Tap any piece to view it.`;
+    renderWorkChips();
+    renderWork();
   }
 
   /* ---------- Packages ---------- */
@@ -1089,32 +1157,37 @@ const CONTACT = {
     }).join("");
   }
 
-  /* ---------- Testimonials & contact ---------- */
-  function renderTestimonials() {
-    $("#testimonialGrid").innerHTML = TESTIMONIALS.map((t) => `
-      <figure class="quote">
-        <div class="stars">★★★★★</div>
-        <p>“${esc(t.text)}”</p>
-        <figcaption class="who">
-          <span class="avatar">${esc(t.name.charAt(0))}</span>
-          <span><b>${esc(t.name)}</b><small>${esc(t.role)}</small></span>
-        </figcaption>
-      </figure>`).join("");
+  /* ---------- Instagram ---------- */
+  function renderInstagram() {
+    $("#igTitle").textContent = "@" + CONTACT.instagram;
+    ["#igFollow", "#igTop"].forEach((s) => ($(s).href = igUrl));
+    const tiles = YA ? YA.items.filter((i) => i.type !== "video" && i.img).filter((_, i) => i % 7 === 0).slice(0, 9) : [];
+    $("#igTiles").innerHTML = tiles.length
+      ? tiles.map((t) => `<img loading="lazy" alt="" src="${esc(YA.src(t.img))}" />`).join("")
+      : Array.from({ length: 9 }, () => '<div class="ph"></div>').join("");
   }
 
+  /* ---------- Contact ---------- */
   function renderContact() {
-    $("#contactList").innerHTML = `
-      <li><a href="tel:${CONTACT.phone.replace(/\s/g, "")}"><i>📞</i>${esc(CONTACT.phone)}</a></li>
-      <li><a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener"><i>💬</i>Chat on WhatsApp</a></li>
-      <li><a href="mailto:${CONTACT.email}"><i>✉️</i>${esc(CONTACT.email)}</a></li>
-      <li><span><i>📍</i>${esc(CONTACT.address)}</span></li>`;
+    const rows = [
+      { k: "WhatsApp", v: CONTACT.phone, href: waLink("Hi YAP! I want to grow my brand online."), act: "Chat" },
+      { k: "Instagram", v: "@" + CONTACT.instagram, href: igUrl, act: "Follow" },
+      { k: "Phone", v: CONTACT.phone },
+      { k: "Email", v: CONTACT.email },
+      { k: "Location", v: CONTACT.address, none: true },
+    ];
+    $("#contactList").innerHTML = rows.map((r) => `
+      <li><span class="k">${r.k}</span><span class="v">${esc(r.v)}</span>
+        ${r.href ? `<a class="act" href="${esc(r.href)}" target="_blank" rel="noopener">${r.act}</a>`
+          : r.none ? "<span></span>" : `<button class="act" data-copy="${esc(r.v)}">Copy</button>`}
+      </li>`).join("");
 
     $("#interestSelect").innerHTML =
       `<option value="">Select a service…</option>` +
       CATEGORIES.filter((c) => c.id !== "all").map((c) =>
         `<optgroup label="${esc(c.name)}">${SERVICES.filter((s) => s.category === c.id)
           .map((s) => `<option>${esc(s.name)}</option>`).join("")}</optgroup>`).join("") +
-      `<optgroup label="Packages">${PACKAGES.map((p) => `<option>${esc(p.name)} Package</option>`).join("")}</optgroup>`;
+      `<optgroup label="Packages">${PACKAGES.map((p) => `<option>${esc(p.name)} package</option>`).join("")}</optgroup>`;
   }
 
   /* ---------- Modal ---------- */
@@ -1122,13 +1195,13 @@ const CONTACT = {
     const s = SERVICES.find((x) => x.id === id);
     if (!s) return;
     $("#modalBody").innerHTML = `
-      <span class="cat" style="color:var(--primary);font-weight:600;font-size:.8rem;text-transform:uppercase">${esc(categoryName(s.category))}</span>
+      <span class="kicker">${esc(categoryName(s.category))}</span>
       <h3 id="modalTitle">${esc(s.name)}</h3>
       <p class="tagline">${esc(s.tagline)}</p>
       <div class="price">${money(s.price)} <small>${billingLabel(s.billing)} + GST</small></div>
       <ul class="features">${s.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
-      <p class="meta">⏱ ${esc(s.delivery)}</p>
-      ${s.note ? `<p class="note">ℹ️ ${esc(s.note)}</p>` : ""}
+      <p class="meta">${esc(s.delivery)}</p>
+      ${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}
       <div class="card-actions">${addButton(s.id)}</div>`;
     $("#modalOverlay").hidden = false;
     document.body.classList.add("no-scroll");
@@ -1139,16 +1212,16 @@ const CONTACT = {
     document.body.classList.remove("no-scroll");
   }
 
-  /* ---------- Cart / quote basket ---------- */
+  /* ---------- Quote basket ---------- */
   function toggleCart(id) {
     const item = findItem(id);
     if (!item) return;
     if (state.cart.includes(id)) {
       state.cart = state.cart.filter((x) => x !== id);
-      toast(`Removed “${item.name}”`);
+      toast(`Removed ${item.name}`);
     } else {
       state.cart.push(id);
-      toast(`Added “${item.name}” to your quote`);
+      toast(`Added ${item.name}`);
       const badge = $("#cartCount");
       badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump");
     }
@@ -1161,6 +1234,7 @@ const CONTACT = {
     $$("[data-add]").forEach((btn) => {
       const inCart = state.cart.includes(btn.dataset.add);
       btn.classList.toggle("added", inCart);
+      btn.classList.toggle("btn-gold", !inCart);
       btn.textContent = inCart ? "✓ Added" : "+ Add to quote";
     });
   }
@@ -1174,39 +1248,11 @@ const CONTACT = {
     return { items, monthly, oneTime, subtotal, gst, total: subtotal + gst };
   }
 
-  function renderCart() {
-    const t = totals();
-    $("#cartCount").textContent = t.items.length;
-
-    $("#cartItems").innerHTML = t.items.length
-      ? t.items.map((i) => `
-          <div class="cart-item">
-            <div><b>${esc(i.name)}</b><small>${i.category ? esc(categoryName(i.category)) : "Package"}</small></div>
-            <div class="right">
-              <b>${money(i.price)}</b><small>${billingLabel(i.billing)}</small><br />
-              <button class="remove" data-remove="${i.id}">Remove</button>
-            </div>
-          </div>`).join("")
-      : `<div class="cart-empty"><p>🧾 Your quote basket is empty.</p><p><small>Add services from the catalog to build a custom plan.</small></p></div>`;
-
-    $("#cartTotals").innerHTML = t.items.length ? `
-      ${t.monthly ? `<div><span>Monthly retainers</span><span>${money(t.monthly)}/mo</span></div>` : ""}
-      ${t.oneTime ? `<div><span>One-time projects</span><span>${money(t.oneTime)}</span></div>` : ""}
-      <div><span>GST (18%)</span><span>${money(t.gst)}</span></div>
-      <div class="grand"><span>First invoice (est.)</span><span>${money(t.total)}</span></div>` : "";
-
-    ["#copyQuote", "#clearCart"].forEach((sel) => ($(sel).disabled = !t.items.length));
-    const wa = $("#sendWhatsApp");
-    wa.href = t.items.length ? `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(quoteText())}` : "#";
-    wa.classList.toggle("is-disabled", !t.items.length);
-    wa.setAttribute("aria-disabled", String(!t.items.length));
-  }
-
   function quoteText() {
     const t = totals();
-    const lines = t.items.map((i) => `• ${i.name} — ${money(i.price)} ${billingLabel(i.billing)}`);
+    const lines = t.items.map((i) => `• ${i.name}: ${money(i.price)} ${billingLabel(i.billing)}`);
     return [
-      "Hi YAP Digital Marketing! I'd like a quote for:",
+      "Hi YAP Digital Marketing Agency! I'd like a quote for:",
       "",
       ...lines,
       "",
@@ -1216,40 +1262,45 @@ const CONTACT = {
     ].filter((l, idx, arr) => l !== "" || arr[idx - 1] !== "").join("\n");
   }
 
+  function renderCart() {
+    const t = totals();
+    $("#cartCount").textContent = t.items.length;
+    $("#cartItems").innerHTML = t.items.length
+      ? t.items.map((i) => `
+          <div class="cart-item">
+            <div><b>${esc(i.name)}</b><small>${i.category ? esc(categoryName(i.category)) : "Package"}</small></div>
+            <div class="right">
+              <b>${money(i.price)}</b><small>${billingLabel(i.billing)}</small><br />
+              <button class="remove" data-remove="${i.id}">Remove</button>
+            </div>
+          </div>`).join("")
+      : `<div class="cart-empty"><p>Your quote basket is empty.</p><p><small>Add services or a package to build your plan.</small></p></div>`;
+
+    $("#cartTotals").innerHTML = t.items.length ? `
+      ${t.monthly ? `<div><span>Monthly plans</span><span>${money(t.monthly)}/mo</span></div>` : ""}
+      ${t.oneTime ? `<div><span>One-time projects</span><span>${money(t.oneTime)}</span></div>` : ""}
+      <div><span>GST (18%)</span><span>${money(t.gst)}</span></div>
+      <div class="grand"><span>First invoice (est.)</span><span>${money(t.total)}</span></div>` : "";
+
+    ["#copyQuote", "#clearCart"].forEach((sel) => ($(sel).disabled = !t.items.length));
+    const wa = $("#sendWhatsApp");
+    wa.href = t.items.length ? waLink(quoteText()) : "#";
+    wa.classList.toggle("is-disabled", !t.items.length);
+    wa.setAttribute("aria-disabled", String(!t.items.length));
+  }
+
   function openCart() {
     $("#cartDrawer").classList.add("open");
     $("#cartDrawer").setAttribute("aria-hidden", "false");
     $("#cartOverlay").hidden = false;
     document.body.classList.add("no-scroll");
+    $("#cartClose").focus();
   }
   function closeCart() {
     $("#cartDrawer").classList.remove("open");
     $("#cartDrawer").setAttribute("aria-hidden", "true");
     $("#cartOverlay").hidden = true;
     document.body.classList.remove("no-scroll");
-  }
-
-  /* ---------- Copy to clipboard (with fallback) ---------- */
-  function copyText(text) {
-    const fallback = () => {
-      const ta = document.createElement("textarea");
-      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
-      document.body.appendChild(ta); ta.select();
-      let ok = false; try { ok = document.execCommand("copy"); } catch { ok = false; }
-      ta.remove();
-      toast(ok ? "Quote copied" : "Copy failed. Select the text manually.");
-    };
-    try {
-      navigator.clipboard.writeText(text).then(() => toast("Quote copied"), fallback);
-    } catch { fallback(); }
-  }
-
-  /* ---------- Theme ---------- */
-  const systemDark = () => !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-  const currentTheme = () => document.documentElement.dataset.theme || (systemDark() ? "dark" : "light");
-  function applyTheme(theme) {
-    if (theme) document.documentElement.dataset.theme = theme;
-    $("#themeToggle").textContent = currentTheme() === "dark" ? "☀️" : "🌙";
   }
 
   /* ---------- Contact form ---------- */
@@ -1265,14 +1316,13 @@ const CONTACT = {
     });
     if (!valid) {
       msg.className = "form-msg err";
-      msg.textContent = "Please fill in your name, a valid phone number and email.";
+      msg.textContent = "Please add your name and a phone number.";
       return;
     }
-    const data = Object.fromEntries(new FormData(form));
-    const body = `Hi YAP Digital Marketing! New enquiry:\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nInterested in: ${data.interest || "-"}\n\n${data.message || ""}`;
-    const link = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(body)}`;
+    const d = Object.fromEntries(new FormData(form));
+    const body = `Hi YAP! New enquiry:\nName: ${d.name}\nPhone: ${d.phone}\nBusiness: ${d.business || "-"}\nInterested in: ${d.interest || "-"}\n\n${d.message || ""}`;
     msg.className = "form-msg ok";
-    msg.innerHTML = `Your enquiry is ready. <a href="${link}" target="_blank" rel="noopener">Tap here to send it on WhatsApp</a>, or email us at ${esc(CONTACT.email)}.`;
+    msg.innerHTML = `Your enquiry is ready. <a href="${esc(waLink(body))}" target="_blank" rel="noopener">Tap here to send it on WhatsApp</a>.`;
   }
 
   /* ---------- Events ---------- */
@@ -1281,8 +1331,7 @@ const CONTACT = {
       const chip = e.target.closest("[data-cat]");
       if (!chip) return;
       state.category = chip.dataset.cat;
-      renderChips();
-      renderServices();
+      renderChips(); renderServices();
     });
 
     let searchTimer;
@@ -1298,14 +1347,14 @@ const CONTACT = {
       renderChips(); renderServices();
     });
 
-    // Delegated clicks for add / details / remove
     document.addEventListener("click", (e) => {
-      const add = e.target.closest("[data-add]");
-      if (add) return toggleCart(add.dataset.add);
-      const det = e.target.closest("[data-details]");
-      if (det) return openModal(det.dataset.details);
-      const rem = e.target.closest("[data-remove]");
-      if (rem) return toggleCart(rem.dataset.remove);
+      let t;
+      if ((t = e.target.closest("[data-add]"))) return toggleCart(t.dataset.add);
+      if ((t = e.target.closest("[data-details]"))) return openModal(t.dataset.details);
+      if ((t = e.target.closest("[data-remove]"))) return toggleCart(t.dataset.remove);
+      if ((t = e.target.closest("[data-copy]"))) return copyText(t.dataset.copy);
+      if ((t = e.target.closest("[data-work]"))) { state.work = t.dataset.work; renderWorkChips(); renderWork(); return; }
+      if ((t = e.target.closest("[data-w]")) && YA) return YA.lightbox(workList, +t.dataset.w);
     });
 
     $("#modalClose").addEventListener("click", closeModal);
@@ -1318,7 +1367,7 @@ const CONTACT = {
       state.cart = []; saveCart(); refreshAddButtons(); renderCart(); toast("Quote basket cleared");
     });
     $("#sendWhatsApp").addEventListener("click", (e) => { if (!state.cart.length) e.preventDefault(); });
-    $("#copyQuote").addEventListener("click", () => copyText(quoteText()));
+    $("#copyQuote").addEventListener("click", () => copyText(quoteText(), "Quote copied"));
 
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
@@ -1326,28 +1375,29 @@ const CONTACT = {
       else if ($("#cartDrawer").classList.contains("open")) closeCart();
     });
 
-    $("#themeToggle").addEventListener("click", () => {
-      const next = currentTheme() === "dark" ? "light" : "dark";
-      applyTheme(next);
-      safeStorage(() => localStorage.setItem(THEME_KEY, next));
+    const menu = $("#menuToggle");
+    menu.addEventListener("click", () => {
+      const open = $("#navLinks").classList.toggle("open");
+      menu.setAttribute("aria-expanded", String(open));
     });
-
-    $("#menuToggle").addEventListener("click", () => $("#navLinks").classList.toggle("open"));
-    $$("#navLinks a").forEach((a) => a.addEventListener("click", () => $("#navLinks").classList.remove("open")));
+    $$("#navLinks a").forEach((a) => a.addEventListener("click", () => {
+      $("#navLinks").classList.remove("open");
+      menu.setAttribute("aria-expanded", "false");
+    }));
 
     $("#contactForm").addEventListener("submit", handleForm);
   }
 
   /* ---------- Init ---------- */
   function init() {
-    const savedTheme = safeStorage(() => localStorage.getItem(THEME_KEY), null);
-    applyTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : null);
-
     $("#year").textContent = new Date().getFullYear();
+    renderHero();
+    renderMarquee();
     renderChips();
     renderServices();
+    initWork();
     renderPackages();
-    renderTestimonials();
+    renderInstagram();
     renderContact();
     renderCart();
     bindEvents();

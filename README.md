@@ -1,6 +1,6 @@
-# YAP Digital Marketing — Service Catalog
+# YAP Digital Marketing Agency website
 
-A responsive, interactive service catalog website for **YAP Digital Marketing**.
+The website of **YAP Digital Marketing Agency** (Instagram: [@yapdigitalmarketingagency](https://instagram.com/yapdigitalmarketingagency)), styled after the agency logo in `assets/yap-logo.png`: near-black, white Poppins, one gold dot.
 Pure HTML, CSS and JavaScript: no build step and no dependencies.
 
 ## Features
@@ -11,8 +11,9 @@ Pure HTML, CSS and JavaScript: no build step and no dependencies.
 - **Quote basket:** add services or packages and see monthly and one-time totals plus 18% GST
 - Send the quote on **WhatsApp** or copy the quote text
 - Contact form that prepares the enquiry as a WhatsApp message
-- Dark / light mode, mobile menu, FAQs, process and testimonials sections
-- The basket and theme are saved in the browser (localStorage)
+- **Our work** section with real reels and graphics pulled from `portfolio/` (hidden automatically if that folder is missing)
+- Client name ticker, Instagram section, mobile menu, FAQs and process
+- The quote basket is saved in the browser (localStorage)
 
 ## Run it on a phone (easiest)
 Use **`yap-catalog.html`**: it is one self-contained file with all the CSS and JS inside.
@@ -35,10 +36,9 @@ You can deploy it as-is to GitHub Pages, Netlify or Vercel.
 All content lives in **`js/data.js`**:
 - `SERVICES`: name, price, billing (`"month"` or `"one-time"`), features, delivery time
 - `PACKAGES`: bundles built from service IDs
-- `CONTACT`: phone, WhatsApp number, email and address (**replace the placeholders**)
-- `TESTIMONIALS`: **samples only**, so replace them with real client reviews before going live
+- `CONTACT`: phone, WhatsApp number, email, Instagram handle and location
 
-Colours are CSS variables at the top of `css/styles.css`.
+Brand colours (`--ink`, `--gold`) are CSS variables at the top of `css/styles.css`.
 
 ## Structure
 ```

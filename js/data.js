@@ -401,17 +401,12 @@ const PACKAGES = [
   },
 ];
 
-/* SAMPLE testimonials (placeholders) — replace with real client reviews before going live */
-const TESTIMONIALS = [
-  { name: "Riya Sharma", role: "Founder, Bloom Café", text: "YAP took our Instagram from 800 to 12k followers in five months. Weekend footfall has nearly doubled." },
-  { name: "Arjun Mehta", role: "Director, Mehta Realty", text: "Their Google Ads setup cut our cost per lead by 42%. Transparent reports every week." },
-  { name: "Neha Kapoor", role: "Owner, Kapoor Fashions", text: "Our new Shopify store and Meta campaigns paid for themselves in the first month." },
-];
-
-/* Contact details — update these */
+/* Contact details: change these if the agency uses a different number or email */
 const CONTACT = {
-  phone: "+91 90000 00000",
-  whatsapp: "919000000000",            // digits only, with country code
-  email: "hello@yapdigital.example",
-  address: "India",
+  brand: "YAP Digital Marketing Agency",
+  phone: "+91 82181 16706",
+  whatsapp: "918218116706",            // digits only, with country code
+  email: "yashaagri172@gmail.com",
+  instagram: "yapdigitalmarketingagency",
+  address: "Agra & Delhi NCR, India",
 };

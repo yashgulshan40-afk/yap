@@ -13,8 +13,11 @@
   var P = window.PORTFOLIO;
   if (!P) { console.error("data.js did not load"); return; }
 
+  // Pages outside portfolio/ set window.YA_BASE = "portfolio/" before loading this file.
+  var BASE = window.YA_BASE || "";
   function src(path) {
-    return (path && window.POSTERS && window.POSTERS[path]) || path || "";
+    if (!path) return "";
+    return (window.POSTERS && window.POSTERS[path]) || BASE + path;
   }
 
   /* ---------- Contact ---------- */

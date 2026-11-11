@@ -1,23 +1,18 @@
 /* ==========================================================
-   YAP Digital Marketing — Catalog App Logic
+   YAP Digital Marketing Agency: site logic
+   Services catalog, work samples, quote basket, contact form.
    ========================================================== */
 (() => {
   "use strict";
 
   const GST_RATE = 0.18;
   const STORAGE_KEY = "yap-quote-basket";
-  const THEME_KEY = "yap-theme";
+  const YA = window.YA || null;            // portfolio data (optional)
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
-  const state = {
-    category: "all",
-    search: "",
-    billing: "all",
-    sort: "featured",
-    cart: loadCart(),
-  };
+  const state = { category: "all", search: "", billing: "all", sort: "featured", work: "all", cart: loadCart() };
 
   /* ---------- Helpers ---------- */
   const money = (n) => CURRENCY + Math.round(n).toLocaleString("en-IN");
@@ -25,17 +20,15 @@
   const categoryName = (id) => (CATEGORIES.find((c) => c.id === id) || {}).name || id;
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const findItem = (id) => SERVICES.find((s) => s.id === id) || PACKAGES.find((p) => p.id === id);
+  const igUrl = "https://instagram.com/" + CONTACT.instagram;
+  const waLink = (text) => `https://wa.me/${CONTACT.whatsapp}${text ? "?text=" + encodeURIComponent(text) : ""}`;
 
-  function safeStorage(fn, fallback) {
-    try { return fn(); } catch { return fallback; }
-  }
+  function safeStorage(fn, fallback) { try { return fn(); } catch { return fallback; } }
   function loadCart() {
     const ids = safeStorage(() => JSON.parse(localStorage.getItem(STORAGE_KEY)) || [], []);
     return Array.isArray(ids) ? ids.filter((id) => findItem(id)) : [];
   }
-  function saveCart() {
-    safeStorage(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(state.cart)));
-  }
+  function saveCart() { safeStorage(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(state.cart))); }
 
   let toastTimer;
   function toast(msg) {
@@ -46,26 +39,73 @@
     toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
   }
 
+  function copyText(text, okMsg = "Copied") {
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand("copy"); } catch { ok = false; }
+      ta.remove();
+      toast(ok ? okMsg : "Copy failed. Select the text manually.");
+    };
+    try { navigator.clipboard.writeText(text).then(() => toast(okMsg), fallback); } catch { fallback(); }
+  }
+
+  // Client projects only (the personal portfolio is not a client)
+  const brands = () => (YA ? YA.projects.filter((p) => p.id !== "personal-portfolio") : []);
+
+  /* ---------- Hero ---------- */
+  function renderHero() {
+    const stats = [{ v: SERVICES.length, l: "Services" }];
+    if (YA) {
+      stats.push({ v: brands().length, l: "Brands served" });
+      stats.push({ v: YA.totals.video + YA.totals.reel, l: "Reels & videos" });
+      stats.push({ v: YA.items.length, l: "Pieces created" });
+    } else {
+      stats.push({ v: "2", l: "Cities" }, { v: "24h", l: "Quote turnaround" }, { v: "1", l: "Team for everything" });
+    }
+    $("#heroStats").innerHTML = stats.map((s) => `<li><strong>${esc(s.v)}</strong><span>${esc(s.l)}</span></li>`).join("");
+    $("#heroHandle").textContent = "@" + CONTACT.instagram;
+
+    const media = $("#heroMedia");
+    const reel = YA && (YA.items.find((i) => i.type === "video" && /Holi 2k25/.test(i.caption)) || (YA.project("fakira") || {}).heroVideo);
+    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reel) {
+      media.innerHTML = `<video muted loop playsinline ${reduce ? "" : "autoplay"} preload="metadata"
+        poster="${esc(YA.src(reel.img))}" src="${esc(YA.src(reel.video))}"></video>`;
+    } else {
+      media.innerHTML = `<span class="wordmark">yap<i class="dot"></i></span>`;
+    }
+  }
+
+  /* ---------- Client marquee ---------- */
+  function renderMarquee() {
+    if (!YA) return;
+    const names = brands().map((p) => p.title);
+    const row = names.map((n) => `<span>${esc(n)}</span>`).join("");
+    $("#marquee").innerHTML = row + row;     // doubled for a seamless loop
+    $("#marqueeWrap").hidden = false;
+  }
+
   /* ---------- Category chips ---------- */
   function renderChips() {
     $("#categoryChips").innerHTML = CATEGORIES.map((c) => {
       const count = c.id === "all" ? SERVICES.length : SERVICES.filter((s) => s.category === c.id).length;
-      return `<button class="chip ${state.category === c.id ? "active" : ""}" data-cat="${c.id}" role="tab"
-                aria-selected="${state.category === c.id}">${c.icon} ${esc(c.name)} <small>${count}</small></button>`;
+      const on = state.category === c.id;
+      return `<button class="chip ${on ? "active" : ""}" data-cat="${c.id}" role="tab" aria-selected="${on}">${esc(c.name)} <small>${count}</small></button>`;
     }).join("");
   }
 
   /* ---------- Filtering ---------- */
   function filteredServices() {
     const q = state.search.trim().toLowerCase();
-    let list = SERVICES.filter((s) => {
+    const list = SERVICES.filter((s) => {
       if (state.category !== "all" && s.category !== state.category) return false;
       if (state.billing !== "all" && s.billing !== state.billing) return false;
       if (!q) return true;
       const hay = [s.name, s.tagline, categoryName(s.category), ...s.features].join(" ").toLowerCase();
       return q.split(/\s+/).every((word) => hay.includes(word));
     });
-
     const sorters = {
       "price-asc": (a, b) => a.price - b.price,
       "price-desc": (a, b) => b.price - a.price,
@@ -78,16 +118,15 @@
   /* ---------- Service cards ---------- */
   function addButton(id, extraClass = "") {
     const inCart = state.cart.includes(id);
-    return `<button class="btn btn-primary ${extraClass} ${inCart ? "added" : ""}" data-add="${id}">
-              ${inCart ? "✓ Added" : "+ Add to quote"}</button>`;
+    return `<button class="btn ${inCart ? "added" : "btn-gold"} ${extraClass}" data-add="${id}">${inCart ? "✓ Added" : "+ Add to quote"}</button>`;
   }
 
-  function serviceCard(s, i) {
+  function serviceCard(s) {
     const shown = s.features.slice(0, 4);
     const extra = s.features.length - shown.length;
     return `
-      <article class="card" style="animation-delay:${i * 40}ms">
-        ${s.popular ? '<span class="ribbon">★ Popular</span>' : ""}
+      <article class="card">
+        ${s.popular ? '<span class="ribbon">Popular</span>' : ""}
         <span class="cat">${esc(categoryName(s.category))}</span>
         <h3>${esc(s.name)}</h3>
         <p class="tagline">${esc(s.tagline)}</p>
@@ -96,7 +135,7 @@
           ${shown.map((f) => `<li>${esc(f)}</li>`).join("")}
           ${extra > 0 ? `<li class="more">${extra} more included</li>` : ""}
         </ul>
-        <p class="meta">⏱ ${esc(s.delivery)}</p>
+        <p class="meta">${esc(s.delivery)}</p>
         <div class="card-actions">
           <button class="btn btn-ghost" data-details="${s.id}">Details</button>
           ${addButton(s.id)}
@@ -109,6 +148,45 @@
     $("#serviceGrid").innerHTML = list.map(serviceCard).join("");
     $("#emptyState").hidden = list.length > 0;
     $("#resultCount").textContent = `Showing ${list.length} of ${SERVICES.length} services`;
+  }
+
+  /* ---------- Work (from the portfolio) ---------- */
+  const WORK_LIMIT = 12;
+  let workList = [];
+  function pickWork() {
+    // A mix per brand: videos first, then graphics, a few from each client
+    const pool = state.work === "all" ? YA.projects : YA.projects.filter((p) => p.category === state.work);
+    const out = [];
+    for (let round = 0; out.length < WORK_LIMIT && round < 6; round++) {
+      pool.forEach((p) => {
+        const ordered = p.items.filter((i) => i.type === "video").concat(p.items.filter((i) => i.type !== "video"));
+        if (ordered[round] && out.length < WORK_LIMIT) out.push(ordered[round]);
+      });
+    }
+    return out;
+  }
+  function renderWorkChips() {
+    const cats = ["all", ...YA.categories.map((c) => c.name)];
+    $("#workChips").innerHTML = cats.map((c) => {
+      const on = state.work === c;
+      return `<button class="chip ${on ? "active" : ""}" data-work="${esc(c)}">${c === "all" ? "All work" : esc(c)}</button>`;
+    }).join("");
+  }
+  function renderWork() {
+    workList = pickWork();
+    $("#workGrid").innerHTML = workList.map((it, i) => `
+      <button class="work" data-w="${i}" aria-label="Open ${esc(it.caption)}">
+        <img loading="lazy" alt="" src="${esc(YA.src(it.img))}" />
+        ${it.type === "video" ? '<span class="play">▶</span>' : ""}
+        <span class="shade"><small>${esc(it.projectTitle)}</small><b>${esc(it.caption)}</b></span>
+      </button>`).join("");
+  }
+  function initWork() {
+    if (!YA) return;
+    $("#work").hidden = false;
+    $("#workIntro").textContent = `${brands().length} brands across restaurants, cafes, hotels, gyms and retail. Tap any piece to view it.`;
+    renderWorkChips();
+    renderWork();
   }
 
   /* ---------- Packages ---------- */
@@ -129,32 +207,37 @@
     }).join("");
   }
 
-  /* ---------- Testimonials & contact ---------- */
-  function renderTestimonials() {
-    $("#testimonialGrid").innerHTML = TESTIMONIALS.map((t) => `
-      <figure class="quote">
-        <div class="stars">★★★★★</div>
-        <p>“${esc(t.text)}”</p>
-        <figcaption class="who">
-          <span class="avatar">${esc(t.name.charAt(0))}</span>
-          <span><b>${esc(t.name)}</b><small>${esc(t.role)}</small></span>
-        </figcaption>
-      </figure>`).join("");
+  /* ---------- Instagram ---------- */
+  function renderInstagram() {
+    $("#igTitle").textContent = "@" + CONTACT.instagram;
+    ["#igFollow", "#igTop"].forEach((s) => ($(s).href = igUrl));
+    const tiles = YA ? YA.items.filter((i) => i.type !== "video" && i.img).filter((_, i) => i % 7 === 0).slice(0, 9) : [];
+    $("#igTiles").innerHTML = tiles.length
+      ? tiles.map((t) => `<img loading="lazy" alt="" src="${esc(YA.src(t.img))}" />`).join("")
+      : Array.from({ length: 9 }, () => '<div class="ph"></div>').join("");
   }
 
+  /* ---------- Contact ---------- */
   function renderContact() {
-    $("#contactList").innerHTML = `
-      <li><a href="tel:${CONTACT.phone.replace(/\s/g, "")}"><i>📞</i>${esc(CONTACT.phone)}</a></li>
-      <li><a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener"><i>💬</i>Chat on WhatsApp</a></li>
-      <li><a href="mailto:${CONTACT.email}"><i>✉️</i>${esc(CONTACT.email)}</a></li>
-      <li><span><i>📍</i>${esc(CONTACT.address)}</span></li>`;
+    const rows = [
+      { k: "WhatsApp", v: CONTACT.phone, href: waLink("Hi YAP! I want to grow my brand online."), act: "Chat" },
+      { k: "Instagram", v: "@" + CONTACT.instagram, href: igUrl, act: "Follow" },
+      { k: "Phone", v: CONTACT.phone },
+      { k: "Email", v: CONTACT.email },
+      { k: "Location", v: CONTACT.address, none: true },
+    ];
+    $("#contactList").innerHTML = rows.map((r) => `
+      <li><span class="k">${r.k}</span><span class="v">${esc(r.v)}</span>
+        ${r.href ? `<a class="act" href="${esc(r.href)}" target="_blank" rel="noopener">${r.act}</a>`
+          : r.none ? "<span></span>" : `<button class="act" data-copy="${esc(r.v)}">Copy</button>`}
+      </li>`).join("");
 
     $("#interestSelect").innerHTML =
       `<option value="">Select a service…</option>` +
       CATEGORIES.filter((c) => c.id !== "all").map((c) =>
         `<optgroup label="${esc(c.name)}">${SERVICES.filter((s) => s.category === c.id)
           .map((s) => `<option>${esc(s.name)}</option>`).join("")}</optgroup>`).join("") +
-      `<optgroup label="Packages">${PACKAGES.map((p) => `<option>${esc(p.name)} Package</option>`).join("")}</optgroup>`;
+      `<optgroup label="Packages">${PACKAGES.map((p) => `<option>${esc(p.name)} package</option>`).join("")}</optgroup>`;
   }
 
   /* ---------- Modal ---------- */
@@ -162,13 +245,13 @@
     const s = SERVICES.find((x) => x.id === id);
     if (!s) return;
     $("#modalBody").innerHTML = `
-      <span class="cat" style="color:var(--primary);font-weight:600;font-size:.8rem;text-transform:uppercase">${esc(categoryName(s.category))}</span>
+      <span class="kicker">${esc(categoryName(s.category))}</span>
       <h3 id="modalTitle">${esc(s.name)}</h3>
       <p class="tagline">${esc(s.tagline)}</p>
       <div class="price">${money(s.price)} <small>${billingLabel(s.billing)} + GST</small></div>
       <ul class="features">${s.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
-      <p class="meta">⏱ ${esc(s.delivery)}</p>
-      ${s.note ? `<p class="note">ℹ️ ${esc(s.note)}</p>` : ""}
+      <p class="meta">${esc(s.delivery)}</p>
+      ${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}
       <div class="card-actions">${addButton(s.id)}</div>`;
     $("#modalOverlay").hidden = false;
     document.body.classList.add("no-scroll");
@@ -179,16 +262,16 @@
     document.body.classList.remove("no-scroll");
   }
 
-  /* ---------- Cart / quote basket ---------- */
+  /* ---------- Quote basket ---------- */
   function toggleCart(id) {
     const item = findItem(id);
     if (!item) return;
     if (state.cart.includes(id)) {
       state.cart = state.cart.filter((x) => x !== id);
-      toast(`Removed “${item.name}”`);
+      toast(`Removed ${item.name}`);
     } else {
       state.cart.push(id);
-      toast(`Added “${item.name}” to your quote`);
+      toast(`Added ${item.name}`);
       const badge = $("#cartCount");
       badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump");
     }
@@ -201,6 +284,7 @@
     $$("[data-add]").forEach((btn) => {
       const inCart = state.cart.includes(btn.dataset.add);
       btn.classList.toggle("added", inCart);
+      btn.classList.toggle("btn-gold", !inCart);
       btn.textContent = inCart ? "✓ Added" : "+ Add to quote";
     });
   }
@@ -214,39 +298,11 @@
     return { items, monthly, oneTime, subtotal, gst, total: subtotal + gst };
   }
 
-  function renderCart() {
-    const t = totals();
-    $("#cartCount").textContent = t.items.length;
-
-    $("#cartItems").innerHTML = t.items.length
-      ? t.items.map((i) => `
-          <div class="cart-item">
-            <div><b>${esc(i.name)}</b><small>${i.category ? esc(categoryName(i.category)) : "Package"}</small></div>
-            <div class="right">
-              <b>${money(i.price)}</b><small>${billingLabel(i.billing)}</small><br />
-              <button class="remove" data-remove="${i.id}">Remove</button>
-            </div>
-          </div>`).join("")
-      : `<div class="cart-empty"><p>🧾 Your quote basket is empty.</p><p><small>Add services from the catalog to build a custom plan.</small></p></div>`;
-
-    $("#cartTotals").innerHTML = t.items.length ? `
-      ${t.monthly ? `<div><span>Monthly retainers</span><span>${money(t.monthly)}/mo</span></div>` : ""}
-      ${t.oneTime ? `<div><span>One-time projects</span><span>${money(t.oneTime)}</span></div>` : ""}
-      <div><span>GST (18%)</span><span>${money(t.gst)}</span></div>
-      <div class="grand"><span>First invoice (est.)</span><span>${money(t.total)}</span></div>` : "";
-
-    ["#copyQuote", "#clearCart"].forEach((sel) => ($(sel).disabled = !t.items.length));
-    const wa = $("#sendWhatsApp");
-    wa.href = t.items.length ? `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(quoteText())}` : "#";
-    wa.classList.toggle("is-disabled", !t.items.length);
-    wa.setAttribute("aria-disabled", String(!t.items.length));
-  }
-
   function quoteText() {
     const t = totals();
-    const lines = t.items.map((i) => `• ${i.name} — ${money(i.price)} ${billingLabel(i.billing)}`);
+    const lines = t.items.map((i) => `• ${i.name}: ${money(i.price)} ${billingLabel(i.billing)}`);
     return [
-      "Hi YAP Digital Marketing! I'd like a quote for:",
+      "Hi YAP Digital Marketing Agency! I'd like a quote for:",
       "",
       ...lines,
       "",
@@ -256,40 +312,45 @@
     ].filter((l, idx, arr) => l !== "" || arr[idx - 1] !== "").join("\n");
   }
 
+  function renderCart() {
+    const t = totals();
+    $("#cartCount").textContent = t.items.length;
+    $("#cartItems").innerHTML = t.items.length
+      ? t.items.map((i) => `
+          <div class="cart-item">
+            <div><b>${esc(i.name)}</b><small>${i.category ? esc(categoryName(i.category)) : "Package"}</small></div>
+            <div class="right">
+              <b>${money(i.price)}</b><small>${billingLabel(i.billing)}</small><br />
+              <button class="remove" data-remove="${i.id}">Remove</button>
+            </div>
+          </div>`).join("")
+      : `<div class="cart-empty"><p>Your quote basket is empty.</p><p><small>Add services or a package to build your plan.</small></p></div>`;
+
+    $("#cartTotals").innerHTML = t.items.length ? `
+      ${t.monthly ? `<div><span>Monthly plans</span><span>${money(t.monthly)}/mo</span></div>` : ""}
+      ${t.oneTime ? `<div><span>One-time projects</span><span>${money(t.oneTime)}</span></div>` : ""}
+      <div><span>GST (18%)</span><span>${money(t.gst)}</span></div>
+      <div class="grand"><span>First invoice (est.)</span><span>${money(t.total)}</span></div>` : "";
+
+    ["#copyQuote", "#clearCart"].forEach((sel) => ($(sel).disabled = !t.items.length));
+    const wa = $("#sendWhatsApp");
+    wa.href = t.items.length ? waLink(quoteText()) : "#";
+    wa.classList.toggle("is-disabled", !t.items.length);
+    wa.setAttribute("aria-disabled", String(!t.items.length));
+  }
+
   function openCart() {
     $("#cartDrawer").classList.add("open");
     $("#cartDrawer").setAttribute("aria-hidden", "false");
     $("#cartOverlay").hidden = false;
     document.body.classList.add("no-scroll");
+    $("#cartClose").focus();
   }
   function closeCart() {
     $("#cartDrawer").classList.remove("open");
     $("#cartDrawer").setAttribute("aria-hidden", "true");
     $("#cartOverlay").hidden = true;
     document.body.classList.remove("no-scroll");
-  }
-
-  /* ---------- Copy to clipboard (with fallback) ---------- */
-  function copyText(text) {
-    const fallback = () => {
-      const ta = document.createElement("textarea");
-      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
-      document.body.appendChild(ta); ta.select();
-      let ok = false; try { ok = document.execCommand("copy"); } catch { ok = false; }
-      ta.remove();
-      toast(ok ? "Quote copied" : "Copy failed. Select the text manually.");
-    };
-    try {
-      navigator.clipboard.writeText(text).then(() => toast("Quote copied"), fallback);
-    } catch { fallback(); }
-  }
-
-  /* ---------- Theme ---------- */
-  const systemDark = () => !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-  const currentTheme = () => document.documentElement.dataset.theme || (systemDark() ? "dark" : "light");
-  function applyTheme(theme) {
-    if (theme) document.documentElement.dataset.theme = theme;
-    $("#themeToggle").textContent = currentTheme() === "dark" ? "☀️" : "🌙";
   }
 
   /* ---------- Contact form ---------- */
@@ -305,14 +366,13 @@
     });
     if (!valid) {
       msg.className = "form-msg err";
-      msg.textContent = "Please fill in your name, a valid phone number and email.";
+      msg.textContent = "Please add your name and a phone number.";
       return;
     }
-    const data = Object.fromEntries(new FormData(form));
-    const body = `Hi YAP Digital Marketing! New enquiry:\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nInterested in: ${data.interest || "-"}\n\n${data.message || ""}`;
-    const link = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(body)}`;
+    const d = Object.fromEntries(new FormData(form));
+    const body = `Hi YAP! New enquiry:\nName: ${d.name}\nPhone: ${d.phone}\nBusiness: ${d.business || "-"}\nInterested in: ${d.interest || "-"}\n\n${d.message || ""}`;
     msg.className = "form-msg ok";
-    msg.innerHTML = `Your enquiry is ready. <a href="${link}" target="_blank" rel="noopener">Tap here to send it on WhatsApp</a>, or email us at ${esc(CONTACT.email)}.`;
+    msg.innerHTML = `Your enquiry is ready. <a href="${esc(waLink(body))}" target="_blank" rel="noopener">Tap here to send it on WhatsApp</a>.`;
   }
 
   /* ---------- Events ---------- */
@@ -321,8 +381,7 @@
       const chip = e.target.closest("[data-cat]");
       if (!chip) return;
       state.category = chip.dataset.cat;
-      renderChips();
-      renderServices();
+      renderChips(); renderServices();
     });
 
     let searchTimer;
@@ -338,14 +397,14 @@
       renderChips(); renderServices();
     });
 
-    // Delegated clicks for add / details / remove
     document.addEventListener("click", (e) => {
-      const add = e.target.closest("[data-add]");
-      if (add) return toggleCart(add.dataset.add);
-      const det = e.target.closest("[data-details]");
-      if (det) return openModal(det.dataset.details);
-      const rem = e.target.closest("[data-remove]");
-      if (rem) return toggleCart(rem.dataset.remove);
+      let t;
+      if ((t = e.target.closest("[data-add]"))) return toggleCart(t.dataset.add);
+      if ((t = e.target.closest("[data-details]"))) return openModal(t.dataset.details);
+      if ((t = e.target.closest("[data-remove]"))) return toggleCart(t.dataset.remove);
+      if ((t = e.target.closest("[data-copy]"))) return copyText(t.dataset.copy);
+      if ((t = e.target.closest("[data-work]"))) { state.work = t.dataset.work; renderWorkChips(); renderWork(); return; }
+      if ((t = e.target.closest("[data-w]")) && YA) return YA.lightbox(workList, +t.dataset.w);
     });
 
     $("#modalClose").addEventListener("click", closeModal);
@@ -358,7 +417,7 @@
       state.cart = []; saveCart(); refreshAddButtons(); renderCart(); toast("Quote basket cleared");
     });
     $("#sendWhatsApp").addEventListener("click", (e) => { if (!state.cart.length) e.preventDefault(); });
-    $("#copyQuote").addEventListener("click", () => copyText(quoteText()));
+    $("#copyQuote").addEventListener("click", () => copyText(quoteText(), "Quote copied"));
 
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
@@ -366,28 +425,29 @@
       else if ($("#cartDrawer").classList.contains("open")) closeCart();
     });
 
-    $("#themeToggle").addEventListener("click", () => {
-      const next = currentTheme() === "dark" ? "light" : "dark";
-      applyTheme(next);
-      safeStorage(() => localStorage.setItem(THEME_KEY, next));
+    const menu = $("#menuToggle");
+    menu.addEventListener("click", () => {
+      const open = $("#navLinks").classList.toggle("open");
+      menu.setAttribute("aria-expanded", String(open));
     });
-
-    $("#menuToggle").addEventListener("click", () => $("#navLinks").classList.toggle("open"));
-    $$("#navLinks a").forEach((a) => a.addEventListener("click", () => $("#navLinks").classList.remove("open")));
+    $$("#navLinks a").forEach((a) => a.addEventListener("click", () => {
+      $("#navLinks").classList.remove("open");
+      menu.setAttribute("aria-expanded", "false");
+    }));
 
     $("#contactForm").addEventListener("submit", handleForm);
   }
 
   /* ---------- Init ---------- */
   function init() {
-    const savedTheme = safeStorage(() => localStorage.getItem(THEME_KEY), null);
-    applyTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : null);
-
     $("#year").textContent = new Date().getFullYear();
+    renderHero();
+    renderMarquee();
     renderChips();
     renderServices();
+    initWork();
     renderPackages();
-    renderTestimonials();
+    renderInstagram();
     renderContact();
     renderCart();
     bindEvents();
