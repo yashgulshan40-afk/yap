@@ -14,7 +14,7 @@ const CATEGORIES = [
   { id: "web",     name: "Web Design & Dev",      icon: "💻" },
   { id: "brand",   name: "Branding & Design",     icon: "🎨" },
   { id: "email",   name: "Email & Automation",    icon: "✉️" },
-  { id: "video",   name: "Video & Reels",         icon: "🎬" },
+  { id: "video",   name: "Video & Cinematic",     icon: "🎬" },
 ];
 
 const SERVICES = [
@@ -338,6 +338,24 @@ const SERVICES = [
       "Hook-first scripting",
       "Thumbnail / cover design",
     ],
+  },
+  {
+    id: "video-cinematic",
+    category: "video",
+    name: "Cinematic Brand Film",
+    tagline: "A premium shoot that tells your brand story.",
+    price: 24999, billing: "one-time",
+    popular: false,
+    delivery: "Delivered in 10–14 days",
+    features: [
+      "Concept, script & shot list",
+      "1-day professional shoot (Delhi NCR / Agra)",
+      "Cinematic colour grading & sound design",
+      "1 hero film (60–90s) + 3 short cut-downs",
+      "Vertical versions for reels & shorts",
+      "2 rounds of revisions",
+    ],
+    note: "Travel outside Delhi NCR & Agra is quoted separately.",
   },
   {
     id: "video-explainer",
