@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yash Agarwal Showreel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Yash Agarwal, freelance social media manager, videographer and editor. Reels and content for food & beverage brands in Agra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a film reel. Full-bleed looping hero, a 9:16 reel strip, then clients as numbered "scenes". */
+:root {
+  --ink: #0e0c0a;          /* warm black, like an unlit set */
+  --reel: #17140f;         /* raised surfaces */
+  --line: #2c2620;
+  --paper: #f3ece2;        /* text */
+  --dim: #a89d8f;          /* secondary text */
+  --tungsten: #ffb347;     /* 3200K light: the single accent */
+  --rec: #ff4d3d;          /* record dot only */
+  --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--ink); }
+body { background: var(--ink); color: var(--paper); font: 400 16px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--tungsten); outline-offset: 3px; }
+.wrap { max-width: 1320px; margin-inline: auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.mono { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 800; line-height: .92; text-transform: uppercase; text-wrap: balance; letter-spacing: .01em; }
+
+/* ---------- Header ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--ink); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(14, 12, 10, .82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-size: 24px; font-weight: 800; text-transform: uppercase; }
+.rec { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 11px; color: var(--dim); }
+.rec::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rec); animation: blink 1.4s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+.top nav { display: flex; gap: 22px; font-weight: 600; font-size: 14px; }
+.top nav a { color: var(--dim); }
+.top nav a:hover { color: var(--paper); }
+.top .wa { padding: 8px 14px; border: 1px solid var(--tungsten); color: var(--tungsten); border-radius: 999px; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero-bg { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; opacity: .55; }
+.hero-bg video { width: 100%; height: 100%; object-fit: cover; filter: saturate(.85) contrast(1.05); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,12,10,.35) 0%, rgba(14,12,10,.55) 55%, var(--ink) 100%); }
+.hero .wrap { position: relative; z-index: 1; padding-block: 120px 56px; display: grid; gap: 22px; }
+.slate { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.hero h1 { font-size: clamp(64px, 15vw, 210px); font-weight: 900; }
+.hero h1 span { display: block; color: var(--tungsten); }
+.hero .role { max-width: 60ch; font-size: clamp(16px, 2vw, 19px); color: var(--paper); }
+.hero .role b { color: var(--tungsten); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 700; font-size: 15px; border: 1px solid var(--line); background: var(--reel); transition: transform .15s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.hot { background: var(--tungsten); border-color: var(--tungsten); color: var(--ink); }
+.counter { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 18px; }
+.counter div { background: rgba(23, 20, 15, .88); padding: 16px 18px; }
+.counter b { display: block; font-family: var(--f-display); font-size: 34px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.counter span { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+
+/* ---------- Section heads ---------- */
+section.block { padding-block: 72px; border-bottom: 1px solid var(--line); }
+.head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; margin-bottom: 28px; }
+.head h2 { font-size: clamp(44px, 7vw, 92px); }
+.head p { max-width: 46ch; color: var(--dim); }
+
+/* ---------- Reel strip (9:16) ---------- */
+.strip { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(150px, 22vw, 220px); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-color: var(--line) transparent; }
+.tile { position: relative; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 14px; overflow: hidden; background: var(--reel); border: 1px solid var(--line); scroll-snap-align: start; text-align: left; padding: 0; }
+.tile img, .tile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tile .shade { position: absolute; inset: auto 0 0; padding: 40px 12px 12px; background: linear-gradient(transparent, rgba(0,0,0,.85)); display: grid; gap: 2px; }
+.tile .shade b { font-size: 14px; line-height: 1.25; font-weight: 600; }
+.tile .shade small { font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--tungsten); }
+.tile .tc { position: absolute; top: 10px; left: 10px; font-family: var(--f-mono); font-size: 10px; padding: 3px 7px; border-radius: 6px; background: rgba(0,0,0,.55); }
+.tile .playmark { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; background: rgba(0,0,0,.55); display: grid; place-items: center; font-size: 11px; }
+.tile:hover { border-color: var(--tungsten); }
+
+/* ---------- Scenes (clients) ---------- */
+.cat-label { display: flex; align-items: center; gap: 12px; margin: 40px 0 12px; }
+.cat-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.scene { display: grid; grid-template-columns: 70px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 18px 0; border-top: 1px solid var(--line); }
+.scene:hover h3 { color: var(--tungsten); }
+.scene .no { font-family: var(--f-mono); font-size: 12px; color: var(--dim); }
+.scene h3 { font-size: clamp(30px, 4.4vw, 54px); transition: color .2s; }
+.scene .meta { color: var(--dim); font-size: 14px; margin-top: 6px; }
+.scene .thumbs { display: flex; gap: 6px; }
+.scene .thumbs img { width: 64px; height: 84px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+
+/* ---------- Project view ---------- */
+.view[hidden] { display: none !important; }
+.p-head { padding-block: 56px 28px; border-bottom: 1px solid var(--line); }
+.crumb { display: inline-flex; gap: 8px; margin-bottom: 22px; }
+.crumb a { color: var(--tungsten); }
+.p-head h1 { font-size: clamp(52px, 10vw, 140px); }
+.p-head p { color: var(--dim); max-width: 60ch; margin-top: 14px; font-size: 17px; }
+.p-head .mono { margin-top: 14px; display: block; }
+.group { padding-block: 40px 8px; }
+.group > h2 { font-size: clamp(32px, 5vw, 56px); margin-bottom: 6px; }
+.group > .note { color: var(--dim); margin-bottom: 8px; max-width: 60ch; }
+.sub { margin: 22px 0 12px; }
+.grid-v { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.grid-p { columns: 4 220px; column-gap: 12px; }
+.grid-p .ph { break-inside: avoid; margin-bottom: 12px; display: block; width: 100%; padding: 0; background: var(--reel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; text-align: left; position: relative; }
+.grid-p .ph img { width: 100%; height: auto; }
+.grid-p .ph span { display: block; padding: 9px 12px 11px; font-size: 13px; color: var(--dim); }
+.grid-p .ph:hover { border-color: var(--tungsten); }
+.next-p { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 40px 70px; }
+
+/* ---------- About / contact ---------- */
+.about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.about p.big { font-size: clamp(20px, 2.6vw, 28px); line-height: 1.45; }
+.about p.big b { color: var(--tungsten); font-weight: 600; }
+.slates { display: grid; gap: 10px; }
+.slates .row { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 14px 16px; background: var(--reel); border: 1px solid var(--line); border-radius: 12px; }
+.slates .row .v { font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.slates .row button, .slates .row a.go { font-size: 12px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; }
+.slates .row a.go { border-color: var(--tungsten); color: var(--tungsten); }
+footer { padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); color: var(--dim); font-size: 13px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.toast { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); opacity: 0; visibility: hidden; pointer-events: none; background: var(--tungsten); color: var(--ink); padding: 10px 18px; border-radius: 999px; font-weight: 700; z-index: 70; transition: transform .25s, opacity .25s, visibility .25s; }
+.toast.on { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
+
+@media (max-width: 820px) {
+  .top nav a:not(.wa) { display: none; }
+  .about { grid-template-columns: 1fr; }
+  .scene { grid-template-columns: 44px minmax(0, 1fr); }
+  .scene .thumbs { display: none; }
+  .hero-bg { grid-template-columns: 1fr; }
+  .hero-bg video:not(:first-child) { display: none; }
+  .hero .wrap { padding-block: 80px 40px; }
+  .slates .row { grid-template-columns: minmax(0, 1fr) auto; }
+  .slates .row .mono { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">Yash Agarwal <span class="rec">REC</span></a>
+    <nav>
+      <a href="#home" data-jump="reel">Showreel</a>
+      <a href="#home" data-jump="clients">Clients</a>
+      <a href="#home" data-jump="about">About</a>
+      <a class="wa" id="waTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <div class="view" id="v-home">
+    <section class="hero">
+      <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="slate">
+          <span class="mono">Scene 01 · Take 01</span>
+          <span class="mono">Agra, India</span>
+          <span class="mono" id="slateCount"></span>
+        </div>
+        <h1>Yash <span>Agarwal</span></h1>
+        <p class="role" id="role"></p>
+        <div class="cta">
+          <a class="btn hot" href="#home" data-jump="reel">▶ Watch the reels</a>
+          <a class="btn" href="#home" data-jump="about">Book a shoot</a>
+        </div>
+        <div class="counter" id="counter"></div>
+      </div>
+    </section>
+
+    <section class="block" id="reel">
+      <div class="wrap">
+        <div class="head">
+          <h2>Showreel</h2>
+          <p>Shot, cut and posted for restaurants, cafes, gyms and brands. Tap any reel to play it with sound.</p>
+        </div>
+        <div class="strip" id="strip"></div>
+      </div>
+    </section>
+
+    <section class="block" id="clients">
+      <div class="wrap">
+        <div class="head">
+          <h2>Client scenes</h2>
+          <p id="clientsIntro"></p>
+        </div>
+        <div id="scenes"></div>
+      </div>
+    </section>
+
+    <section class="block" id="about">
+      <div class="wrap about">
+        <div>
+          <span class="mono">About</span>
+          <h2 style="font-size:clamp(44px,7vw,92px);margin:10px 0 22px">Behind the camera</h2>
+          <p class="big" id="aboutText"></p>
+        </div>
+        <div>
+          <span class="mono">Call sheet</span>
+          <div class="slates" id="contacts" style="margin-top:14px"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PROJECT -->
+  <div class="view" id="v-project" hidden></div>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Yash Agarwal · Freelance social media manager & videographer</span><a href="#home">Back to start ↑</a></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script>
+(function () {
+  var Y = window.YA, $ = function (s) { return document.querySelector(s); };
+  var esc = Y.esc, C = Y.contact;
+  var tc = function (n) { var s = String(n).padStart(2, "0"); return "00:00:" + s + ":00"; };
+
+  function toast(t) { var el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(function () { el.classList.remove("on"); }, 1800); }
+
+  /* ---------- Home ---------- */
+  $("#yr").textContent = new Date().getFullYear();
+  $("#waTop").href = C.waLink("Hi Yash, I saw your showreel and want to discuss a shoot.");
+  $("#role").innerHTML = esc(Y.profile.eyebrow).replace("(", "<br><b>").replace(")", "</b>") + "<br>" + esc(Y.profile.tagline.split(". ").slice(1).join(". "));
+  $("#slateCount").textContent = Y.projects.length + " clients";
+  $("#counter").innerHTML = Y.profile.stats.map(function (s) {
+    return "<div><b>" + esc(s.value) + "</b><span>" + esc(s.label) + "</span></div>";
+  }).join("") + "<div><b>" + Y.totals.video + "</b><span>Videos in this reel</span></div>";
+
+  var vids = Y.items.filter(function (i) { return i.type === "video"; });
+  // Hero: three looping clips
+  var heroPick = [Y.project("fakira"), Y.project("barista"), Y.project("personal-portfolio")]
+    .map(function (p) { return p && p.heroVideo; }).filter(Boolean);
+  $("#heroBg").innerHTML = heroPick.map(function (v) {
+    return '<video muted loop playsinline autoplay preload="metadata" poster="' + esc(Y.src(v.img)) + '" src="' + esc(Y.src(v.video)) + '"></video>';
+  }).join("");
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("#heroBg video").forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
+  }
+
+  // Showreel strip: two videos from each client that has them, then the rest
+  var seen = {}, featured = [];
+  vids.forEach(function (v) { seen[v.project] = (seen[v.project] || 0) + 1; if (seen[v.project] <= 2) featured.push(v); });
+  vids.forEach(function (v) { if (featured.indexOf(v) < 0 && featured.length < 24) featured.push(v); });
+  $("#strip").innerHTML = featured.map(function (v, i) {
+    return '<button class="tile" data-i="' + i + '" aria-label="Play ' + esc(v.caption) + '">' +
+      '<img loading="lazy" alt="" src="' + esc(Y.src(v.img)) + '">' +
+      '<span class="tc">' + tc(i + 1) + '</span><span class="playmark">▶</span>' +
+      '<span class="shade"><small>' + esc(v.projectTitle) + "</small><b>" + esc(v.caption) + "</b></span></button>";
+  }).join("");
+  bindTiles($("#strip"), featured);
+
+  // Scenes
+  $("#clientsIntro").textContent = Y.projects.length + " clients across " + Y.categories.length +
+    " industries. " + Y.totals.video + " videos, " + Y.totals.reel + " reel covers and " + Y.totals.photo + " photos & graphics.";
+  var n = 0;
+  $("#scenes").innerHTML = Y.categories.map(function (c) {
+    return '<div class="cat-label"><span class="mono">' + esc(c.name) + "</span></div>" + c.projects.map(function (p) {
+      n++;
+      var th = p.items.filter(function (i) { return i.img; }).slice(0, 3).map(function (i) {
+        return '<img loading="lazy" alt="" src="' + esc(Y.src(i.img)) + '">';
+      }).join("");
+      return '<a class="scene" href="#' + p.id + '"><span class="no">SC ' + String(n).padStart(2, "0") + "</span>" +
+        "<div><h3>" + esc(p.title) + '</h3><div class="meta">' + esc(p.kind) + " · " + esc(Y.countLabel(p.counts)) + "</div></div>" +
+        '<div class="thumbs">' + th + "</div></a>";
+    }).join("");
+  }).join("");
+
+  // About + contacts
+  $("#aboutText").innerHTML = esc(Y.profile.about).replace("food and beverage brands", "<b>food and beverage brands</b>");
+  var rows = [
+    ["WhatsApp", C.phonePretty, C.waLink("Hi Yash, I want to discuss a shoot."), "Message"],
+    ["Phone", C.phonePretty, null, null],
+    ["Email", C.email, null, null],
+    ["Instagram", C.instagram, C.instagramUrl, "Open"],
+  ];
+  $("#contacts").innerHTML = rows.map(function (r) {
+    return '<div class="row"><span class="mono">' + r[0] + '</span><span class="v">' + esc(r[1]) + "</span>" +
+      (r[2] ? '<a class="go" href="' + esc(r[2]) + '" target="_blank" rel="noopener">' + r[3] + "</a>" : '<button data-copy="' + esc(r[1]) + '">Copy</button>') + "</div>";
+  }).join("");
+  $("#contacts").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (!b) return;
+    Y.copy(b.dataset.copy, function (ok) { toast(ok ? "Copied" : "Select the text to copy"); });
+  });
+
+  /* ---------- Tiles: hover preview + open ---------- */
+  function bindTiles(root, list) {
+    root.addEventListener("click", function (e) {
+      var t = e.target.closest("[data-i]"); if (!t) return;
+      Y.lightbox(list, +t.dataset.i);
+    });
+    if (!window.matchMedia("(hover: hover)").matches) return;
+    root.addEventListener("mouseover", function (e) {
+      var t = e.target.closest(".tile[data-i]"); if (!t || t.querySelector("video")) return;
+      var it = list[+t.dataset.i]; if (it.type !== "video") return;
+      var v = document.createElement("video");
+      v.muted = true; v.loop = true; v.playsInline = true; v.src = Y.src(it.video);
+      t.insertBefore(v, t.children[1]); var p = v.play(); if (p && p.catch) p.catch(function () {});
+      t.addEventListener("mouseleave", function off() { v.remove(); t.removeEventListener("mouseleave", off); });
+    });
+  }
+
+  /* ---------- Project view ---------- */
+  function renderProject(p) {
+    var idx = Y.projects.indexOf(p), next = Y.projects[(idx + 1) % Y.projects.length];
+    var html = '<section class="p-head"><div class="wrap">' +
+      '<div class="crumb mono"><a href="#home">Showreel</a><span>/</span><span>' + esc(p.category) + "</span></div>" +
+      "<h1>" + esc(p.title) + "</h1>" + (p.summary ? "<p>" + esc(p.summary) + "</p>" : "") +
+      '<span class="mono">SC ' + String(idx + 1).padStart(2, "0") + " · " + esc(Y.countLabel(p.counts)) + "</span></div></section>";
+    var k = 0;
+    html += '<div class="wrap">';
+    p.groups.forEach(function (g) {
+      html += '<section class="group">' + (g.title ? "<h2>" + esc(g.title) + "</h2>" : "") + (g.note ? '<p class="note">' + esc(g.note) + "</p>" : "");
+      g.sections.forEach(function (s) {
+        if (s.title) html += '<div class="sub mono">' + esc(s.title) + "</div>";
+        var vertical = s.items.some(function (i) { return i.type !== "photo"; });
+        if (vertical) {
+          html += '<div class="grid-v">' + s.items.map(function (it) {
+            var i = k++;
+            return '<button class="tile" data-i="' + i + '" aria-label="Open ' + esc(it.caption) + '">' +
+              '<img loading="lazy" alt="" src="' + esc(Y.src(it.img)) + '">' +
+              (it.type === "photo" ? "" : '<span class="playmark">' + (it.type === "video" ? "▶" : "◩") + "</span>") +
+              '<span class="shade"><small>' + (it.type === "video" ? "Video" : it.type === "reel" ? "Reel cover" : "Photo") + "</small><b>" + esc(it.caption) + "</b></span></button>";
+          }).join("") + "</div>";
+        } else {
+          html += '<div class="grid-p">' + s.items.map(function (it) {
+            var i = k++;
+            return '<button class="ph" data-i="' + i + '"><img loading="lazy" alt="' + esc(it.caption) + '" src="' + esc(Y.src(it.img)) + '"><span>' + esc(it.caption) + "</span></button>";
+          }).join("") + "</div>";
+        }
+      });
+      html += "</section>";
+    });
+    html += '<div class="next-p"><a class="btn" href="#home">← All clients</a><a class="btn hot" href="#' + next.id + '">Next: ' + esc(next.title) + " →</a></div></div>";
+    var view = $("#v-project");
+    view.innerHTML = html;
+    bindTiles(view, p.items);
+  }
+
+  /* ---------- Router ---------- */
+  var pendingJump = null;
+  document.addEventListener("click", function (e) {
+    var j = e.target.closest("[data-jump]"); if (!j) return;
+    e.preventDefault(); pendingJump = j.dataset.jump;
+    if (location.hash && location.hash !== "#home") location.hash = "home"; else route();
+  });
+  function route() {
+    var id = (location.hash || "").slice(1), p = Y.project(id);
+    Y.closeLightbox();
+    $("#v-home").hidden = !!p; $("#v-project").hidden = !p;
+    if (p) { renderProject(p); document.title = p.title + " · Yash Agarwal"; window.scrollTo(0, 0); }
+    else {
+      document.title = "Yash Agarwal Showreel";
+      $("#v-project").innerHTML = "";
+      if (pendingJump) { var el = document.getElementById(pendingJump); if (el) el.scrollIntoView(); pendingJump = null; }
+    }
+  }
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>

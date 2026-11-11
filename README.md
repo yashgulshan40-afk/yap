@@ -48,4 +48,5 @@ js/data.js        Catalog data (edit this)
 js/app.js         Filtering, quote basket, modal, theme, form
 yap-catalog.html  Single-file build of all the above (for phones)
 tools/build_single.py  Rebuilds yap-catalog.html
+portfolio/        Yash Agarwal portfolio, 4 versions (see portfolio/README.md)
 ```

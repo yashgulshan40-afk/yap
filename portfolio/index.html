@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yash Agarwal Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Four versions of Yash Agarwal's portfolio: cinematic showreel, editorial case studies, React media library and services catalog.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: a contact sheet. Name up top, then the four versions as large, equal frames. */
+:root {
+  --bg: #f6f6f3;
+  --panel: #ffffff;
+  --text: #171715;
+  --muted: #66655f;
+  --line: #e0dfd8;
+  --accent: #c2410c;
+  --f-head: "Space Grotesk", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #121211; --panel: #1b1b19; --text: #efeee9; --muted: #a3a29b; --line: #2c2c29; --accent: #fb923c; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #121211; --panel: #1b1b19; --text: #efeee9; --muted: #a3a29b; --line: #2c2c29; --accent: #fb923c; color-scheme: dark; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font: 400 16px/1.6 var(--f-body); }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1160px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 48px 56px; }
+header { display: grid; gap: 10px; margin-bottom: 36px; }
+.kicker { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 700 clamp(40px, 7vw, 76px)/1 var(--f-head); letter-spacing: -.02em; text-wrap: balance; }
+header p { color: var(--muted); max-width: 62ch; font-size: 18px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.v { display: grid; grid-template-rows: auto 1fr; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; transition: transform .2s, border-color .2s; }
+.v:hover { transform: translateY(-3px); border-color: var(--accent); }
+.shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; aspect-ratio: 16 / 7; max-width: 100%; background: var(--line); }
+.shots img { width: 100%; height: 100%; object-fit: cover; }
+.v .body { padding: 18px 20px 20px; display: grid; gap: 8px; align-content: start; }
+.v .tech { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.v h2 { font: 700 26px/1.15 var(--f-head); }
+.v p { color: var(--muted); }
+.v .go { color: var(--accent); font-weight: 600; margin-top: 4px; }
+.note { margin-top: 28px; color: var(--muted); font-size: 14px; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="kicker">Portfolio · 4 versions</span>
+    <h1>Yash Agarwal</h1>
+    <p id="dek">Freelance social media manager & marketer. Pick a version below. All four show the same work.</p>
+  </header>
+  <div class="grid">
+    <a class="v" href="cinematic.html">
+      <div class="shots" data-shots="fakira"></div>
+      <div class="body"><span class="tech">HTML · CSS · vanilla JavaScript</span><h2>1. Cinematic Showreel</h2>
+        <p>Dark, video-first. Looping hero, a 9:16 reel strip with hover previews, and every client as a numbered scene.</p><span class="go">Open →</span></div>
+    </a>
+    <a class="v" href="editorial.html">
+      <div class="shots" data-shots="barista"></div>
+      <div class="body"><span class="tech">HTML · CSS Grid · light & dark</span><h2>2. Editorial Journal</h2>
+        <p>A restaurant-menu index with dotted leaders, then a magazine-style case study for each client.</p><span class="go">Open →</span></div>
+    </a>
+    <a class="v" href="react.html">
+      <div class="shots" data-shots="heer"></div>
+      <div class="body"><span class="tech">React 18 · htm · no build step</span><h2>3. Media Library App</h2>
+        <p>Search captions, filter by videos, reels or photos, by industry and by client. Viewer with details and a WhatsApp button.</p><span class="go">Open →</span></div>
+    </a>
+    <a class="v" href="catalog.html">
+      <div class="shots" data-shots="workout-zone"></div>
+      <div class="body"><span class="tech">Tailwind CSS · JavaScript</span><h2>4. Services Catalog</h2>
+        <p>Ten services with real samples on each card, a client wall, and an enquiry basket that sends your picks on WhatsApp.</p><span class="go">Open →</span></div>
+    </a>
+  </div>
+  <p class="note" id="note"></p>
+</div>
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script>
+(function () {
+  var Y = window.YA; if (!Y) return;
+  document.querySelectorAll("[data-shots]").forEach(function (el) {
+    var p = Y.project(el.dataset.shots); if (!p) return;
+    var pics = p.items.filter(function (i) { return i.type === "photo"; }).slice(0, 4);
+    el.innerHTML = pics.map(function (i) { return '<img loading="lazy" alt="" src="' + Y.esc(Y.src(i.img)) + '">'; }).join("");
+  });
+  document.getElementById("note").textContent = Y.projects.length + " clients · " + Y.totals.video + " videos · " +
+    Y.totals.reel + " reel covers · " + Y.totals.photo + " photos & graphics";
+})();
+</script>
+</body>
+</html>

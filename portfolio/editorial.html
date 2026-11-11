@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yash Agarwal Portfolio Journal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Case studies of social media content by Yash Agarwal for restaurants, cafes, hotels, gyms and brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a printed menu card. Masthead, a "menu" index with dotted leaders, then one chapter per client. */
+:root {
+  --paper: #fbfbf8;
+  --ink: #1b1a17;
+  --soft: #66645d;
+  --rule: #dedbd2;
+  --plate: #f0eee7;        /* image backgrounds */
+  --bottle: #1e5b46;       /* accent: bottle green */
+  --on-bottle: #ffffff;
+  --f-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121512; --ink: #ecebe4; --soft: #a3a69c; --rule: #2b302b; --plate: #1a1e1a;
+    --bottle: #7fd1a8; --on-bottle: #0d1a13; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121512; --ink: #ecebe4; --soft: #a3a69c; --rule: #2b302b; --plate: #1a1e1a;
+  --bottle: #7fd1a8; --on-bottle: #0d1a13; color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font: 400 17px/1.65 var(--f-body); }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
+:focus-visible { outline: 2px solid var(--bottle); outline-offset: 3px; }
+.page { max-width: 1180px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: 1.02; text-wrap: balance; }
+em { font-style: italic; color: var(--bottle); }
+
+/* ---------- Masthead ---------- */
+.mast { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--ink); flex-wrap: wrap; }
+.mast .name { font-family: var(--f-display); font-size: 26px; text-decoration: none; }
+.mast nav { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.mast nav a { text-decoration: none; font-weight: 500; font-size: 15px; }
+.mast nav a:hover { color: var(--bottle); }
+.theme { height: 36px; padding: 0 14px; border: 1px solid var(--rule); border-radius: 999px; font-size: 14px; font-weight: 500; }
+
+/* ---------- Cover ---------- */
+.cover { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; padding-block: 56px 40px; border-bottom: 1px solid var(--rule); align-items: end; }
+.cover h1 { font-size: clamp(48px, 8vw, 112px); letter-spacing: -.01em; }
+.cover .dek { font-size: 20px; max-width: 46ch; margin-top: 22px; color: var(--soft); }
+.cover .facts { display: grid; gap: 0; border-top: 1px solid var(--ink); }
+.cover .facts div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.cover .facts b { font-family: var(--f-display); font-size: 28px; font-weight: 400; font-variant-numeric: tabular-nums; }
+.cover .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; border: 1px solid var(--ink); font-weight: 600; text-decoration: none; font-size: 15px; }
+.btn.solid { background: var(--bottle); border-color: var(--bottle); color: var(--on-bottle); }
+.btn:hover { transform: translateY(-1px); }
+.cover-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; padding-block: 28px; border-bottom: 1px solid var(--rule); }
+.cover-strip button { aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; border-radius: 4px; background: var(--plate); }
+.cover-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.cover-strip button:hover img { transform: scale(1.04); }
+
+/* ---------- Menu index ---------- */
+.menu { padding-block: 64px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 40px; }
+.menu h2 { font-size: clamp(42px, 5vw, 64px); }
+.menu h2 + p { color: var(--soft); margin-top: 10px; }
+.course { margin-bottom: 30px; }
+.course h3 { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--bottle); margin-bottom: 8px; }
+.dish { display: flex; align-items: baseline; gap: 10px; padding: 8px 0; text-decoration: none; }
+.dish b { font-family: var(--f-display); font-size: 26px; font-weight: 400; }
+.dish i { flex: 1; border-bottom: 1px dotted var(--soft); transform: translateY(-6px); min-width: 20px; }
+.dish span { font-family: var(--f-mono); font-size: 12px; color: var(--soft); white-space: nowrap; }
+.dish:hover b { color: var(--bottle); }
+
+/* ---------- Chapters ---------- */
+.chapter { padding-block: 64px 40px; border-bottom: 1px solid var(--rule); scroll-margin-top: 10px; }
+.ch-head { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; gap: 24px; align-items: start; margin-bottom: 30px; }
+.ch-no { font-family: var(--f-display); font-size: 72px; line-height: .9; color: var(--bottle); font-style: italic; }
+.ch-head h2 { font-size: clamp(38px, 5.4vw, 72px); }
+.ch-head p { color: var(--soft); margin-top: 10px; max-width: 58ch; }
+.ch-head .side { text-align: right; display: grid; gap: 4px; }
+.grp { margin-top: 30px; }
+.grp > h3 { font-size: 30px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
+.grp > .note { color: var(--soft); margin: -6px 0 14px; max-width: 60ch; }
+.sec-t { margin: 18px 0 10px; }
+.plates { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; }
+.plate { display: grid; gap: 6px; text-align: left; align-content: start; }
+.plate .img { position: relative; aspect-ratio: 4 / 5; max-width: 100%; background: var(--plate); overflow: hidden; border-radius: 4px; }
+.plate.tall .img { aspect-ratio: 9 / 16; }
+.plate img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.plate:hover img { transform: scale(1.04); }
+.plate .cap { font-size: 14px; line-height: 1.35; }
+.plate .tag { position: absolute; left: 8px; bottom: 8px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; background: var(--paper); color: var(--ink); padding: 3px 7px; border-radius: 3px; }
+.plates .lead { grid-column: span 2; grid-row: span 2; }
+.more { margin-top: 18px; }
+.more[hidden] { display: none; }
+
+/* ---------- Colophon ---------- */
+.colophon { padding-block: 72px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; }
+.colophon h2 { font-size: clamp(42px, 5vw, 64px); margin-bottom: 18px; }
+.colophon p.about { font-size: 21px; line-height: 1.55; }
+.card { border: 1px solid var(--ink); padding: 22px; display: grid; gap: 12px; }
+.card .line { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding-bottom: 12px; border-bottom: 1px dotted var(--rule); }
+.card .line:last-child { border-bottom: 0; padding-bottom: 0; }
+.card .v { font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.card .line a, .card .line button { font-size: 13px; font-weight: 600; color: var(--bottle); text-decoration: underline; }
+footer { border-top: 1px solid var(--ink); padding-block: 22px calc(22px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.toast { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); opacity: 0; visibility: hidden; background: var(--ink); color: var(--paper); padding: 10px 18px; border-radius: 999px; transition: .25s; z-index: 50; }
+.toast.on { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+
+@media (max-width: 860px) {
+  .cover, .menu, .colophon { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .dish { flex-wrap: wrap; row-gap: 0; }
+  .dish i { display: none; }
+  .dish span { white-space: normal; flex-basis: 100%; }
+  .cover-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ch-head { grid-template-columns: 1fr; gap: 8px; }
+  .ch-head .side { text-align: left; }
+  .ch-no { font-size: 48px; }
+  .plates { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plates .lead { grid-column: span 2; grid-row: auto; }
+  .dish b { font-size: 21px; }
+  .card .line { grid-template-columns: minmax(0, 1fr) auto; }
+  .card .line .mono { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="mast">
+    <a class="name" href="#top" id="top">Yash Agarwal</a>
+    <nav>
+      <a href="#menu">Index</a>
+      <a href="#colophon">About</a>
+      <a href="#colophon">Contact</a>
+      <button class="theme" id="theme">Dark mode</button>
+    </nav>
+  </header>
+
+  <section class="cover">
+    <div>
+      <span class="mono" id="eyebrow"></span>
+      <h1 style="margin-top:14px">Reels &amp; content for <em>food and beverage</em> brands.</h1>
+      <p class="dek" id="dek"></p>
+      <div class="actions">
+        <a class="btn solid" href="#menu">Read the case studies</a>
+        <a class="btn" id="waCover" href="#" target="_blank" rel="noopener">WhatsApp Yash</a>
+      </div>
+    </div>
+    <div class="facts" id="facts"></div>
+  </section>
+  <div class="cover-strip" id="strip"></div>
+
+  <section class="menu" id="menu">
+    <div>
+      <h2>The <em>menu</em></h2>
+      <p id="menuIntro"></p>
+    </div>
+    <div id="courses"></div>
+  </section>
+
+  <div id="chapters"></div>
+
+  <section class="colophon" id="colophon">
+    <div>
+      <span class="mono">About</span>
+      <h2 style="margin-top:10px">The person <em>behind</em> the lens</h2>
+      <p class="about" id="about"></p>
+    </div>
+    <div>
+      <span class="mono">Reservations</span>
+      <div class="card" id="card" style="margin-top:14px"></div>
+    </div>
+  </section>
+
+  <footer><span class="mono">© <span id="yr"></span> Yash Agarwal · Agra</span><a class="mono" href="#top">Back to top ↑</a></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script>
+(function () {
+  var Y = window.YA, esc = Y.esc, C = Y.contact;
+  var $ = function (s) { return document.querySelector(s); };
+  var FIRST = 11; // items shown per chapter before "show all"
+
+  /* Theme toggle: only stores an explicit choice */
+  try { var t = localStorage.getItem("ya-ed-theme"); if (t === "dark" || t === "light") document.documentElement.dataset.theme = t; } catch (e) {}
+  function isDark() { var t = document.documentElement.dataset.theme; return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
+  function themeLabel() { $("#theme").textContent = isDark() ? "Light mode" : "Dark mode"; }
+  themeLabel();
+  $("#theme").addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("ya-ed-theme", next); } catch (e) {}
+    themeLabel();
+  });
+
+  function toast(t) { var el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(function () { el.classList.remove("on"); }, 1800); }
+
+  $("#yr").textContent = new Date().getFullYear();
+  $("#eyebrow").textContent = Y.profile.eyebrow;
+  $("#dek").textContent = Y.profile.tagline;
+  $("#waCover").href = C.waLink("Hi Yash, I read your portfolio and want to talk about content for my brand.");
+  $("#facts").innerHTML = Y.profile.stats.map(function (s) {
+    return '<div><span class="mono">' + esc(s.label) + "</span><b>" + esc(s.value) + "</b></div>";
+  }).join("") + '<div><span class="mono">Clients featured</span><b>' + Y.projects.length + "</b></div>";
+
+  /* Cover strip: one photo from six different clients */
+  var stripItems = Y.projects.map(function (p) { return p.items.filter(function (i) { return i.type === "photo"; })[1] || p.cover; })
+    .filter(Boolean).slice(0, 6);
+  $("#strip").innerHTML = stripItems.map(function (it, i) {
+    return '<button data-strip="' + i + '" aria-label="' + esc(it.caption) + '"><img loading="lazy" alt="" src="' + esc(Y.src(it.img)) + '"></button>';
+  }).join("");
+  $("#strip").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-strip]"); if (b) Y.lightbox(stripItems, +b.dataset.strip);
+  });
+
+  /* Menu */
+  $("#menuIntro").textContent = Y.projects.length + " clients, " + Y.categories.length + " courses. " +
+    Y.totals.video + " videos, " + Y.totals.reel + " reel covers and " + Y.totals.photo + " photos & graphics.";
+  var no = 0, numbers = {};
+  $("#courses").innerHTML = Y.categories.map(function (c) {
+    return '<div class="course"><h3>' + esc(c.name) + "</h3>" + c.projects.map(function (p) {
+      numbers[p.id] = ++no;
+      return '<a class="dish" href="#' + p.id + '"><b>' + esc(p.title) + "</b><i></i><span>" + esc(Y.countLabel(p.counts)) + "</span></a>";
+    }).join("") + "</div>";
+  }).join("");
+
+  /* Chapters */
+  function plate(it, idx, lead) {
+    var tall = it.type !== "photo";
+    var tag = it.type === "video" ? "▶ Video" : it.type === "reel" ? "Reel" : "";
+    return '<button class="plate' + (tall ? " tall" : "") + (lead ? " lead" : "") + '" data-i="' + idx + '">' +
+      '<span class="img"><img loading="lazy" alt="' + esc(it.caption) + '" src="' + esc(Y.src(it.img)) + '">' +
+      (tag ? '<span class="tag">' + tag + "</span>" : "") + "</span>" +
+      '<span class="cap">' + esc(it.caption) + "</span></button>";
+  }
+  function chapterHTML(p, expanded) {
+    var shown = 0, k = 0, html = "";
+    p.groups.forEach(function (g) {
+      var gHtml = "", any = false;
+      g.sections.forEach(function (s) {
+        var cells = "";
+        s.items.forEach(function (it) {
+          var idx = k++;
+          if (!expanded && shown >= FIRST) return;
+          cells += plate(it, idx, shown === 0 && it.type === "photo" && p.total > 4);
+          shown++;
+        });
+        if (cells) { any = true; gHtml += (s.title ? '<div class="sec-t mono">' + esc(s.title) + "</div>" : "") + '<div class="plates">' + cells + "</div>"; }
+      });
+      if (any) html += '<div class="grp">' + (g.title ? "<h3>" + esc(g.title) + "</h3>" : "") + (g.note ? '<p class="note">' + esc(g.note) + "</p>" : "") + gHtml + "</div>";
+    });
+    return html;
+  }
+  $("#chapters").innerHTML = Y.projects.map(function (p) {
+    var n = String(numbers[p.id]).padStart(2, "0");
+    return '<article class="chapter" id="' + p.id + '">' +
+      '<header class="ch-head"><div class="ch-no">' + n + "</div>" +
+      '<div><span class="mono">' + esc(p.category) + "</span><h2>" + esc(p.title) + "</h2>" + (p.summary ? "<p>" + esc(p.summary) + "</p>" : "") + "</div>" +
+      '<div class="side"><span class="mono">' + esc(p.kind) + '</span><span class="mono">' + esc(Y.countLabel(p.counts)) + "</span></div></header>" +
+      '<div class="body" data-p="' + p.id + '">' + chapterHTML(p, false) + "</div>" +
+      (p.total > FIRST ? '<button class="btn more" data-more="' + p.id + '">Show all ' + p.total + " pieces</button>" : "") +
+      "</article>";
+  }).join("");
+
+  $("#chapters").addEventListener("click", function (e) {
+    var m = e.target.closest("[data-more]");
+    if (m) {
+      var p = Y.project(m.dataset.more);
+      m.previousElementSibling.innerHTML = chapterHTML(p, true);
+      m.hidden = true;
+      return;
+    }
+    var b = e.target.closest("[data-i]");
+    if (b) { var pid = b.closest("[data-p]").dataset.p; Y.lightbox(Y.project(pid).items, +b.dataset.i); }
+  });
+
+  /* Colophon */
+  $("#about").textContent = Y.profile.about;
+  var lines = [
+    ["WhatsApp", C.phonePretty, C.waLink("Hi Yash, I want to talk about content for my brand."), "Message"],
+    ["Phone", C.phonePretty, null],
+    ["Email", C.email, null],
+    ["Instagram", C.instagram, C.instagramUrl, "Open"],
+  ];
+  $("#card").innerHTML = lines.map(function (l) {
+    return '<div class="line"><span class="mono">' + l[0] + '</span><span class="v">' + esc(l[1]) + "</span>" +
+      (l[2] ? '<a href="' + esc(l[2]) + '" target="_blank" rel="noopener">' + l[3] + "</a>" : '<button data-copy="' + esc(l[1]) + '">Copy</button>') + "</div>";
+  }).join("");
+  $("#card").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (b) Y.copy(b.dataset.copy, function (ok) { toast(ok ? "Copied" : "Select the text to copy"); });
+  });
+
+  /* Deep link on load */
+  if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) setTimeout(function () { el.scrollIntoView(); }, 50); }
+})();
+</script>
+</body>
+</html>
