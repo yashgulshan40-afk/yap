@@ -1,0 +1,19 @@
+{
+  "name": "pepsi-3d-motion",
+  "version": "1.0.0",
+  "description": "3D motion graphic: Pepsi bottle cap opening (Three.js)",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve .",
+    "render": "node render.cjs 1920 1080 30"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
