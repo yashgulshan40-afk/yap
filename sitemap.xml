@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://yapdigitalmarketing.digital/</loc></url>
-  <url><loc>https://yapdigitalmarketing.digital/about.html</loc></url>
-  <url><loc>https://yapdigitalmarketing.digital/services.html</loc></url>
-  <url><loc>https://yapdigitalmarketing.digital/portfolio.html</loc></url>
-  <url><loc>https://yapdigitalmarketing.digital/packages.html</loc></url>
-  <url><loc>https://yapdigitalmarketing.digital/clients.html</loc></url>
-  <url><loc>https://yapdigitalmarketing.digital/contact.html</loc></url>
+  <url><loc>https://yapdigitalmarketing.com/</loc></url>
+  <url><loc>https://yapdigitalmarketing.com/about.html</loc></url>
+  <url><loc>https://yapdigitalmarketing.com/services.html</loc></url>
+  <url><loc>https://yapdigitalmarketing.com/portfolio.html</loc></url>
+  <url><loc>https://yapdigitalmarketing.com/packages.html</loc></url>
+  <url><loc>https://yapdigitalmarketing.com/media.html</loc></url>
+  <url><loc>https://yapdigitalmarketing.com/clients.html</loc></url>
+  <url><loc>https://yapdigitalmarketing.com/contact.html</loc></url>
 </urlset>

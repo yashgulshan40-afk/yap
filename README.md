@@ -11,7 +11,8 @@ Yeh YAP Digital Marketing Agency ki poori website hai. Theme logo se match karti
 | About Us | `about.html` |
 | Services | `services.html` |
 | Portfolio | `portfolio.html` |
-| Packages | `packages.html` |
+| Pricing (rate list, monthly plans, T&C) | `packages.html` |
+| Media (hamare Agra pages + promotion packages) | `media.html` |
 | Clients | `clients.html` |
 | Contact | `contact.html` |
 | 404 | `404.html` |
@@ -23,7 +24,8 @@ Saath me ye bhi hain:
 - Har service aur package par **"Enquire on WhatsApp"** button.
 - **Project brief form**, jo saari details bhar kar WhatsApp kholta hai.
 - **Portfolio**: category filter aur popup ke saath. Photos aur videos dono chalte hain.
-- **Packages**: Starter, Growth, Premium aur Custom. Price abhi nahi dikhta, uski jagah "Price on request" aata hai. Single services ki list bhi hai.
+- **Pricing**: Basic aur Premium monthly plans, single services ke charges, production charges, complimentary services, USP aur T&C. Saare price PDF se liye gaye hain.
+- **Media**: Agra Outlook, Agra People, Agra Lifestyles, Agra Wale aur Yash the Explorer, saath me story, reel, collab, sponsorship aur subscription ke packages.
 - **Clients**: chalte hue counters, industry ke hisaab se clients ki ginti, client logos aur testimonials.
 - **SEO**: meta tags, Open Graph image, `sitemap.xml`, `robots.txt` aur schema.org data.
 - Mobile, tablet aur desktop sab par theek dikhti hai.
@@ -37,10 +39,15 @@ Saara text aur data **ek hi file** me hai: **`assets/js/config.js`**. Ise Notepa
 | Phone, WhatsApp, email, domain, social links | `site` |
 | Home ki badi heading | `hero` |
 | Services | `services` |
-| Packages, aur baad me price | `packages.plans` → `price: "₹10,000", per: "/month"` |
-| Single services ka price | `packages.addons` |
-| Clients ke numbers | `stats` ⚠ abhi sample numbers hain |
-| Industry ke hisaab se clients | `clientCategories` ⚠ sample |
+| Monthly plans aur unke price | `pricing.monthly` |
+| Single services ke charges | `pricing.charges` |
+| Shoot / production charges | `pricing.production` |
+| Free (complimentary) services | `pricing.complimentary` |
+| Media pages aur promotion packages | `mediaPages`, `promotions` |
+| USP aur T&C | `usp`, `terms` |
+| Sab price chhupane hain | `showPrices: false` |
+| Clients ke numbers | `stats` |
+| Industry ke hisaab se clients | `clientCategories` |
 | Client naam / logo | `clients` → logo `assets/clients/` me rakho |
 | Testimonials | `testimonials` ⚠ sample hain, khaali `[]` karne par section hide ho jayega |
 | FAQ, process, "Why YAP" | `faq`, `process`, `why` |
@@ -85,7 +92,7 @@ Ya seedha `index.html` par double-click kar do.
 
 - **Netlify:** app.netlify.com/drop par poora folder drag-and-drop kar do.
 - **GitHub Pages:** repo ki Settings → Pages me branch select karo.
-- Domain (`yapdigitalmarketing.digital`) hosting ki settings me jodo. Domain alag ho to `config.js`, `sitemap.xml` aur `robots.txt` me badal dena.
+- Domain (`yapdigitalmarketing.com`) hosting ki settings me jodo. Domain alag ho to `config.js`, `sitemap.xml` aur `robots.txt` me badal dena.
 
 ## Folder structure
 

@@ -37,6 +37,17 @@
     ai: '<rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5h5M2.5 12v3M21.5 12v3"/>',
     content: '<path d="M5 4h10l4 4v12H5z"/><path d="M14 4v5h5M8 13h8M8 17h5"/>',
     analytics: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    megaphone: '<path d="M3 10v4a1 1 0 001 1h3l7 5V4L7 9H4a1 1 0 00-1 1z"/><path d="M18 8a5 5 0 010 8M7 15l1.5 5h2.5l-1-5"/>',
+    camera: '<path d="M4 7h3l2-3h6l2 3h3a1 1 0 011 1v11a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1z"/><circle cx="12" cy="13" r="4"/>',
+    vlog: '<circle cx="9" cy="7" r="3"/><path d="M3 20a6 6 0 0112 0"/><rect x="15" y="10" width="6" height="5" rx="1"/><path d="M21 11.5l2-1v4l-2-1"/>',
+    google: '<path d="M20.5 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h4.8a4.2 4.2 0 01-1.8 2.7v2.2h2.9c1.7-1.6 2.6-3.9 2.6-6.6z"/><path d="M12 21c2.4 0 4.5-.8 5.9-2.2L15 16.6c-.8.5-1.8.9-3 .9-2.3 0-4.3-1.6-5-3.7H4v2.3A9 9 0 0012 21zM7 13.8a5.4 5.4 0 010-3.6V7.9H4a9 9 0 000 8.2zM12 6.5c1.3 0 2.5.5 3.4 1.3L18 5.3A9 9 0 004 7.9l3 2.3c.7-2.1 2.7-3.7 5-3.7z"/>',
+    city: '<path d="M3 21h18M5 21V9l5-3v15M10 21V4l5 3v14M15 21V11h4v10"/><path d="M7.5 11h.01M7.5 14h.01M12.5 9h.01M12.5 12h.01M12.5 15h.01"/>',
+    qr: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h3M20 17v4"/><path d="M6 6h1v1H6zM17 6h1v1h-1zM6 17h1v1H6z" fill="currentColor"/>',
+    hashtag: '<path d="M9 3L7 21M17 3l-2 18M4 8.5h17M3 15.5h17"/>',
+    mockup: '<path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3a4 4 0 01-8 0z"/>',
+    thumbnail: '<rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/>',
+    magazine: '<path d="M4 4h11a3 3 0 013 3v13H7a3 3 0 01-3-3z"/><path d="M18 8h2v12H7M8 8h6M8 12h6M8 16h3"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
     phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/>',
     mail: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/>',
     pin: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
@@ -59,7 +70,8 @@
     ["about", "About Us", "about.html"],
     ["services", "Services", "services.html"],
     ["portfolio", "Portfolio", "portfolio.html"],
-    ["packages", "Packages", "packages.html"],
+    ["packages", "Pricing", "packages.html"],
+    ["media", "Media", "media.html"],
     ["clients", "Clients", "clients.html"],
     ["contact", "Contact", "contact.html"]
   ];
@@ -120,7 +132,7 @@
     el.className = "site-footer";
     el.innerHTML = `<div class="wrap">
       <div class="f-top">
-        <div>${logo}<p>We make brands people talk about — content, design, ads and websites under one roof.</p>${socials()}</div>
+        <div>${logo}<p>${esc(S.promise)} Branding, content, reels, ads, websites and city-page promotion from Agra.</p>${socials()}</div>
         <div><h4>Explore</h4>${NAV.map(([, t, h]) => `<a href="${h}">${t}</a>`).join("")}</div>
         <div><h4>Services</h4>${C.services.slice(0, 7).map((s) => `<a href="services.html#${slug(s.title)}">${esc(s.title)}</a>`).join("")}</div>
         <div><h4>Contact</h4>
@@ -201,7 +213,7 @@
 
   R["services-grid"] = (el) => {
     el.innerHTML = C.services.map((s, i) => `
-      <article class="svc-card rv" id="${slug(s.title)}">
+      <article class="svc-card rv" id="${slug(s.title)}" data-g="${esc(s.group || "")}">
         <div class="top"><span class="ico">${icon(s.icon)}</span><span class="num">${String(i + 1).padStart(2, "0")}</span></div>
         <h3>${esc(s.title)}</h3>
         <p>${esc(s.short)}</p>
@@ -291,22 +303,73 @@
   }
   function closeLb() { const lb = $("#lightbox"); if (!lb) return; lb.classList.remove("open"); document.body.style.overflow = ""; $$("video", lb).forEach((v) => v.pause()); }
 
-  R["packages"] = (el) => {
-    el.innerHTML = C.packages.plans.map((p) => `
-      <article class="plan rv ${p.featured ? "featured" : ""} ${p.custom ? "custom" : ""}">
-        <div class="tier"><h3>${esc(p.name)}</h3>${p.badge ? `<span class="badge">${esc(p.badge)}</span>` : ""}</div>
-        <p class="for">${esc(p.for)}</p>
-        <div class="price ${p.price ? "" : "req"}">${p.price ? `${esc(p.price)} <small>${esc(p.per || "")}</small>` : (p.custom ? "Tailored quote" : "Price on request")}</div>
-        <ul class="ticks">${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
-        <a class="btn ${p.featured ? "" : (p.custom ? "btn-line" : "btn-gold")} btn-block" href="${wa(`Hi YAP! I'm interested in the ${p.name} package. Please share pricing and details.`)}" target="_blank" rel="noopener">${p.custom ? "Build my package" : `Get ${esc(p.name)} quote`}</a>
+  /* ---------- pricing ---------- */
+  const price = (v, label) => C.showPrices !== false && v
+    ? `<b class="amt">${esc(v)}</b>`
+    : `<a class="amt ask" href="${wa(`Hi YAP! Please share the price for: ${label}`)}" target="_blank" rel="noopener">Ask price ↗</a>`;
+  const rateRows = (rows, label) => `<ul class="rates">${rows.map(([k, v, sub]) => `<li><span>${esc(k)}</span><i></i>${price(v, `${label} – ${k}`)}${sub && C.showPrices !== false ? `<small>${esc(sub)}</small>` : ""}</li>`).join("")}</ul>`;
+
+  R["monthly"] = (el) => {
+    el.innerHTML = C.pricing.monthly.map((p) => `
+      <article class="mplan rv ${p.featured ? "featured" : ""}">
+        <header><div class="tier"><h3>${esc(p.name)} <span class="it">plan</span></h3>${p.badge ? `<span class="badge">${esc(p.badge)}</span>` : ""}</div><p class="for">${esc(p.for)}</p></header>
+        <div class="mprices">${p.prices.map((x) => `<div><h4>${esc(x.service)}</h4>${rateRows(x.rows, `${p.name} plan – ${x.service}`)}</div>`).join("")}</div>
+        <ul class="ticks cols">${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
+        <a class="btn btn-block ${p.featured ? "btn-gold" : "btn-dark"}" href="${wa(`Hi YAP! I'm interested in the ${p.name} monthly plan.`)}" target="_blank" rel="noopener">Start ${esc(p.name)} plan</a>
       </article>`).join("");
   };
+  R["monthly-note"] = (el) => { el.textContent = C.pricing.monthlyNote; };
+  R["pricing-intro"] = (el) => { el.textContent = C.pricing.intro; };
 
-  R["addons"] = (el) => {
-    el.innerHTML = C.packages.addons.map((a) => `<div class="addon"><b>${esc(a.name)}</b>${a.price ? `<span>${esc(a.price)}</span>` : `<a href="${wa(`Hi YAP! Please share the price for: ${a.name}`)}" target="_blank" rel="noopener">Ask price ↗</a>`}</div>`).join("");
+  R["rate-card"] = (el) => {
+    const list = C.pricing[el.dataset.key] || [];
+    el.innerHTML = list.map((c) => `<div class="rate rv"><h3>${esc(c.name)}</h3>${rateRows(c.rows, c.name)}${c.note ? `<p class="rnote">${esc(c.note)}</p>` : ""}
+      <a class="rate-cta" href="${wa(`Hi YAP! I'd like to order: ${c.name}`)}" target="_blank" rel="noopener">Order on WhatsApp ↗</a></div>`).join("");
   };
 
-  R["packages-intro"] = (el) => { el.textContent = C.packages.intro; };
+  R["complimentary"] = (el) => {
+    el.innerHTML = C.pricing.complimentary.map((c) => `<div class="gift rv"><span class="gi">${icon("check")}</span><div><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div></div>`).join("") +
+      `<p class="gift-note">${esc(C.pricing.complimentaryNote)}</p>`;
+  };
+
+  const mp = (k) => C.mediaPages.find((m) => m.key === k) || { name: k };
+  const avatar = (m) => m.logo ? `<img src="${esc(m.logo)}" alt="${esc(m.name)}" loading="lazy">` : `<span>${esc(initials(m.name))}</span>`;
+
+  R["media-pages"] = (el) => {
+    el.innerHTML = C.mediaPages.map((m) => `<${m.link ? `a href="${esc(m.link)}" target="_blank" rel="noopener"` : "div"} class="mpage rv">
+      <div class="av">${avatar(m)}</div><h3>${esc(m.name)}</h3>${m.handle ? `<small>${esc(m.handle)}</small>` : ""}<p>${esc(m.text)}</p></${m.link ? "a" : "div"}>`).join("");
+  };
+
+  R["promotions"] = (el) => {
+    const tabs = C.promotions.map((p, i) => `<button class="${i ? "" : "on"}" data-t="${i}">${esc(p.type)}</button>`).join("");
+    const panes = C.promotions.map((p, i) => `<div class="pane" data-p="${i}" ${i ? "hidden" : ""}>
+      ${p.note ? `<p class="pnote">${esc(p.note)}</p>` : ""}
+      <div class="promo-grid">${p.rows.map((r) => { const m = mp(r.page); return `<div class="promo">
+        <div class="pp"><div class="av sm">${avatar(m)}</div><div><b>${esc(m.name)}</b>${m.handle ? `<small>${esc(m.handle)}</small>` : ""}</div></div>
+        ${rateRows(r.prices, `${p.type} on ${m.name}`)}
+        <a class="rate-cta" href="${wa(`Hi YAP! I want ${p.type} promotion on ${m.name}.`)}" target="_blank" rel="noopener">Book on WhatsApp ↗</a></div>`; }).join("")}</div></div>`).join("");
+    el.innerHTML = `<div class="filters ptabs" role="tablist">${tabs}</div>${panes}`;
+    el.querySelector(".ptabs").addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      $$(".ptabs button", el).forEach((x) => x.classList.toggle("on", x === b));
+      $$(".pane", el).forEach((p) => (p.hidden = p.dataset.p !== b.dataset.t));
+    });
+  };
+
+  R["usp"] = (el) => {
+    el.innerHTML = C.usp.map((u, i) => `<div class="rv"><span class="n">0${i + 1}</span><h3>${esc(u.title)}</h3><p>${esc(u.text)}</p></div>`).join("");
+  };
+  R["terms"] = (el) => { el.innerHTML = C.terms.map((t) => `<li>${esc(t)}</li>`).join(""); };
+
+  R["services-filter"] = (el) => {
+    const groups = [...new Set(C.services.map((s) => s.group).filter(Boolean))];
+    el.innerHTML = `<button class="on" data-g="*">All<sup>${C.services.length}</sup></button>` + groups.map((g) => `<button data-g="${esc(g)}">${esc(g)}<sup>${C.services.filter((s) => s.group === g).length}</sup></button>`).join("");
+    el.addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      $$("button", el).forEach((x) => x.classList.toggle("on", x === b));
+      $$(".svc-card").forEach((c) => (c.hidden = b.dataset.g !== "*" && c.dataset.g !== b.dataset.g));
+    });
+  };
 
   R["stats"] = (el) => {
     el.innerHTML = C.stats.map((s) => `<div class="stat rv"><b><span data-count="${s.value}">0</span><em>${esc(s.suffix)}</em></b><span>${esc(s.label)}</span></div>`).join("");
@@ -346,7 +409,7 @@
     const pre = new URLSearchParams(location.search).get("service");
     if (svcBox) svcBox.innerHTML = C.services.map((s, i) => `<label><input type="checkbox" name="services" value="${esc(s.title)}" id="svc-${i}" ${pre === s.title ? "checked" : ""}><span>${esc(s.title)}</span></label>`).join("");
     const pk = $("#f-package", form);
-    if (pk) pk.innerHTML = `<option value="">Not sure yet</option>` + C.packages.plans.map((p) => `<option>${esc(p.name)}</option>`).join("");
+    if (pk) pk.innerHTML = `<option value="">Not sure yet</option>` + C.pricing.monthly.map((p) => `<option>${esc(p.name)} monthly plan</option>`).join("") + `<option>Single service / one-time work</option><option>City page promotion</option>`;
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const f = new FormData(form), err = $(".form-err", form);
