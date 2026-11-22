@@ -47,25 +47,29 @@ Saara text aur data **ek hi file** me hai: **`assets/js/config.js`**. Ise Notepa
 
 ## Portfolio kaise add karein
 
-**Tareeka 1 (aasaan): Python script se**
+Abhi portfolio me **57 projects** hain (24 graphic design, 17 reels/videos, 16 photography). Ye aapki purani portfolio file se liye gaye hain.
 
-1. Apni photos ya videos category ke folder me daalo:
+**Naya kaam add karna (Python script se):**
+
+1. Photo ya video ko sahi folder me daalo:
    ```
-   assets/portfolio/social-media/
-   assets/portfolio/reels/
+   assets/portfolio/graphic-design/
+   assets/portfolio/reels/          ← video (.mp4) + same naam ki cover photo (.jpg)
+   assets/portfolio/photography/
    assets/portfolio/branding/
-   assets/portfolio/design/
    assets/portfolio/websites/
-   assets/portfolio/ads/
    ```
-2. Ye command chalao:
+2. Details ke liye same naam ki `.json` file banao (optional):
+   ```json
+   { "title": "Diwali Offer", "client": "Fakira Rooftop Lounge & Bar", "tags": ["Nightlife & Bar"], "featured": 1 }
+   ```
+   `"featured"` wale projects apni category me sabse upar dikhte hain.
+3. Ye command chalao:
    ```bash
    python3 tools/portfolio_builder.py
    ```
-3. Bas. Portfolio apne aap update ho jayega. File ka naam hi title banta hai, jaise `brew-cafe-launch.jpg` ka title "Brew Cafe Launch" banega.
-   Client ka naam, description, tags ya Instagram reel ka link daalna ho to image ke saath same naam ki `.json` file rakho. Example `tools/portfolio_builder.py` ke upar diya hai.
 
-**Tareeka 2:** `config.js` ki `portfolio` list me haath se items add karo.
+Hataana ho to us project ki files folder se delete karke script dobara chalao.
 
 ## Apne computer ya phone par chalana
 

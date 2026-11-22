@@ -17,12 +17,12 @@ window.YAP = {
     founder: "Yash Agarwal",
     phone: "+91 821 811 6706",                      // dikhne wala number
     whatsapp: "918218116706",                       // country code ke saath, bina + aur space ke
-    email: "",                                      // e.g. "hello@yapdigitalmarketing.digital" (khaali = hide)
-    location: "India · Serving clients worldwide",
+    email: "yashaagri172@gmail.com",               // agency email ban jaye to yahan badlo (khaali = hide)
+    location: "Agra, India · Serving clients everywhere",
     hours: "Mon – Sat · 10:00 AM – 8:00 PM",
     whatsappGreeting: "Hi YAP! I found you on your website and want to grow my brand.",
     social: {                                       // khaali chhodoge to icon hide ho jayega
-      instagram: "",
+      instagram: "https://instagram.com/yash_the_explorer_",   // agency ka Instagram ban jaye to badlo
       linkedin: "",
       youtube: "",
       facebook: "",
@@ -103,31 +103,38 @@ window.YAP = {
   /* ---------- 5. CLIENTS ----------
      ⚠ NUMBERS ABHI SAMPLE HAIN — apne asli numbers daalo.  */
   stats: [
-    { value: 50,  suffix: "+", label: "Clients served" },
-    { value: 12,  suffix: "+", label: "Industries" },
-    { value: 1000, suffix: "+", label: "Creatives delivered" },
-    { value: 5,   suffix: "M+", label: "Organic views generated" }
+    { value: 17,  suffix: "+", label: "Brands served" },
+    { value: 108, suffix: "+", label: "Reels delivered" },
+    { value: 400, suffix: "+", label: "Photos & graphics created" },
+    { value: 2.5, suffix: " yrs", label: "Shooting & editing for brands" }
   ],
   clientCategories: [
-    { name: "Fashion & Apparel",     count: 8 },
-    { name: "Restaurants & Cafés",   count: 7 },
-    { name: "Real Estate",           count: 5 },
-    { name: "Gyms & Fitness",        count: 6 },
-    { name: "Salons & Beauty",       count: 6 },
-    { name: "Education & Coaching",  count: 5 },
-    { name: "Healthcare & Clinics",  count: 4 },
-    { name: "E-commerce / D2C",      count: 5 },
-    { name: "Jewellery",             count: 3 },
-    { name: "Personal Brands",       count: 4 }
+    { name: "Restaurants, Cafés & Nightlife", count: 7 },
+    { name: "Hotels & Hospitality",          count: 3 },
+    { name: "Health & Fitness",              count: 2 },
+    { name: "Retail & Products",             count: 2 },
+    { name: "Education & Arts",              count: 2 },
+    { name: "Finance & Investing",           count: 1 }
   ],
   /* Client naam / logo — logo: "assets/clients/abc.png" (khaali = naam dikhega) */
   clients: [
-    { name: "Client One", logo: "", category: "Fashion & Apparel" },
-    { name: "Client Two", logo: "", category: "Restaurants & Cafés" },
-    { name: "Client Three", logo: "", category: "Real Estate" },
-    { name: "Client Four", logo: "", category: "Gyms & Fitness" },
-    { name: "Client Five", logo: "", category: "Salons & Beauty" },
-    { name: "Client Six", logo: "", category: "Education & Coaching" }
+    { name: "Fakira Rooftop Lounge & Bar", logo: "", category: "Rooftop Lounge" },
+    { name: "Barista Coffee, Agra",        logo: "", category: "Café" },
+    { name: "Heer Ranjha Restaurant",      logo: "", category: "Restaurant" },
+    { name: "London Coffee",               logo: "", category: "Café" },
+    { name: "Pizza Workshop Agra",         logo: "", category: "Café" },
+    { name: "Momo Cult",                   logo: "", category: "Café" },
+    { name: "Brij Bhog",                   logo: "", category: "Sweet Shop" },
+    { name: "Clarks Inn Suites",           logo: "", category: "Hotel" },
+    { name: "Bhawna Clarks Inn",           logo: "", category: "Hotel" },
+    { name: "Hotel Taj Heights",           logo: "", category: "Hotel" },
+    { name: "Workout Zone Agra",           logo: "", category: "Gym & Fitness" },
+    { name: "Fat to Fit (Herbalife)",      logo: "", category: "Wellness" },
+    { name: "Kangra Traders",              logo: "", category: "Sanitaryware" },
+    { name: "Navcci Perfume",              logo: "", category: "Perfume" },
+    { name: "Melon Seeds Preschool",       logo: "", category: "Preschool" },
+    { name: "Heartbeat Musical & Classes", logo: "", category: "Music Academy" },
+    { name: "Magical Market",              logo: "", category: "Share Market Education" }
   ],
   /* Testimonials — khaali array [] rakhoge to section hide */
   testimonials: [
@@ -141,8 +148,9 @@ window.YAP = {
      (b) Photos/videos assets/portfolio/<category>/ me daalo aur
          `python3 tools/portfolio_builder.py` chalao — yeh assets/js/portfolio-data.js bana dega
          aur woh items yahan wale items ki jagah apne aap use honge.
-     Fields: title, client, category, image, video (YouTube/Instagram link), link, desc, tags */
-  portfolioCategories: ["Social Media", "Reels", "Branding", "Design", "Websites", "Ads"],
+     Fields: title, client, category, image, clip (apni mp4 file), video (YouTube/Instagram link), link, desc, tags
+     NOTE: abhi assets/js/portfolio-data.js (57 projects) use ho raha hai, isliye neeche wali list sirf backup hai. */
+  portfolioCategories: ["Graphic Design", "Reels & Videos", "Photography", "Branding", "Websites"],
   portfolio: [
     { title: "Your project title", client: "Client name", category: "Social Media", image: "", desc: "One line about the brief and the result.", tags: ["Instagram", "Content"] },
     { title: "Reel campaign", client: "Client name", category: "Reels", image: "", desc: "Add views, followers or sales numbers here.", tags: ["Reels", "Editing"] },

@@ -4,9 +4,10 @@ YAP Portfolio Builder
 ---------------------
 Apni photos / videos ko category folders me daalo:
 
-    assets/portfolio/social-media/brew-and-co-launch.jpg
+    assets/portfolio/graphic-design/brew-and-co-launch.jpg
     assets/portfolio/reels/fitzone-transformation.mp4
-    assets/portfolio/branding/aura-logo.png
+    assets/portfolio/reels/fitzone-transformation.jpg   <- reel ka cover (optional)
+    assets/portfolio/photography/cafe-cold-coffee.jpg
 
 Phir chalao:
 
@@ -26,7 +27,8 @@ image ke saath same naam ki .json file rakho:
       "desc": "1.2M views, 3,400 new followers in 30 days.",
       "tags": ["Reels", "Editing"],
       "video": "https://www.instagram.com/reel/xxxx",
-      "link": ""
+      "link": "",
+      "featured": 1        <- optional: is project ko category me sabse upar dikhao
     }
 
 Sirf Python 3 chahiye, koi extra library nahi.
@@ -38,15 +40,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "assets" / "portfolio"
 OUT = ROOT / "assets" / "js" / "portfolio-data.js"
-MEDIA = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".mp4", ".webm", ".mov"}
+IMAGES = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
+VIDEOS = {".mp4", ".webm", ".mov"}
 
 # folder name -> category label shown on the site
+# (folder order = website par category order)
 LABELS = {
-    "social-media": "Social Media",
-    "reels": "Reels",
+    "graphic-design": "Graphic Design",
+    "reels": "Reels & Videos",
+    "photography": "Photography",
     "branding": "Branding",
-    "design": "Design",
     "websites": "Websites",
+    "social-media": "Social Media",
     "ads": "Ads",
 }
 
@@ -61,28 +66,45 @@ def main() -> int:
         return 1
 
     items = []
-    for folder in sorted(p for p in SRC.iterdir() if p.is_dir()):
+    folders = [p for p in SRC.iterdir() if p.is_dir()]
+    order = list(LABELS)
+    folders.sort(key=lambda p: (order.index(p.name) if p.name in order else 99, p.name))
+    for folder in folders:
         category = LABELS.get(folder.name, nice(folder.name))
-        files = sorted(f for f in folder.iterdir() if f.suffix.lower() in MEDIA)
+        # same naam ki image + video = ek project (image cover banti hai)
+        groups = {}
+        for f in folder.iterdir():
+            ext = f.suffix.lower()
+            if ext in IMAGES:
+                groups.setdefault(f.stem, {})["image"] = f
+            elif ext in VIDEOS:
+                groups.setdefault(f.stem, {})["clip"] = f
         # sabse naya kaam pehle
-        files.sort(key=lambda f: f.stat().st_mtime, reverse=True)
-        for f in files:
+        def mtime(g):
+            return max(x.stat().st_mtime for x in g.values())
+        folder_items = []
+        for stem, g in sorted(groups.items(), key=lambda kv: (-mtime(kv[1]), kv[0])):
             item = {
-                "title": nice(f.stem),
+                "title": nice(stem),
                 "client": "",
                 "category": category,
-                "image": f.relative_to(ROOT).as_posix(),
+                "image": g["image"].relative_to(ROOT).as_posix() if "image" in g else "",
+                "clip": g["clip"].relative_to(ROOT).as_posix() if "clip" in g else "",
                 "desc": "",
-                "tags": [category],
+                "tags": [],
             }
-            meta = f.with_suffix(".json")
+            meta = folder / f"{stem}.json"
             if meta.exists():
                 try:
                     item.update(json.loads(meta.read_text(encoding="utf-8")))
                 except json.JSONDecodeError as e:
                     print(f"  ! {meta.name} me JSON galat hai ({e}); skip kiya")
-            items.append(item)
-            print(f"  + [{category}] {item['title']}")
+            item["tags"] = [t for t in item.get("tags", []) if t]
+            folder_items.append(item)
+            print(f"  + [{category}] {item['title']}{'  (video)' if item['clip'] else ''}")
+        # "featured": 3  -> sabse upar (bada number = pehle)
+        folder_items.sort(key=lambda x: -int(x.get("featured", 0) or 0))
+        items.extend(folder_items)
 
     body = json.dumps(items, ensure_ascii=False, indent=2)
     OUT.write_text(

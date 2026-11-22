@@ -222,10 +222,13 @@
   };
 
   function workCard(p, i) {
-    const media = p.image
-      ? (isVideo(p.image) ? `<video src="${esc(p.image)}" muted loop playsinline preload="metadata"></video>` : `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`)
+    const clip = p.clip || (isVideo(p.image) ? p.image : "");
+    const poster = isVideo(p.image) ? "" : p.image;
+    const media = clip
+      ? `<video src="${esc(clip)}" ${poster ? `poster="${esc(poster)}"` : ""} muted loop playsinline preload="${poster ? "none" : "metadata"}" aria-label="${esc(p.title)}"></video>`
+      : poster ? `<img src="${esc(poster)}" alt="${esc(p.title)}" loading="lazy">`
       : `<div class="ph"><small>${esc(p.category)}</small><b>${esc(initials(p.client || p.title))}<i></i></b></div>`;
-    const hasPlay = isVideo(p.image) || p.video;
+    const hasPlay = clip || p.video;
     return `<button class="work rv" data-cat="${esc(p.category)}" data-i="${i}">
       <div class="media"><span class="chip">${esc(p.category)}</span>${media}${hasPlay ? `<span class="play">${icon("play")}</span>` : ""}</div>
       <div class="meta"><div><h3>${esc(p.title)}</h3><small>${esc(p.client || "")}</small></div>
@@ -235,9 +238,18 @@
 
   R["portfolio"] = (el) => {
     const limit = +el.dataset.limit || PORTFOLIO.length;
-    const items = PORTFOLIO.slice(0, limit);
+    let items = PORTFOLIO;
+    if (el.dataset.mix !== undefined) {
+      /* home page: har category se baari-baari ek item */
+      const byCat = {};
+      PORTFOLIO.forEach((p) => (byCat[p.category] = byCat[p.category] || []).push(p));
+      const order = C.portfolioCategories || [];
+      const lists = Object.keys(byCat).sort((x, y) => (order.indexOf(x) + 1 || 99) - (order.indexOf(y) + 1 || 99)).map((k) => byCat[k]); items = [];
+      for (let r = 0; items.length < PORTFOLIO.length; r++) lists.forEach((l) => l[r] && items.push(l[r]));
+    }
+    items = items.slice(0, limit);
     if (!items.length) { el.innerHTML = `<div class="empty-note">Portfolio coming soon. Add projects in <code>assets/js/config.js</code>.</div>`; return; }
-    el.innerHTML = items.map(workCard).join("");
+    el.innerHTML = items.map((p) => workCard(p, PORTFOLIO.indexOf(p))).join("");
     $$("video", el).forEach((v) => { const w = v.closest(".work"); w.addEventListener("mouseenter", () => v.play().catch(() => {})); w.addEventListener("mouseleave", () => v.pause()); });
     $$(".work", el).forEach((w) => w.addEventListener("click", () => lightbox(PORTFOLIO[+w.dataset.i])));
   };
@@ -262,7 +274,9 @@
       lb.addEventListener("click", (e) => { if (e.target === lb || e.target.closest(".lb-close")) closeLb(); });
       document.addEventListener("keydown", (e) => e.key === "Escape" && closeLb());
     }
-    const media = p.image ? (isVideo(p.image) ? `<video src="${esc(p.image)}" controls autoplay playsinline></video>` : `<img src="${esc(p.image)}" alt="${esc(p.title)}">`)
+    const clip = p.clip || (isVideo(p.image) ? p.image : "");
+    const media = clip ? `<video src="${esc(clip)}" ${p.image && !isVideo(p.image) ? `poster="${esc(p.image)}"` : ""} controls autoplay playsinline></video>`
+      : p.image ? `<img src="${esc(p.image)}" alt="${esc(p.title)}">`
       : `<div class="work"><div class="ph"><small>${esc(p.category)}</small><b>${esc(initials(p.client || p.title))}<i></i></b></div></div>`;
     $(".lb-inner", lb).innerHTML = `<div class="lb-media">${media}</div>
       <div class="lb-body"><span class="eyebrow" style="margin:0">${esc(p.category)}</span><h3>${esc(p.title)}</h3>
@@ -304,7 +318,8 @@
 
   R["logos"] = (el) => {
     if (!C.clients.length) { el.closest("section")?.remove(); return; }
-    el.innerHTML = C.clients.map((c) => `<div>${c.logo ? `<img src="${esc(c.logo)}" alt="${esc(c.name)}" loading="lazy">` : `<div><b>${esc(c.name)}</b><small>${esc(c.category || "")}</small></div>`}</div>`).join("");
+    el.innerHTML = C.clients.map((c) => `<div>${c.logo ? `<img src="${esc(c.logo)}" alt="${esc(c.name)}" loading="lazy">` : `<div><b>${esc(c.name)}</b><small>${esc(c.category || "")}</small></div>`}</div>`).join("") +
+      `<a href="${wa("Hi YAP! I'd like my brand to be your next client.")}" target="_blank" rel="noopener" class="logo-next"><div><b>Your brand<span class="dot">.</span></b><small>Could be next →</small></div></a>`;
   };
 
   R["testimonials"] = (el) => {
@@ -376,8 +391,9 @@
     const io = new IntersectionObserver((ents) => ents.forEach((en) => {
       if (!en.isIntersecting) return;
       const el = en.target, end = +el.dataset.count, t0 = performance.now(), dur = 1600;
-      const fmt = (n) => n.toLocaleString("en-IN");
-      const tick = (t) => { const p = Math.min((t - t0) / dur, 1); el.textContent = fmt(Math.round(end * (1 - Math.pow(1 - p, 4)))); if (p < 1) requestAnimationFrame(tick); };
+      const dec = (String(el.dataset.count).split(".")[1] || "").length;
+      const fmt = (n) => n.toLocaleString("en-IN", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+      const tick = (t) => { const p = Math.min((t - t0) / dur, 1); el.textContent = fmt(end * (1 - Math.pow(1 - p, 4))); if (p < 1) requestAnimationFrame(tick); };
       requestAnimationFrame(tick); io.unobserve(el);
     }), { threshold: 0.4 });
     els.forEach((e) => io.observe(e));
